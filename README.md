@@ -106,6 +106,8 @@ module.exports = {
 
 
 //模拟form提交参数
+
+
 $.extend({
 	StandardPost:function(url, args){
 		var form = $("<form method='post' style='display:none'></form>"), input;
@@ -124,3 +126,4 @@ $.extend({
 		form.remove();
 	}
 });
+
