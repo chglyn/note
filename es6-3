@@ -1,0 +1,421 @@
+程序中类
+
+ES6
+
+面向对象 ，类
+	属性
+	方法
+函数模拟
+
+人:  Person
+	属性: name
+	展示名字: showName
+
+     Person.prototype.showName
+ES5之前：
+	function Person(){
+		this.name='aaa';
+	}
+	Person.prototype.showName=function(){}
+
+ES6中变形:
+	class Person{
+		constructor(){
+			this.name = 'aaa';
+		} 
+		showName(){
+
+		}
+	}
+	--------------------------
+	const Person = class{}
+	------------------------------
+	let a = 'strive';
+	let b = 'method';
+
+	class Person{
+		[a+b](){
+			
+		}
+	}
+
+
+let aaa='aaa';
+let bbb='ddd';
+let json={
+	[aaa+bbb]:'welcome 51mmr.net'
+}
+
+注意： 
+1. ES6里面class没有提升功能，在ES5，用函数模拟可以，默认函数提升
+2. ES6里面this 比之前轻松多了
+
+
+矫正this:
+	1. fn.call(this指向谁, args1, args2....)
+	2. fn.apply(this指向谁, [args1, args2....])
+	3. fn.bind()
+------------------------------------------------------------
+class里面取值函数(getter), 存值函数(setter)
+------------------------------------------------------------
+静态方法: 就是类身上方法
+	static aaa(){
+
+	}
+
+	父类.aaa();
+------------------------------------------------------------
+
+父类
+子类
+------------------------------------------------------------
+继承:
+	之前:
+
+Person
+Student
+	
+	现在: extends
+	class Student extends Person{
+            
+             }
+------------------------------------------------------------
+拖拽
+
+
+ES6类
+
+	_
+----------------------------------------------------------------
+数据类型:
+	number、string、boolean、Object、undefined、function
+
+	用typeof检测出来数据类型:
+		symbol
+
+	new Number(12)
+	new String()
+	new Array()
+
+symbol	使用情况一般
+
+定义：
+	let syml = Symbol('aaa');
+
+注意:
+	1. Symbol 不能new
+	2. Symbol() 返回是一个唯一值
+		坊间传说, 做一个key，定义一些唯一或者私有一些东
+	3. symbol是一个单独数据类型，就叫 symbol, 基本类型
+
+	4. 如果symbol作为key，用for in循环，出不来
+
+json  ->  for in
+
+---------------------------------------------------------------
+箭头函数
+	() =>{}
+
+generator函数
+	生成器
+
+
+	解决异步深度嵌套的问题， async
+
+语法:
+	function * show(){
+		yield
+	}
+	function* show(){
+	}
+	function *show(){
+	}
+
+	定义：
+		function * gen(){
+		    yield 'welcome';
+		    yield 'to';
+		    return '牧码人';
+		}
+	调用:
+		let g1 = gen();
+		g1.next();  // {value:'welcome', done:false}
+		g1.next();  // {value:'to', done:false}
+		g1.next();  // {value:'牧码人', done:true}
+
+	上述调用，手动调用，麻烦
+
+for .. of  自动遍历 generator
+
+	return的东西，它不会遍历
+
+generator不仅可以配合 for ... of ...
+
+还可以:
+
+1. 解构赋值:
+	let [a, ...b] = gen();
+2. 扩展运算符
+	'...'
+
+	console.log(...gen());
+3. Array.from()
+	console.log(Array.from(gen()));
+
+generator结合 axios数据请求：
+
+-----------------------------------------------
+异步: 不连续，上一个操作没有执行完，下一个操作照样开始
+同步: 连续执行，上一个操作没有执行完，下一个没法开始
+
+关于异步，解决方案：
+	a). 回调函数
+	b). 事件监听
+	c). 发布/订阅
+	d). Promise对象
+
+co....
+-----------------------------------------------
+ES2017,规定 async
+
+	nodeJs
+
+	读取文件  fs.readFile
+
+	1. promise
+	2. genrator
+	3. async
+--------------------------------------
+async function fn(){  //表示异步，这个函数里面有异步任务
+	let result = await  xxx	//表示后面结果需要等待
+	
+}
+--------------------------------------
+async特点:
+	1. await只能放到async函数中
+	2. 相比genrator语义化更强
+	3. await后面可以是promise对象，也可以数字、字符串、布尔
+	4. async函数返回是一个promise对象
+	5. 只要await语句后面Promise状态变成 reject, 那么整个async函数会中断执行
+--------------------------------------
+如何解决async函数中抛出错误，影响后续代码:
+	a). 
+		try{
+
+		}catch(e){
+			
+		}
+	b). promise本身catch
+--------------------------------------		
+个人建议大家:
+	try{
+		let f1 = await readFile('data/a.txt');
+		let f3 = await readFile('data/c.txt');
+		let f2 = await readFile('data/b.txt');
+	}catch(e){}
+--------------------------------------
+
+
+ES2018(ES9)
+--------------------------------
+proxy:  代理
+	扩展(增强)对象、方法(函数)一些功能
+
+	比如: 
+		Vue
+
+		Vue.config.keyCodes.enter=65
+
+	Proxy作用: 比如vue中拦截
+		预警、上报、扩展功能、统计、增强对象等等
+
+	proxy是设计模式一种，  代理模式
+--------------------------------
+let obj ={
+	name:'Strive'
+};
+//您访问了name
+obj.name  // Strive
+--------------------------------
+语法:
+	new Proxy(target, handler);
+	let obj = new Proxy(被代理的对象,对代理的对象做什么操作)
+
+	handler:
+
+	{
+		set(){},  //设置的时候干的事情
+		get(){},  //获取干的事情
+		deleteProperty(){},  //删除
+		has(){}  //问你有没有这个东西  ‘xxx’ in obj
+		apply()  //调用函数处理
+		.....
+	}
+
+实现一个，访问一个对象身上属性，默认不存在的时候给了undefined，希望如果不存在错误(警告)信息：
+	
+---------------------------------------------------
+
+DOM.div()
+DOM.a();
+DOM.ul()
+
+---------------------------------------------------
+set(), 设置，拦截:
+	设置一个年龄，保证是整数，且范围不能超过200
+
+deleteProperty(): 删除，拦截:
+	
+has(): 检测有没有
+---------------------------------------------------
+apply()  :拦截方法
+	
+	
+---------------------------------------------------
+Reflect.apply(调用的函数，this指向，参数数组);
+
+fn.call()
+fn.apply()  类似
+
+Reflect: 反射
+	Object.xxx  语言内部方法
+
+		Object.defineProperty
+
+	放到Reflect对象身上
+
+	通过Reflect对象身上直接拿到语言内部东西
+
+	'assign' in Object    ->   Reflect.has(Object, 'assign')
+
+	delete json.a	    ->   Reflect.deleteProperty(json, 'a');
+
+
+
+
+数字(数值)变化:
+	二进制:  (Binary)
+		let a = 0b010101;
+	八进制: (Octal)
+		let a = 0o666;
+	
+	十六进制:
+		#ccc
+	-------------------------------------------
+	Nunber()、parseInt()、 parseFloat()
+	-------------------------------------------
+
+	Number.isNaN(NaN)	-> true
+
+	Number.isFinite(a)   判断是不是数字	√
+
+	Number.isInteger(a)  判断数字是不是整数	√
+
+	-------------------------------------------
+	Number.parseInt();
+	Number.parseFloat();
+-------------------------------------------
+安全整数:
+	2**3
+
+	安全整数:    -(2^53-1) 到 (2^53-1),   包含-(2^53-1) 和(2^53-1)
+
+	Number.isSafeInteger(a);
+
+	Number.MAX_SAFE_INTEGER	最大安全整数
+	Number.MIN_SAFE_INTEGER	最小安全整数
+
+--------------------------------------------------------------------------------------
+Math:
+	Math.abs()
+	Math.sqrt()
+	Math.sin()
+
+	Math.trunc()	截取，只保留整数部分
+		Math.trunc(4.5)  ->  4
+		Math.trunc(4.9)  ->  4
+
+	Math.sign(-5)   判断一个数到底是正数、负数、0
+		Math.sign(-5)  ->  -1
+		Math.sign(5)  -> 1
+		Math.sign(0)	->  0
+		Math.sign(-0)	->  -0
+		其他值，返回 NaN
+	
+	Math.cbrt()	计算一个数立方根
+
+		Math.cbrt(27)  ->  3
+
+	.......
+-------------------------------------------------------
+ES2018(ES9):
+	1. 命名捕获
+		语法:  (?<名字>)
+
+		let str = '2018-03-20';
+		let reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+		let {year, month ,day} = str.match(reg).groups;
+		console.log(year, month, day);
+	反向引用:
+		\1  \2     $1  $2
+	反向引用命名捕获:
+		语法:  \k<名字>
+
+		let reg = /^(?<Strive>welcome)-\k<Strive>$/;
+
+		匹配: ‘welcome-welcome’
+
+		-------------------------------------------------
+
+		let reg = /^(?<Strive>welcome)-\k<Strive>-\1$/;
+
+		匹配: 'welcome-welcome-welcome'
+
+	替换:
+		$<名字>
+
+		let reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+		str = str.replace(reg,'$<day>/$<month>/$<year>');
+		console.log(str);
+
+		----------------------------------------
+		str = str.replace(reg, (...args)=>{
+			//console.log(args)
+			let {year, month, day} = args[args.length-1];
+
+			return `${day}/${month}/${year}`;
+		});
+
+		console.log(str);
+
+	2.   dotAll 模式	s
+
+		之前 '.' 在正则里表示匹配任意东西， 但是不包括 \n 
+	
+	   let reg = /\w+/gims;
+
+	3. 标签函数
+		function fn(){
+
+		}
+
+		fn()  //这样调用就是普通函数
+
+		fn`aaa`  //标签函数使用
+
+		-----------------------------------
+		function fn(args){
+			return args[0].toUpperCase();
+		}
+
+		console.log(fn`welcome`);
+	
+
+
+
+
+
+
+
+
+
