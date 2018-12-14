@@ -1,0 +1,283 @@
+数组:
+	ES5里面新增一些东西
+
+	循环:
+		1. for
+			for(let i=0; i<arr.length; i++)
+		2. while
+
+	arr.forEach()  //  代替普通for
+		arr.forEach(function(val, index, arr){
+		    console.log(val, index, arr);
+		});
+	arr.map()  //  非常有用，做数据交互  "映射"
+		正常情况下，需要配合return，返回是一个新的数组
+		若是没有return，相当于forEach
+
+		注意：平时只要用map，一定是要有return
+		
+		重新整理数据结构:
+			[{title:'aaa'}]   ->  [{t:'aaaa'}]
+
+	arr.filter():  过滤，过滤一些不合格“元素”， 如果回调函数返回true，就留下来
+		
+	arr.some(): 类似查找,  数组里面某一个元素符合条件，返回true
+	arr.every(): 数组里面所有的元素都要符合条件，才返回true
+
+	其实他们可以接收两个参数:
+		arr.forEach/map...(循环回调函数, this指向谁);
+	------------------------------------------------------------
+	arr.reduce()   //从左往右
+		求数组的和、阶乘
+		
+	arr.reduceRight()  //从右往左
+	------------------------------------------------------------	
+
+ES2017新增一个运算符:
+	幂
+		Math.pow(2,3)
+		2 ** 3
+======================================================
+for....of....：
+	arr.keys()	数组下标
+	arr.entries()	数组某一项
+
+	for(let val of arr){
+	    console.log(val);
+	}
+======================================================
+扩展运算符:
+	...
+
+	let arr =[1,2,3];
+	let arr2 = [...arr];
+
+	let arr2 = Array.from(arr);
+
+Array.from:
+	作用: 把类数组(获取一组元素、arguments...) 对象转成数组
+
+	个人观点： 具备 length这个东西，就靠谱
+
+Array.of():  把一组值，转成数组
+	let arr = Array.of('apple','banana','orange');
+
+	console.log(arr);
+
+arr.find():  查找，找出第一个符合条件的数组成员，如果没有找到，返回undefined
+
+arr.findIndex(): 找的是位置， 没找到返回-1
+
+
+arr.fill()	填充
+	arr.fill(填充的东西, 开始位置, 结束位置);
+
+在ES2016里面新增:
+
+	arr.indexOf()
+	arr.includes()
+		str.includes()
+============================================
+对象:
+	json
+
+	对象简介语法(相当有用):
+
+	let json ={
+		a:1,
+		b:2,
+		showA:function(){
+			return this.a;
+		}
+		showB:function(){
+			return this.b;
+		}
+	}
+
+	let json ={
+		a,
+		b,
+		showA(){  //个人建议: 一定注意，不要用箭头函数
+		},
+		showB(){
+		}
+	}
+
+
+	new Vuex.Store({
+		state,
+		mutation,
+		types,
+		actions
+	});
+
+	new Vue({
+		router,
+		App,
+		vuex
+	})
+
+Object.is():	用来比较两个值是否相等
+
+	Object.is('a','a');
+
+	比较两个东西相等:
+		==
+		===
+
+	Object.is(NaN, NaN);
+
+	Object.is(+0, -0);
+
+Object.assign():   用来合并对象
+	let 新的对象 = Object.assign(目标对象, source1, srouce2....)
+
+	function ajax(options){  //用户传
+		let defaults={
+			type:'get',
+			header:
+			data:{}
+			....
+		};
+
+		let json = Object.assign({}, defaults, options);
+		.....
+	}
+	
+
+	用途:
+		1. 复制一个对象
+		2. 合并参数
+
+ES2017引入:
+	Object.keys()
+	Object.entries();
+	Object.values();
+
+		let {keys, values, entries} = Object;let {keys, values, entries} = Object;
+
+对象身上:   计划在ES2018引入
+	...
+
+	let json = {a:3, b:4};
+        	let json2 = {...json};
+
+==================================================
+Promise:    承诺，许诺
+
+	作用:  解决异步回调问题
+
+	传统方式，大部分用回调函数，事件
+
+	ajax(url,{  //获取token
+		ajax(url,()=>{  //获取用户信息
+			ajax(url, ()=>{
+				//获取用户相关新闻
+			})
+		})
+	})
+
+	语法:
+		let promise = new Promise(function(resolve, reject){
+		    //resolve,   成功调用
+		    //reject     失败调用
+		});
+
+		promise.then(res=>{
+
+		}, err=>{
+			
+		})
+
+
+	promise.catch(err=>{})
+
+	本人用法:
+		new Promise().then(res=>{
+
+		}).catch(err=>{
+			
+		})
+
+	Promise.resolve('aa') :  将现有的东西，转成一个promise对象， resolve状态，成功状态
+		等价于:
+		new Promise(resolve =>{
+		    resolve('aaa')
+		});
+	Promise.reject('aaa'):   将现有的东西，转成一个promise对象，reject状态，失败状态
+		等价于:
+		new Promise((resolve, reject) =>{
+		    reject('aaa')
+		});
+
+√	Promise.all([p1, p2, p3]):  把promise打包，扔到一个数组里面，打包完还是一个promise对象
+		必须确保，所有的promise对象，都是resolve状态，都是成功状态
+	Promise.race([p1, p2, p3]): 只要有一个成功，就返回
+
+	用户登录  ->  用户信息
+=========================================
+模块化:
+	js不支持模块化
+		ruby   require
+		python  import
+	
+	在ES6之前，社区制定一套模块规范:
+		Commonjs		主要服务端  nodeJs    require('http')
+		AMD			requireJs, curlJs
+		CMD			seaJs
+
+	ES6出来，同意服务端和客户端模块规范:
+		import {xx} ddd
+		
+		Math.pow()
+		Math.abs()
+
+		import {pow, abs} from 'Math'		我自己瞎想
+
+
+	模块化：
+		注意： 需要放到服务器环境
+		a). 如何定义模块？
+			export  东西
+			export const a =12;
+			export{
+				a as aaa,
+				b as banana
+			}
+		b). 如何使用?
+			import
+			import './modules/1.js'; 
+			import {a as a, banana, c} from './modules/2.js'
+			import * as modTwo from './modules/2.js';
+	使用模块:
+		<script type="module"></script>
+
+
+	import:  特点
+		a). import 可以是相对路径，也可以是绝对路径
+			import 'https://code.jquery.com/jquery-3.3.1.js';
+		b). import模块只会导入一次，无论你引入多少次
+		c). import './modules/1.js';  如果这么用，相当于引入文件
+		d). 有提升效果，import会自动提升到顶部，首先执行
+		e). 导出去模块内容，如果里面有定时器更改，外面也会改动，不想Common规范缓存
+
+
+  	* import()  类似node里面require， 可以动态引入, 默认import语法不能写到if之类里面
+		返回值，是个promise对象
+
+		import('./modules/1.js').then(res=>{
+			console.log(res.a+res.b);
+		});
+
+		优点:
+			1. 按需加载
+			2. 可以写if中
+			3. 路径也可以动态
+
+		Promise.all([])
+	=============================================
+	ES2017加  async  await:
+=============================================
+
+	'use strict'		以后默认就是严格模式
+
