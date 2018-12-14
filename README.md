@@ -105,25 +105,5 @@ module.exports = {
 
 
 
-//模拟form提交参数
 
-
-$.extend({
-	StandardPost:function(url, args){
-		var form = $("<form method='post' style='display:none'></form>"), input;
-		form.attr({ "action":url });
-		args=JSON.parse(args);
-		$.each(args, function(key2, value2){
-			$.each(value2,function(key, value){
-				input = $("<input type='hidden'>");
-				input.attr({ "name":'objectArray['+key2+']['+key+']'});
-				input.val(value);
-				form.append(input);
-			});
-		});
-		form.appendTo($('body'));
-		form.submit();
-		form.remove();
-	}
-});
 
