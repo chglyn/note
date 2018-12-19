@@ -1,3 +1,17 @@
+typef null => object
+true => 1
+false => 0
+
+函数声明整体提升
+变量 声明提升
+imply global暗示全局变量
+即任何变量，如果变量未经声明就赋值，此变量就为全局变量所有。
+a=10  ==> window.a=10;
+一切声明的全局变量，全是window的属性
+var a=1; ==>window.a=1;
+
+预编译发生在函数执行前一刻
+//预编译
 创建AO对象  Activetion Object
 找形参和变量声明，将变量和形参名作为AO属性名，值为：undefined
 将实参值和形参统一
