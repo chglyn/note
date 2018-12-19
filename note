@@ -30,7 +30,84 @@ function d() {}
 fn(1);
 --------------
 global object ===window === GO
-------------------------------------------------------------------------------------------
+
+//解析
+function a() {
+   function b() {
+      function c() {}
+      c();
+   }
+   b();
+}
+a();
+
+a defined a.[[scope]] --> 0:GO
+a doing a.[[scope]] --> 0:aAO
+		   -->  1:GO
+b defined b.[[scope]] --> 0:aAO
+		   -->  1:GO		  
+b doing b.[[scope]] --> 0:bAO
+		   -->  1:aAO
+		   -->  2:GO
+c defined c.[[scope]] --> 0:bAO
+		   -->  1:aAO
+		   -->  2:GO	
+c doing a.[[scope]] 0 -->cAO
+		    1 --> bAO
+		    2 --> cAO
+		    3 --> GO
+		
+-----------------------------------------------------------
+//闭包：
+function a() {
+   function b() {
+   	var bbb=234;
+	console.log(aaa);
+   }
+   var aaa=123;
+   return b;
+}
+var glob=100;
+var demo=a();
+demo(); //123
+
+function a() {
+  var num = 100;
+  function b() {
+  	num ++;
+	console.log(num);
+  }
+  return b;
+}
+var demo = a();
+demo(); //101
+demo(); //102
+-----------------------------------------------------------
+//立即执行函数 -> 执行完立即释放
+(function(a, b, c) { //形参
+  console.log(a+b+c);
+}(1, 2, 3)); //实参
+
+var num = (function(a, b, c) { 
+  var d = a + b + c;
+  return d;
+}(1, 2, 3));
+
+只有表达式才能被执行符号执行
+var test = function() {
+	console.log('a'); //a
+}();
+ 
+ test(); //undefined;
+ 
+ function test(a, b) {
+ 	console.log(a+b); // 
+ }(1, 2);
+ 
+ +|-|! function test() {
+ 	console.log('a') //a
+ }();
+------------------------------------------------------------
 
 ##验证手机
 function verMobile(val){
