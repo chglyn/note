@@ -1,3 +1,23 @@
+创建AO对象  Activetion Object
+找形参和变量声明，将变量和形参名作为AO属性名，值为：undefined
+将实参值和形参统一
+在函数体里面找函数声明，值赋予函数体
+
+function fn(a) {
+console.log(a); //function a() {}
+var a=123;
+console.log(a) //123
+function a() {}
+console.log(a); //123
+var b=function() {}
+console.log(b); //function b() {}
+function d() {}
+}
+fn(1);
+--------------
+global object ===window === GO
+------------------------------------------------------------------------------------------
+
 ##验证手机
 function verMobile(val){
     val = parseInt($.trim(val));
