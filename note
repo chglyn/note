@@ -87,23 +87,23 @@ demo(); //102
 (function(a, b, c) { //形参
   console.log(a+b+c);
 }(1, 2, 3)); //实参
-
+--------------------------------------
 var num = (function(a, b, c) { 
   var d = a + b + c;
-  return d;
+  return d; //6
 }(1, 2, 3));
-
+----------------------------------
 只有表达式才能被执行符号执行
 var test = function() {
 	console.log('a'); //a
 }();
  
  test(); //undefined;
- 
+ ------------------------------------
  function test(a, b) {
  	console.log(a+b); // 
  }(1, 2);
- 
+ ----------------------------------------
  +|-|! function test() {
  	console.log('a') //a
  }();
