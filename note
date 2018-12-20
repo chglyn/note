@@ -18,14 +18,18 @@ var a=1; ==>window.a=1;
 在函数体里面找函数声明，值赋予函数体
 
 function fn(a) {
-console.log(a); //function a() {}
-var a=123;
-console.log(a) //123
-function a() {}
-console.log(a); //123
-var b=function() {}
-console.log(b); //function b() {}
-function d() {}
+	console.log(a); //function a() {}
+	
+	var a=123;
+	console.log(a) //123
+	
+	function a() {}
+	console.log(a); //123
+	
+	var b=function() {}
+	console.log(b); //function b() {}
+	
+	function d() {}
 }
 fn(1);
 --------------
@@ -58,7 +62,7 @@ c doing a.[[scope]] 0 -->cAO
 		    3 --> GO
 		
 -----------------------------------------------------------
-//闭包：
+//闭包： （内部的函数被保存到外部时，将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄漏。） 里面的函数比外面的函数活着还长 ^-^
 function a() {
    function b() {
    	var bbb=234;
@@ -70,7 +74,7 @@ function a() {
 var glob=100;
 var demo=a();
 demo(); //123
-
+--------------------------------------
 function a() {
   var num = 100;
   function b() {
@@ -82,15 +86,54 @@ function a() {
 var demo = a();
 demo(); //101
 demo(); //102
+/---------------------/
+function test() {
+	var arr = [];
+	for(var i = 0; i < 10; i++) {
+		arr[i] = function() {
+			console.log(i); // 10, 10, ... 10; 10个10
+		}
+	}
+	return arr;
+}
+
+var myArr = test();
+for (var j = 0; j < 10; j++) {
+	myArr[j]();
+}
+上面函数修改如下
+function test() {
+	var arr = [];
+	for(var i = 0; i < 10; i++) {
+		(function(j) {
+			arr[j] = function() {
+				console.log(j); // 10, 10, ... 10; 10个10
+			}
+		}(i))
+	}
+	return arr;
+}
+
+var demo = a;
+function test() {
+	var abc = 123;
+	function a() {
+		console.log(abc); //123
+	}
+	demo = a;
+}
+test();
+demo();
+
 -----------------------------------------------------------
 //立即执行函数 -> 执行完立即释放
 (function(a, b, c) { //形参
-  console.log(a+b+c);
+	console.log(a+b+c);
 }(1, 2, 3)); //实参
 --------------------------------------
 var num = (function(a, b, c) { 
-  var d = a + b + c;
-  return d; //6
+	 var d = a + b + c;
+	 return d; //6
 }(1, 2, 3));
 ----------------------------------
 只有表达式才能被执行符号执行
@@ -107,8 +150,12 @@ var test = function() {
  +|-|! function test() {
  	console.log('a') //a
  }();
-------------------------------------------------------------
+-----------------------------------------
 
+
+
+
+----------------------------------------
 ##验证手机
 function verMobile(val){
     val = parseInt($.trim(val));
