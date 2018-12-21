@@ -176,4 +176,9 @@ var test = function() {
 逗号运算符：
 a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返回后面结果
 
-
+var x = 1;
+if(function f() {}) { // 表达式, 再执行
+	x += typeof f;
+}
+console.log(x); //1undefined
+ 
