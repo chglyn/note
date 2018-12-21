@@ -196,8 +196,8 @@ console.log(x); //1undefined
 		this.color = color;
 	}
 	var person = new Person();
-
-
+	
+	
 
 
 
