@@ -1,4 +1,5 @@
 typef null => object
+typeof NaN => number
 true => 1
 false => 0
 
@@ -91,7 +92,7 @@ function test() {
 	var arr = [];
 	for(var i = 0; i < 10; i++) {
 		arr[i] = function() {
-			console.log(i); // 10, 10, ... 10; 10个10
+			console.log(i); // 打印10个10
 		}
 	}
 	return arr;
@@ -107,7 +108,7 @@ function test() {
 	for(var i = 0; i < 10; i++) {
 		(function(j) {
 			arr[j] = function() {
-				console.log(j); // 10, 10, ... 10; 10个10
+				console.log(j); //打印10个10
 			}
 		}(i))
 	}
@@ -125,6 +126,27 @@ function test() {
 test();
 demo();
 
+a = 100;
+function demo(e) {
+	function e() {}
+	arguments[0] = 2;
+	console.log(e); //2
+	if(a) {
+		var b = 123;
+		function c() {}
+	}
+	var c;
+	a = 10;
+	var a;
+	console.log(b); //undefined
+	f = 123;
+	console.log(c); // undefined
+	console.log(a); //10
+}
+var a;
+demo(1);
+console.log(a); //100
+console.log(f); //123
 -----------------------------------------------------------
 //立即执行函数 -> 执行完立即释放
 (function(a, b, c) { //形参
@@ -136,18 +158,18 @@ var num = (function(a, b, c) {
 	 return d; //6
 }(1, 2, 3));
 ----------------------------------
-只有表达式才能被执行符号执行
+******只有表达式才能被执行符号执行******
 var test = function() {
 	console.log('a'); //a
 }();
  
- test(); //undefined;
+ 第二次执行 test(); //undefined;
  ------------------------------------
  function test(a, b) {
- 	console.log(a+b); // 
+ 	console.log(a+b); // 什么也不输出
  }(1, 2);
  ----------------------------------------
- +|-|! function test() {
+ （正负非）+|-|! function test() {
  	console.log('a') //a
  }();
 -----------------------------------------
