@@ -187,17 +187,34 @@ console.log(x); //1undefined
 	字面量、
 	var obj = {}
 	构造函数（1:系统自带、2:自定义）
-	1:var obj = new Object{}
+	1:
+	var obj = new Object{}
 	2:
 	function Person(color) {
+		/*隐式
+		var this = {
+			name:'',
+			height:''
+			...
+		}; 
+		AO:{ this:{ name:... } }
+		*/
 		this.name = 'BMW';
 		this.height = '1400';
 		this.width = '4900';
 		this.color = color;
+		//显示 return {}; 返回空对象
+		//显示 return 123; 返回这个对象里面的属性值 
+		/*
+		隐式 return this;
+		*/
 	}
 	var person = new Person();
-	
-	
+	内部原理：
+		在函数体最前面隐式的加上this = {};
+		执行this.xxx = xxx;
+		隐式的返回this;
+
 
 
 
