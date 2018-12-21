@@ -131,7 +131,7 @@ function demo(e) {
 	function e() {}
 	arguments[0] = 2;
 	console.log(e); //2
-	if(a) {
+	if(a) { //if里面不能放函数，之前可以放函数
 		var b = 123;
 		function c() {}
 	}
@@ -140,7 +140,7 @@ function demo(e) {
 	var a;
 	console.log(b); //undefined
 	f = 123;
-	console.log(c); // undefined
+	console.log(c); // undefined 或者 function c() {}
 	console.log(a); //10
 }
 var a;
