@@ -2,22 +2,22 @@ typef null => object
 typeof NaN => number
 true => 1
 false => 0
-
+***************************************
 函数声明整体提升
 变量 声明提升
 imply global暗示全局变量
 即任何变量，如果变量未经声明就赋值，此变量就为全局变量所有。
-a=10  ==> window.a=10;
+	a=10  ==> window.a=10;
 一切声明的全局变量，全是window的属性
-var a=1; ==>window.a=1;
-
+	var a=1; ==>window.a=1;
+***************************************
 预编译发生在函数执行前一刻
 //预编译
 创建AO对象  Activetion Object
 找形参和变量声明，将变量和形参名作为AO属性名，值为：undefined
 将实参值和形参统一
 在函数体里面找函数声明，值赋予函数体
-***********************函数*****************************
+***********************函数***********************
 function fn(a) {
 	console.log(a); //function a() {}
 	
@@ -65,7 +65,7 @@ c doing a.[[scope]] 0 -->cAO
 //闭包： （内部的函数被保存到外部时，将会生成闭包。闭包会导致原有作用域链不释放，造成内存泄漏。） 里面的函数比外面的函数活着还长 ^-^
 function a() {
    function b() {
-   	var bbb=234;
+	var bbb=234;
 	console.log(aaa);
    }
    var aaa=123;
@@ -74,11 +74,11 @@ function a() {
 var glob=100;
 var demo=a();
 demo(); //123
-
+***************************************
 function a() {
   var num = 100;
   function b() {
-  	num ++;
+	num ++;
 	console.log(num);
   }
   return b;
@@ -86,7 +86,7 @@ function a() {
 var demo = a();
 demo(); //101
 demo(); //102
-
+***************************************
 function test() {
 	var arr = [];
 	for(var i = 0; i < 10; i++) {
@@ -124,63 +124,63 @@ function test() {
 }
 test();
 demo();
-
-a = 100;
-function demo(e) {
-	function e() {}
-	arguments[0] = 2;
-	console.log(e); //2
-	if(a) { //if里面不能放函数，之前可以放函数
-		var b = 123;
-		function c() {}
+***************************************
+	a = 100;
+	function demo(e) {
+		function e() {}
+		arguments[0] = 2;
+		console.log(e); //2
+		if(a) { //if里面不能放函数，之前可以放函数
+			var b = 123;
+			function c() {}
+		}
+		var c;
+		a = 10;
+		var a;
+		console.log(b); //undefined
+		f = 123;
+		console.log(c); // undefined 或者 function c() {}
+		console.log(a); //10
 	}
-	var c;
-	a = 10;
 	var a;
-	console.log(b); //undefined
-	f = 123;
-	console.log(c); // undefined 或者 function c() {}
-	console.log(a); //10
-}
-var a;
-demo(1);
-console.log(a); //100
-console.log(f); //123
-
+	demo(1);
+	console.log(a); //100
+	console.log(f); //123
+***************************************
 //立即执行函数 -> 执行完立即释放
-(function(a, b, c) { //形参
-	console.log(a+b+c);
-}(1, 2, 3)); //实参
+	(function(a, b, c) { //形参
+		console.log(a+b+c);
+	}(1, 2, 3)); //实参
 
-var num = (function(a, b, c) { 
-	 var d = a + b + c;
-	 return d; //6
-}(1, 2, 3));
+	var num = (function(a, b, c) { 
+		 var d = a + b + c;
+		 return d; //6
+	}(1, 2, 3));
 
 ******只有表达式才能被执行符号执行******
-var test = function() {
-	console.log('a'); //a
-}();
+	var test = function() {
+		console.log('a'); //a
+	}();
  
- 第二次执行 test(); //undefined;
-
+ 	第二次执行 test(); //undefined;
+*****************************************
  function test(a, b) {
  	console.log(a+b); // 什么也不输出
  }(1, 2);
- 
+ ***************************************
  （正负非）+|-|! function test() {
- 	console.log('a') //a
+	console.log('a') //a
  }();
-
+***************************************
 逗号运算符：
 a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返回后面结果
 
-var x = 1;
-if(function f() {}) { // 表达式, 再执行
-	x += typeof f;
-}
-console.log(x); //1undefined
-***********************对象*************************
+	var x = 1;
+	if(function f() {}) { // 表达式, 再执行
+		x += typeof f;
+	}
+	console.log(x); //1undefined
+***********************对象、包装类*************************
 名词：函数引用、 函数执行()
 
 对象创建方法： 
