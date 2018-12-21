@@ -240,8 +240,32 @@ new String、new Boolen、new Number
 	}
 	//new String('test').sign = '';
 	console.log(test.sign); // undefined
-
-
+4.
+	Person.prototype.name = 'sunny';
+	function Person () {}
+	var person = new Person();
+	Person.prorotype = {
+		name: 'cherry'
+	}
+	console.log(person.name); //sunny
+	/*
+	var obj = { name: 'a' };
+	var obj1 = obj;
+	obj = { name: 'b' };
+	console.log(obj1.name); //a
+	Person.prorotype = {  name: 'a' };
+	__proto__ = Person.prototype;
+	Person.prototype = { name: 'b' };
+	*/
+	
+5.
+	Person.prototype.name = 'sunny';
+	function Person () {}
+	Person.prorotype = {  
+		name: 'cherry'
+	}
+	var person = new Person();
+	console.log(person.name); //cherry
 
 
 
