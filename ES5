@@ -180,7 +180,7 @@ a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返�
 		x += typeof f;
 	}
 	console.log(x); //1undefined
-***********************对象、包装类*************************
+***********************对象************************
 名词：函数引用、 函数执行()
 
 对象创建方法： 
@@ -214,11 +214,32 @@ a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返�
 		在函数体最前面隐式的加上this = {};
 		执行this.xxx = xxx;
 		隐式的返回this;
-
-
-
-
-
+*****************包装类**************************
+原始值没有属性和方法
+new String、new Boolen、new Number
+	1.
+	var num = 4;
+	num.len = 3;
+	//new Number(4).len = 3; delete 删除
+	//new Number(4).len 重新生成
+	console.log(num.len);//undefined
+	2.
+	var str = 'abcd';
+	str.length = 2;
+	//new String('abcd').length  delete 删除
+	//new String('abcd').length 重新生成
+	console.log(str); //abcd
+	console.log(str.length) //4
+	3.
+	var str = 'abc';
+	str += 1；
+	var test = typeof str;
+	if(test.length == 6) {
+		test.sign = 'typeof返回的结果有可能是string';
+		//new String('test').sign = XXX
+	}
+	//new String('test').sign = '';
+	console.log(test.sign); // undefined
 
 
 
