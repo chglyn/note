@@ -265,7 +265,7 @@ new String、new Boolen、new Number
 		name: 'cherry'
 	}
 	var person = new Person();
-	console.log(person.name); //cherry
+	console.log(person.name); //sunny
 
 
 
