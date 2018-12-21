@@ -182,3 +182,4 @@ if(function f() {}) { // 表达式, 再执行
 }
 console.log(x); //1undefined
  
+ 
