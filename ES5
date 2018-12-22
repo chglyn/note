@@ -251,7 +251,21 @@ new String、new Boolen、new Number
 	}
 	//new String('test').sign = '';
 	console.log(test.sign); // undefined	
-	4.
+************************原型、原型链************************************
+eg:
+	Person.prototype.name = 'abc';
+	function Person () {
+		/*
+			var this = {
+				__proto__: Person.prototype
+			}
+		*/
+	}
+	var obj = { name: 'sunny' };
+	var person = new Person();
+	Person.__proto__ = obj;
+	console.log(person.name);//sunny
+	1.
 	Person.prototype.name = 'sunny';
 	function Person () {}
 	var person = new Person();
@@ -268,7 +282,7 @@ new String、new Boolen、new Number
 	__proto__ = Person.prototype;
 	Person.prototype = { name: 'b' };
 	*/
-	5.
+	2.
 	Person.prototype.name = 'sunny';
 	function Person () {}
 	Person.prorotype = {  
@@ -276,20 +290,7 @@ new String、new Boolen、new Number
 	}
 	var person = new Person();
 	console.log(person.name); //sunny
-************************原型、原型链************************************
-eg:
-	Person.prototype.name = 'abc';
-	function Person () {
-		/*
-			var this = {
-				__proto__: Person.prototype
-			}
-		*/
-	}
-	var obj = { name: 'sunny' };
-	var person = new Person();
-	Person.__proto__ = obj;
-	console.log(person.name);//sunny
+
 
 
 
