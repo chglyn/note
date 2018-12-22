@@ -214,6 +214,17 @@ a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返�
 		在函数体最前面隐式的加上this = {};
 		执行this.xxx = xxx;
 		隐式的返回this;
+	
+	Person.prototype.anme = 'sunny';
+	function Person() {
+		/*
+		var this = {
+			__proto__ : Person.prototype
+		}
+		*/
+	}
+	var person = new Person();
+	
 *****************包装类**************************
 原始值没有属性和方法
 new String、new Boolen、new Number
@@ -239,8 +250,8 @@ new String、new Boolen、new Number
 		//new String('test').sign = XXX
 	}
 	//new String('test').sign = '';
-	console.log(test.sign); // undefined
-4.
+	console.log(test.sign); // undefined	
+	4.
 	Person.prototype.name = 'sunny';
 	function Person () {}
 	var person = new Person();
@@ -257,8 +268,7 @@ new String、new Boolen、new Number
 	__proto__ = Person.prototype;
 	Person.prototype = { name: 'b' };
 	*/
-	
-5.
+	5.
 	Person.prototype.name = 'sunny';
 	function Person () {}
 	Person.prorotype = {  
@@ -266,8 +276,20 @@ new String、new Boolen、new Number
 	}
 	var person = new Person();
 	console.log(person.name); //sunny
-
-
+************************原型、原型链************************************
+eg:
+	Person.prototype.name = 'abc';
+	function Person () {
+		/*
+			var this = {
+				__proto__: Person.prototype
+			}
+		*/
+	}
+	var obj = { name: 'sunny' };
+	var person = new Person();
+	Person.__proto__ = obj;
+	console.log(person.name);//sunny
 
 
 
