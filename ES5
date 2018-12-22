@@ -283,20 +283,6 @@ new String、new Boolen、new Number
 	}
 	var person = new Person('red');
 	
-************************原型链*********************************
-	eg:
-	Person.prototype.name = 'abc';
-	function Person () {
-		/*
-			var this = {
-				__proto__: Person.prototype
-			}
-		*/
-	}
-	var obj = { name: 'sunny' };
-	var person = new Person();
-	Person.__proto__ = obj;
-	console.log(person.name);//sunny
 	1.
 	Person.prototype.name = 'sunny';
 	function Person () {}
@@ -323,7 +309,20 @@ new String、new Boolen、new Number
 	var person = new Person();
 	console.log(person.name); //sunny
 
-
+************************原型链*********************************
+	eg:
+	Person.prototype.name = 'abc';
+	function Person () {
+		/*
+			var this = {
+				__proto__: Person.prototype
+			}
+		*/
+	}
+	var obj = { name: 'sunny' };
+	var person = new Person();
+	Person.__proto__ = obj;
+	console.log(person.name);//sunny
 
 
 
