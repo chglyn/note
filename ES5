@@ -254,8 +254,8 @@ new String、new Boolen、new Number
 ************************原型*********************************
 定义：
 	原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象。
-	//Person.prototype => 原型
-	//Person.prototype = {} => 祖先
+	//Person.prototype --> 原型
+	//Person.prototype = {} --> 祖先
 	Person.prototype.name = 'hehe';
 	function Person() {}
 	var person = new Person();
@@ -266,6 +266,13 @@ new String、new Boolen、new Number
 	Person.prototype.name = 'BMW';
 	Person.prototype.width = 4900;
 	Person.prototype.height = 1400;
+	/*
+	Person.prototype = {
+		name: 'BMW',
+		width: 4900,
+		height: 1400
+	}
+	*/
 	function Person(color) {
 		/*
 			var this = {
