@@ -307,7 +307,7 @@ new String、new Boolen、new Number
 		name: 'cherry'
 	}
 	var person = new Person();
-	console.log(person.name); //sunny
+	console.log(person.name); //cherry
 
 ************************原型链*********************************
 	eg:
