@@ -325,7 +325,250 @@ new String、new Boolen、new Number
 	console.log(person.name);//sunny
 
 
+//Grand.prototype.__proto__ = Object.prototype;
+Grand.prototype.lastName = 'Deng';
+function Grand() {}
+var grand = new Grand;
+Father.prototype = grand;
+function Father() {
+	this.name = 'sunny';
+	this.num = 100;
+}
+var father = new Father;
+Son.prototype = father;
+function Son() {
+	this.hobbit = 'smoke';
+}
+var son = new Son();
+son.num ++
+console.log(father.name); //100;
 
+//a.sayName() sayName里面的this指向是谁调用的这个方法，this就是指向谁
+Person.prototype = {
+	name: 'a',
+	sayName: function() {
+		console.log(this.name);
+	}
+}
+function Person() {}
+var person = new Person();
+console.log(person.name); //a
+修改如下：
+Person.prototype = {
+	name: 'a',
+	sayName: function() {
+		console.log(this.name);
+	}
+}
+function Person() {
+	this.name = 'b';
+}
+var person = new Person();
+console.log(person.name); //b
+
+Person.prototype = {
+	height: 100
+}
+function Person() {
+	this.eat = function() {
+		this.height ++;
+	}
+}
+var person = new Person();
+console.log(person.height); //a
+
+*******************Object.create**********************
+//var obj = Object.create(原型)；
+
+var obj = { name: 'sunny', age: '23' };
+var obj1 = Object.create(obj);
+
+Person.prototype.name = 'sunny';
+function Person() {} 
+var person = Object.create(Person.prototype);
+
+绝大多数对象的最终都会继承自Object.prototype
+特例：var obj = Object.create(null || 123); 
+
+无toString： undefined.toString、 null.toString
+123.toString 会识别成浮点型 
+
+var num = 123;
+//num.toString();  --> new Number(num).toString();
+Number.prototype.toString = function() { }
+//Number.prototype.__proto__ = Object.prototype;
+
+//object.prototype.toString = function() {} (重写)
+Person.prototype = {
+	toString: function() {
+		return : 'hehe';
+	}
+}
+function Person() {}
+var person = new Person();
+console.log(person.toString()); //hehe
+/*
+	Object.prototype.toString
+	Number.prototype.toString
+	Array.prototype.toString
+	Boolean.prototype.toString
+	String.prototype.toString
+*/
+JS可正常计算的范围：小数点前16位，小数点后16位
+**********************call、apply***************************
+call、apply 改变this的指向
+
+function Person(name, age) {
+	//this == obj;
+	//obj.name = name;
+	//obj.name = name;
+	this.name = 'sunny';
+	this.age = '100';
+}
+var person = new Person('sunny', 100);
+var obj = {}
+Person.call(obj, 'cherry', 300);
+
+
+function Person(name, age, sex) {
+	this.name = name;
+	this.age = age;
+	this.sex = sex;
+}
+function Studen(name, age, sex, tel, grade) {
+	Person.call(this, name, age, sex);
+	this.tel = tel;
+	this.grade = grade;
+}
+var student = new Student('sunny', 12, 'male', 138, 2018);
+
+
+function Person(name, age, sex) {
+	this.name = name;
+	this.age = age;
+	this.sex = sex;
+}
+function Studen(name, age, sex, tel, grade) {
+	Person.apply(this, [name, age, sex]);
+	this.tel = tel;
+	this.grade = grade;
+}
+var student = new Student('sunny', 12, 'male', 138, 2018);
+
+// call需要把实参按照形参的个数传进去
+// apply 需要传一个arguments
+
+javascript模式 0-35页上半部分或者50页，35页上半部分-38页上半部忽略
+
+*******************继承**************************
+原型链
+	过多的继承了没用的属性
+借用构造函数（call/apply）
+	不能继承借用函数的原型
+	每次构造函数都要多走一个函数
+共享原型
+	不能随便改动自己的原型 
+	Person.prototype.lastName = 'sunny';
+	function Person() {}
+	function Son() {}
+	Son.prototype = Person.protype;
+	var son = new Son();
+	console.log(son.lastName); //sunny
+
+	function inherit(Target, Origin) {
+		Target.protype = Origin.prototype;
+	}
+	inherit(Son, Person); (先继承后使用)
+	var son = new Son();
+	//inherit(Son, Person);
+	console.log(son.lastName); //sunny
+圣杯模式
+	Fater.prototype.lastName = 'sunny';
+	function Father(){}
+	function Son(){}
+	function inherit(Target, Origin){
+		function F() {
+			//Target.prototype = new F(); ***
+			F.prototype = Origin.Prototype;
+			Target.prototype = new F();     ***
+			Target,prototype.constuctor = Target;
+			Target.prototype.uber = Origin.prototype;
+		}
+	}
+	/*
+		var inherit = (function() {
+			var F = function () {};
+			return function (Target, Origin) {
+				F.prototype = Origin.Prototype;
+				Target.prototype = new F();    
+				Target,prototype.constuctor = Target;
+				Target.prototype.uber = Origin.prototype;
+			}
+		}())
+	*/
+	inherit(Son, Father);
+	var son = new Son();
+	var father = new Father();
+	console.log(son.lastName); //sunny
+	console.log(father.lastName); //sunny
+	son.prototype.sex = 'male';
+	console.log(son.sex); //male
+	console.log(father.sex);//underfined
+	son.__proto__ -->new F() --> Father.prototype
+
+********************命名空间*********************
+管理变量、防止污染全局、适用于模块化开发  
+//var obj ={}
+var name = 'cherry';
+var init = (function() {
+	var name = 'sunny';
+
+	function callName() {
+		console.log(name); //sunny
+	}
+
+	return function() {
+		callName();
+	}
+
+}()) 
+//通过闭包私有属性执行
+init(); 
+***********************链式********************
+如何实现链式调用模式（模仿Jquery）
+obj.eat().smoke().dirnk().sleep();
+
+var obj = {
+	eat: function() {
+		console.log('Smoking');
+		//return undefined; 默认
+		return this;
+	},
+	drink: function() {
+		console.log('Drinking');
+		return this;
+	},
+	sleep: function() {
+		console.log('Sleep');
+		return this;
+	}
+}
+obj.eat().drink().sleep();
+
+var obj = ｛
+	name: 'snuuy'
+｝
+隐形转换 obj.name --> obj['name']
+
+********************对象的枚举***************
+
+for in 
+
+hasOwnProperty
+
+in
+
+instance of
 
 
 
