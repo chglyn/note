@@ -560,9 +560,17 @@ var obj = ｛
 ｝
 隐形转换 obj.name --> obj['name']
 
-********************对象的枚举***************
-
+********************对象枚举***************
 for in 
+	var obj = {
+		name: 'sunny',
+		age: 23
+		//prop: 123
+	}
+	for(var prop in obj) {
+		console.log(obj.prop); //undefind  看上面底层原理
+		console.log(prop+' '+obj[prop]);
+	}
 
 hasOwnProperty
 
