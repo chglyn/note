@@ -458,7 +458,14 @@ var student = new Student('sunny', 12, 'male', 138, 2018);
 // call需要把实参按照形参的个数传进去
 // apply 需要传一个arguments
 
-javascript模式 0-35页上半部分或者50页，35页上半部分-38页上半部忽略
+function foo() {
+	bar.apply(null, arguments); 
+}
+function bar() {
+	console.log(arguments); //1, 2, 3, 4, 5
+}
+foo(1, 2, 3, 4, 5);
+javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页上半部忽略
 
 *******************继承**************************
 原型链
@@ -491,7 +498,7 @@ javascript模式 0-35页上半部分或者50页，35页上半部分-38页上半�
 			//Target.prototype = new F(); ***
 			F.prototype = Origin.Prototype;
 			Target.prototype = new F();     ***
-			Target,prototype.constuctor = Target;
+			Target.prototype.constuctor = Target;
 			Target.prototype.uber = Origin.prototype;
 		}
 	}
@@ -501,7 +508,7 @@ javascript模式 0-35页上半部分或者50页，35页上半部分-38页上半�
 			return function (Target, Origin) {
 				F.prototype = Origin.Prototype;
 				Target.prototype = new F();    
-				Target,prototype.constuctor = Target;
+				Target.prototype.constuctor = Target;
 				Target.prototype.uber = Origin.prototype;
 			}
 		}())
