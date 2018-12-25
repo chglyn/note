@@ -971,8 +971,55 @@ obj = {
 	3: 'd',
 	length: 4
 }
-...
 
+封装type
+	/*
+		typeof([]) --> array
+		typeof({}) --> object
+		typeof(123) --> nubmer
+		typeof(function) --> object
+		typeof(new Number) --> new Object
+		1、分类：原始值(没有属性,能访问) 引用值
+		2、区分引用值
+	*/
+
+	function type(target) {
+		var template = {
+			'[object Array]' : 'array',
+			'[object Object]' : 'object',
+			'[object Number]' : 'number - object',
+			'[object Bollean]' : 'boolean - object',
+			'[object String]' : 'string - object'
+		}
+		if(target === null) {
+			return 'null';
+		}
+		if(typeof(target) == 'object'){
+			var str = Object.prototype.toString.call(target);
+			return template[str];
+		}else{
+			return typeof(target);
+		}
+	}
+数组去重
+	/* 
+		利用对象的属性不能重复特征
+	*/
+	var arr = [1, 1, 1, 1, 2, 2, 2];
+	Array.prototype.unique = function() {
+		var temp = {},
+			arr = [],
+			len = this.length;
+		for(var i = 0; i < len; i++) {
+			if(!temp[this[i]]) { //取值undefined
+				temp[this[i]] = 1; //随意等于一个值 处理0 undefined
+				arr.push([this[i]]);
+			}
+		}
+		return arr;
+	}
+
+...
 ***************DOM、BOM****************
 ...
 
