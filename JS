@@ -1,3 +1,9 @@
+一旦经历了var的操作，所得出来的属性，window，这种属性叫做不可配置的属性
+不可配置的属性delete不掉
+eg:
+	var num = 123;
+	delete window.num //false
+
 typef null => object
 typeof NaN => number
 true => 1
@@ -18,6 +24,11 @@ imply global暗示全局变量
 将实参值和形参统一
 在函数体里面找函数声明，值赋予函数体
 ***********************函数***********************
+function foo() {
+	console.log(this)
+}
+foo.call() --> foo(); 
+
 function fn(a) {
 	console.log(a); //function a() {}
 	
