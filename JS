@@ -22,10 +22,11 @@ imply global暗示全局变量
 ***************************************
 预编译发生在函数执行前一刻
 //预编译
-创建AO对象  Activetion Object
-找形参和变量声明，将变量和形参名作为AO属性名，值为：undefined
-将实参值和形参统一
-在函数体里面找函数声明，值赋予函数体
+	创建AO对象  Activetion Object
+	找形参和变量声明，将变量和形参名作为AO属性名，值为：undefined
+	将实参值和形参统一
+	在函数体里面找函数声明，值赋予函数体
+	再执行...
 ***********************函数***********************
 function foo() {
 	console.log(this)
@@ -692,7 +693,7 @@ instanceof
 						target[prop] = {};
 					}
 					//target[prop] = toStr.call(oringin[prop] == arrStr ? [] : {};
-					deepCLone(origin[prop], target[prop]);
+					deepClone(origin[prop], target[prop]);
 				}else{
 					target[prop] = oringin[prop];
 				}
@@ -704,7 +705,7 @@ instanceof
 
 三目运算符
 	//条件判断 ？ 是 ： 否 并且会返回值
-	var num = 1 > 0 ? ('10' > '9' ? 1 : 0) : 2; //0
+	var num = 1 > 0 ? ('10' > '9' ? 1 : 0) : 2; //先运算()运算符，在执行... --> 0
 ***************************this***************************
 检测是否属于isNaN
 function myIsNaN(num) {
