@@ -580,10 +580,397 @@ for in
 	}
 
 hasOwnProperty
+	var obj = {
+		name: 'sunny',
+		age: 23,
+		__proto__: {
+			lastName: 'cherry',
+			__proto__: Object.prototype
+		}
+	}
+	obj.prototype.name = '123';
+	for(var prop in obj) {
+		//只有是对象就用hasOwnProperty
+		//是自己的属性返回true，否则返回false
+		//能返回原型及原型链上的属性，一旦延展到原型链最顶端(系统自带的不会打印、自己设置的会打印)就不会打印这个属性
+		if(obj.hasOwnProperty(prop)) {  
+			console.log(obj[prop]);
+		}
+	}
 
-in
+in 能不能访问这个对象的属性，包括原型
+	var obj = {
+		name: 'sunny',
+		age: 23,
+		__proto__: {
+			lastName: 'cherry',
+			__proto__: Object.prototype
+		}
+	}
+	'height' in obj  //true
+	'lastName' in  obj //true
 
-instance of
+instanceof 
+	// A instanceof B
+	//A对象是不是B构造函数构造出来的 （官方解释）
+	//看A对象的原型上  有没有 B的原型 ***
+	//call、toString
+	function Person() {}
+	var person = new Person();
+	var obj = {};
+	person instaceof Person //true
+	person instanceof Object //true
+	[] instanceof Object //true
+	[] instanceof Array //true
+	obj instanceof Person //false
+
+	//Object.prototype.toString.call([]);
+	Object.prototype.toString = function() {
+		//this 谁调用指向谁
+		//识别this
+		//返回相应的结果
+	}
+	区分数组对象的方法  constructor instanceof toString
+
+	浅度克隆、深度克隆
+	var obj = {
+		name: 'sunny',
+		age: '23',
+		sex: 'female'
+	}
+	var obj1 = {}
+	function clone(origin, target) {
+		var target = target || {};
+		for(var prop in origin) {
+			target[prop] = origin[prop];
+		}
+		retrun target;
+	}
+	clone(obj, obj1);
+
+
+	var obj = {
+		name: 'sunny',
+		age: '23',
+		sex: 'female',
+		card: ['BMW', 'visa'],
+		wife: {
+			name: 'cherry',
+			son: {
+				name: 'abc'
+			}
+		}
+	}
+	var obj1 = {}
+	/*	
+		遍历数组 用for in
+		判断是不是原始值 用typeof
+		判断是数组还是对象 用toString.call/constructor/instanceof
+		建立相应的数组或对象 
+	*/
+	function deepClone(origin, target) {
+		var target = target || {},
+		toStr = Object.prototype.toString,
+		arrStr = '[object Array]';
+		for(var prop in origin) {
+			if(origin.hasOwnProperty(prop)) {
+				if(origin[prop] !== 'null' && typeof(origin[prop]) == 'object') { //引用值
+					if(toStr.call(oringin[prop] == arrStr)) {
+						target[prop] = [];
+					}else{
+						target[prop] = {};
+					}
+					//target[prop] = toStr.call(oringin[prop] == arrStr ? [] : {};
+					deepCLone(origin[prop], target[prop]);
+				}else{
+					target[prop] = oringin[prop];
+				}
+			}
+		}
+		retrun target;
+	}
+	deepClone(obj, obj1);
+
+三目运算符
+	//条件判断 ？ 是 ： 否 并且会返回值
+	var num = 1 > 0 ? ('10' > '9' ? 1 : 0) : 2; //0
+***************************this***************************
+检测是否属于isNaN
+function myIsNaN(num) {
+	var ret = Number(num);
+	ret += '';
+	if(ret == 'NaN') {
+		retrun true;
+	}else{
+		return false;
+	}
+}
+
+{} == {} //false
+
+
+this:
+	1、函数预编译过程中this -> window
+	2、全局作用域里this -> window
+	3、call/apply可以改变函数运行时this指向
+	4、obj.func(); func()里面的this指向obj (谁调用了这个方法，this就指向谁)
+
+	function foo(x) {
+		var a = 123;
+		function b() {}
+	}
+	foo(1);
+
+	OA: {
+		arguments: [1],
+		this: window,
+		a: undefined,
+		b:  function b() {}
+	}
+
+
+	var name = '222';
+	var a = {
+		name: '111',
+		say: function() {
+			console.log(this.name);
+		}
+	}
+	var fun = a.say;
+	fun();  //222
+	a.say(); //111
+	var b = {
+		name: '333',
+		say: function(fun) {
+			//this --> b
+			/*
+			function() {
+				console.log(this.name); 
+				//this --> window
+			}
+			*/
+			fun();
+		}
+	}
+	b.say(a.say); //222
+	b.say = a.say;
+	b.say(); //333
+
+	var foo = '123';
+	function print() {
+		var foo = '456';
+		this.foo = '789';
+		console.log(foo); //456
+	}
+	print();
+
+	var foo = 123;
+	fuunction print() {
+		this.foo = 234;
+		console.log(foo); 
+	}
+	print(); //234
+	new Print(); //123
+
+	var a = 5;
+	function test()  {
+		a = 0;
+		console.log(a);
+		alert(this.a);
+		var a;
+		alert(a);
+	}
+	//test();   // 0 5 0
+	new test(); // 0 undefined 0
+
+	function print() {
+		console.log(foo); //undefined
+		var foo = 2;
+		console.log(foo); //2
+		alert(hello); // hello is not undefined
+	}
+	print();
+
+	function print() {
+		var test;
+		test();
+		function test(){
+			console.log(1); //1
+		}
+	}
+	print();
+
+	function print() {
+		var x = 1;
+		if(x =='1') console.log(x); //true
+		if(x === '1') console.log(x); //false
+	}
+	print();
+
+	function print() {
+		var marty = {
+			name: 'marty',
+			printName: function() {
+				console.log(this.name);
+			}
+		}
+		var test1 = { name: 'test1' };
+		var test2 = { name:'test2' };
+		var test3 = { name: 'test3'};
+		test3.printName = marty.printName;
+		var printName2 = marty.printName.bind({ name: 123});
+		marty.printName.call(test1); //test1
+		marty.printName.apply(test2); //test2
+		marty.printName(); //marty
+		printName2();
+		test3.printName(); //test3
+	}
+	print();
+
+	var bar = { a: '002'};
+	function print() {
+		bar.a = 'a';
+		Object.prototype.b = 'b';
+		return function inner() {
+			alert(bar.a); //a
+			alert(bar.b); //b
+		}
+	}
+	print()();
+
+
+arguments.calee （运行时的函数）
+	function foo() {
+		console.log(arguments.calee);
+		console.log(arguments.calee == foo); //true
+	}
+	foo();
+
+
+	var num  = (function(n) {
+		if(n ==1) {
+			return 1;
+		}
+		return n * arguments.callee(n - 1);
+	} (20))
+
+	function foo() {
+		console.log(arguments.calee); //foo函数
+		function test() {
+			console.log(arguments.calee); //test函数
+		}
+		tes();
+	}
+	foo();
+func.caller （函数自己的属性）
+	function test() {
+		console.log(test.caller); //test函数
+	}
+	test();
+
+*********************数组*****************************
+var arr = [1, 2, 3];
+Array.toSTring.push = function() {
+	for(var i = 0; i < arguments.length; i++) {
+		this[this.length] = arguments[i];
+	}
+	return this.length;
+}
+改变原数组：
+	push(4, 4, 5)//向数组最后一位添加
+	pop() //从最后一位开始拿出去
+	shift() //从数组前面删除
+	unshift(-1, 0) //在数组前面添加
+	reverse() //逆转数组
+	sort//排序
+	splice(从第几位开始, 截取多少长度, 在切口处添加新的数据)
+ 
+	slice = function (pos) {
+		pos += pos > 0 ? 0 : this.length;
+	}
+
+	/*
+		必须写俩形参
+		返回值 
+			1、当返回值为负数，那么前面的数放在前面
+			2、为正数，那么后面的数在前
+			3、为0，不动
+	*/
+	var arr = [1, 3, 5, 4, 10];
+	arr.sort(function(a, b) {
+		/*
+		if(a > b) {  a - b > 0
+			return 1;
+		}else{ a - b < 0
+			return -1;
+		}
+		*/
+		return a - b;  //升序
+		//return b -a; 降序
+	})
+
+	给一个有序的数组 乱序
+	var arr = [1, 2, 3, 4, 5, 6];
+	arr.sort(function(){
+		return Math.random() - 0.5;
+	})
+
+
+不改变原数组
+	concat join  --> split toString slice
+	var arr = [1, 2, 3, 4, 5, 6];
+	//slice(从该位开始截，截取到该位)
+	slice(1, 3); //2, 3
+   join() //返回数组
+   split()// 返回字符串
+
+*********************类数组****************************
+类数组必须有length属性(能像数组/对象一样使用)
+function foo() {
+	console.log(arguments);
+	//arguments.push(7);
+}
+foo(1, 2, 3, 4, 5);
+
+var obj = {
+	'0': 'a',
+	'1': 'b',
+	'3': 'c',
+	'length': 3,
+	'push': Array.prototype.push,
+	'splice': Array.prototype.splice
+}
+
+var arr = ['a', 'b', 'c']
+
+obj.push('d'); //打印...
+
+
+/*
+	属性要为索引(数字)属性，必须有length属性，最好加上push
+	好处：
+
+	Array.prototype.push = function(target) {
+		this.[obj.length] = target;
+		this.length ++;
+	}
+
+*/
+
+var obj = {
+	'2': 'a',
+	'3': 'b',
+	'lenght': 2,
+	'push': Array.prototype.push
+}
+obj.push('c');
+obj.push('d');
+//打印obj...
+obj = {
+	2: 'c',
+	3: 'd',
+	length: 4
+}
 
 
 
