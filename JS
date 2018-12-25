@@ -1,6 +1,8 @@
-一旦经历了var的操作，所得出来的属性，window，这种属性叫做不可配置的属性
-不可配置的属性delete不掉
-eg:
+/*
+	一旦经历了var的操作，所得出来的属性，window，这种属性叫做不可配置的属性
+	不可配置的属性delete不掉
+*/
+	eg:
 	var num = 123;
 	delete window.num //false
 
@@ -540,17 +542,14 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 var name = 'cherry';
 var init = (function() {
 	var name = 'sunny';
-
 	function callName() {
 		console.log(name); //sunny
 	}
-
 	return function() {
 		callName();
 	}
-
 }()) 
-//通过闭包私有属性执行
+//通过闭包私有属性执行(外部不能直接访问name值，只能callName函数能访问)
 init(); 
 ***********************链式********************
 如何实现链式调用模式（模仿Jquery）
