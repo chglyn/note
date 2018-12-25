@@ -10,6 +10,7 @@ typef null => object
 typeof NaN => number
 true => 1
 false => 0
+Number([]); --> 0
 ***************************************
 函数声明整体提升
 变量 声明提升
