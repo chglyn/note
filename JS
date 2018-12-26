@@ -1031,7 +1031,58 @@ obj = {
 		return arr;
 	}
 
-...
+***************try catch*******************
+//在try里面的发生错误，不会执行错误后的try里面的代码
+//如果try里面没有报错，不会执行catch里面的代码，否则try里面报错，会执行catch代码
+	try{
+		console.log('a');
+		console.log(b);
+		console.log(c);
+	}catch(e){  //error.message error.name --> error
+		console.log('e');
+	}
+	console.log('d');
+
+	Error.name的六种值对应的信息
+	1、EvalError: eval的使用与定义不一致
+	2、RangeError：数值越界
+	3、ReferenceError：非法或不能识别的引用数值
+	4、SyntaxError：发生语法解析错误
+	5、TypeError：操作数类型错误
+	6、URIError：URI处理函数使用不当
+
+es5严格模式
+	'use strict'(启动es5.0模式，遵循es5.0模式，推荐局部使用)
+		为了兼容老版浏览器，不会是别的浏览器
+	不再兼容es3的一些不规则语法。使用全新的es5规范
+	两种用法：
+		全局严格模式
+		局部函数内严格模式
+	就是一行字符串，不会对不兼容严格模式的浏览器产生影响
+	不支持with,arguments.callee,func.caller，变量赋值前必须声明，局部this必须被赋值(Person.call(null/undefined)赋值什么就是什么)，拒绝重复属性和参数(不报错)，不能使用eval()
+		var obj = { name: 'obj' }; ①
+		var name = 'window';  ③
+		function foo() {
+			var name = 'scope'; ②
+			with(obj) { //with可以改变作用域链
+				console.log(name);
+			}
+		}
+		foo();
+
+		with(document) {
+			write('a');
+		}
+
+		var global = 100;
+		function foo() {
+			var global = 200'
+			eval('console.log(global)');
+		}
+		foo();
+浏览器基于es3.0的方法 + es5.0新增方法 
+es3.0 和 es5.0产生冲突部分
+es5.0严格模式 那么es3.0和es5.0产生冲突部分就是用es5.0，否则会使用es3.0
 ***************DOM、BOM****************
 ...
 
