@@ -1083,7 +1083,61 @@ es5严格模式
 浏览器基于es3.0的方法 + es5.0新增方法 
 es3.0 和 es5.0产生冲突部分
 es5.0严格模式 那么es3.0和es5.0产生冲突部分就是用es5.0，否则会使用es3.0
+
 ***************DOM、BOM****************
-...
+
+DOM  --> Document Object Model
+DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象，有浏览器厂商定义，用来操作html和xml功能的一类对象的集合。也有人称DOM是对HTML及XML标准编程接口
+
+基本操作
+	对接点的增删改查
+		查
+		查看元素节点
+			document代表整个文档
+			document.getElementById()//元素id在ie8以下的浏览器，不区分id大小，二期也返回匹配name属性的元素
+			document.getElementsByTagName()//标签名
+			document.getElementsBtName()//需注意，只有部分标签name可生效（表单，表单元素，img，iframe）
+			document.getElementsByClassName()//类名 --> ie8和ie8以下的ie版本没有，可以多个class一起
+			querySelector()//css选择器 在ie7和ie7一下的版本中没有
+			querySelectorAll()//css选择器 在ie7和ie7以下的版本中没有
+	tab切换：
+		var btn = document.getElementsByTagName('button');
+		var div  = document.getElementsByClassName('content');
+		for(var i = 0; i < btn.length; i++) {
+			(function(n) {
+				btn[n].onclick = function() {
+					for(var j = 0; j < btn.length; j++) {
+						btn[j].className = '';
+						div[j].style.display = 'none'; 
+					}
+					this.className = 'active';
+					div[i].style.display = 'block';
+				}
+			}(i))
+		}
+
+
+	var div = document.creatElement('div');
+	document.body.appendChild(div);
+	//var speed = 0;
+	setInterval(function() {
+		//speed += speed/7;
+		//div.style.left = parseInt(div.style.left) + speed +'px';
+		div.style.left = parseInt(div.style.left) + 2 +'px';
+	}, 100)
+ 	
+ 	（通过函数e查看键盘内部对应的数）
+
+ 	类似刮刮乐
+	 	<ul>
+	 		<li> img-date="0"</li>
+	 	</ul>
+	 	var ul = document.getElementsByTagName('ul')[0];
+	 	ul.onmourseover = function(e) {
+	 		var event = e || window.event;
+	 		var target = event.target || event.srcElement;
+	 		target.style.backgroundColor = 'rgb(0, 255', + target.getAttribute('img-date')+')';
+	 		target.setAttribute('img-date', parseInt(target.getAttribute('img-date')) + 6);
+	 	}
 
 
