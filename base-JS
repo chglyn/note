@@ -1157,7 +1157,7 @@ DOM  --> Document Object Model
 	nextSibling 后一个兄弟节点 (包括所有元素和节点)
 	previousSibling 前一个兄弟节点 (包括所有元素和节点)
 基于元素节点树的遍历
-	parentElements 返回当前元素的父元素节点（IE不兼容）
+	parentElement 返回当前元素的父元素节点（IE不兼容）
 	children 只返回当前元素的元素子节点（除了children其他属性IE9/8以下不能识别）
 	node.childElementCount == node.children.length 当前元素节点的子元素
 	firstElementChild 返回的是第一个元素节点（IE不兼容）
