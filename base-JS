@@ -1193,8 +1193,26 @@ DOM  --> Document Object Model
 
 	document --> HTMLDocument.prototype --> document.prototype
 	Document.prototype上定义了documentElement属性，指代文档根元素html文档中，总是代表html元素
-
-
+增：
+	document.createElement();
+	document.createTextNode();
+	document.createComment(); //注释节点
+	document.createDocumentFragment(); //文档碎片节点
+插：
+	parentNode.appendChild(); 和push类似
+	parentNode.insertBefore(a, b); //insert A Before B
+删：
+	parent.removeChild(parent里子元素);
+	child.remove();
+替换：
+	parent.replaceChild(new, origin);
+Element一些属性
+	innerHTML
+	innerText 火狐不兼容）textContent(老版本ie没有)
+Element节点方法
+	setAttribute
+	getAttribute
+**************date对象、定时器**********************
 
 
 
