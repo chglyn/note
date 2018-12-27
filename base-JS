@@ -1046,8 +1046,8 @@ obj = {
 	Error.name的六种值对应的信息
 	1、EvalError: eval的使用与定义不一致
 	2、RangeError：数值越界
-	3、ReferenceError：非法或不能识别的引用数值
-	4、SyntaxError：发生语法解析错误
+	3、ReferenceError：非法或不能识别的引用数值 ***
+	4、SyntaxError：发生语法解析错误 ***
 	5、TypeError：操作数类型错误
 	6、URIError：URI处理函数使用不当
 
@@ -1095,7 +1095,7 @@ DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象�
 		查看元素节点
 			document代表整个文档
 			document.getElementById()//元素id在ie8以下的浏览器，不区分id大小，二期也返回匹配name属性的元素
-			document.getElementsByTagName()//标签名
+			document.getElementsByTagName()//标签名 (用的较多，方法定义在document.prototype和Element.prototype上)
 			document.getElementsBtName()//需注意，只有部分标签name可生效（表单，表单元素，img，iframe）
 			document.getElementsByClassName()//类名 --> ie8和ie8以下的ie版本没有，可以多个class一起
 			querySelector()//css选择器 在ie7和ie7一下的版本中没有
@@ -1139,5 +1139,64 @@ DOM定义了表示和修改文档所需的方法。DOM对象即为宿主对象�
 	 		target.style.backgroundColor = 'rgb(0, 255', + target.getAttribute('img-date')+')';
 	 		target.setAttribute('img-date', parseInt(target.getAttribute('img-date')) + 6);
 	 	}
+节点的类型
+	元素节点  --> 1
+	属性节点  --> 2
+	文本节点  --> 3
+	注释节点  --> 8
+	document --> 9
+	DocumentEragment --> 11
+遍历节点树
+	parentNode 父节点（最顶端的parentNode为document）
+	childNodes 子节点们 (包括所有元素和节点)
+	firstChild 第一个子节点 (包括所有元素和节点)
+	lastChild 最后一个子节点 (包括所有元素和节点)
+	nextSibling 后一个兄弟节点 (包括所有元素和节点)
+	previousSibling 前一个兄弟节点 (包括所有元素和节点)
+基于元素节点树的遍历
+	parentElements 返回当前元素的父元素节点（IE不兼容）
+	children 只返回当前元素的元素子节点（除了children其他属性IE9/8以下不能识别）
+	node.childElementCount == node.children.length 当前元素节点的子元素
+	firstElementChild 返回的是第一个元素节点（IE不兼容）
+	lastElementCHild 返回的是最后一个元素节点（IE不兼容）
+	nextElementSibling/previosElementSibling 返回后一个/前一个兄弟元素
+节点的四个属性
+	nodeName 元素的标签名，以大写形式表示，只读
+	nodeValue Text节点或Comment节点的文本内容，可读写
+	nodeType 该节点的类型，只读
+	attributes Element节点的属性结合
+	节点的一个方法 Node.hasCHildNodes();
+遍历元素里面的节点类型	
+	function retElementCHild(node){
+		var arr = [],
+		/*
+			temp = {
+				length: 0.
+				push: Array.prototype.push,
+				splice: Array.prototype.splice
+			}
+		*/
+		child = node.childNodes,
+		len = child.length;
+		for(var i = 0; i < len; i++) {
+			if(child[i].nodeType === 1) {
+				arr.push(child[i]);
+				//tem.push(child[i]);
+			} 
+		}
+		return arr;
+		//retrun temp;
+	}
+
+	document --> HTMLDocument.prototype --> document.prototype
+	Document.prototype上定义了documentElement属性，指代文档根元素html文档中，总是代表html元素
+
+
+
+
+
+
+
+
 
 
