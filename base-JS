@@ -493,12 +493,12 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 	Person.prototype.lastName = 'sunny';
 	function Person() {}
 	function Son() {}
-	Son.prototype = Person.protype;
+	Son.prototype = Person.prototype;
 	var son = new Son();
 	console.log(son.lastName); //sunny
 
 	function inherit(Target, Origin) {
-		Target.protype = Origin.prototype;
+		Target.prototype = Origin.prototype;
 	}
 	inherit(Son, Person); (先继承后使用)
 	var son = new Son();
