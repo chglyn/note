@@ -356,7 +356,7 @@ function Son() {
 }
 var son = new Son();
 son.num ++
-console.log(father.name); //100;
+console.log(father.num); //100;
 
 //a.sayName() sayName里面的this指向是谁调用的这个方法，this就是指向谁
 Person.prototype = {
