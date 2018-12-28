@@ -1212,8 +1212,108 @@ Element一些属性
 Element节点方法
 	setAttribute
 	getAttribute
-**************date对象、定时器**********************
+封装inertAfter
+	Element.prototype.insertAfter = function(targetNode, afterNode) {
+		var beforeNode = afterNode.nextElementSibling;
+		if(beforeNode == null) {
+			this.appecdChild(targetNode);
+		}else{
+			this.inertBefore(targetNode, beforeNode);
+		}
+	}
+****************date对象、定时器**************
+//日期对象 系统自带的
+var data = new Date()
 
+setInterval('console.log(a)', 1000);
+var minutes = 0, seconds = 0;
+var timer = setInterval(function() {
+	seconds ++;
+	if(seconds == 60) {
+		seconds = 0;
+		minutes ++;
+	}
+	//...赋值
+	if(minutes == 3) ｛
+		clearInterval(timer);
+	｝
+})
+***********************************************
+滚动条滚动距离
+	function getScrollOffset() {
+		if(0 && window.pageXOffset){
+			retrun {
+				x: window.pageXOffset,
+				y: window.pageYoffset
+			}
+		}else{
+			retrun {
+				x: document.body.scrollleft + document.documentElement.scrollLeft,
+				y: document.body.scrollTop + document.documentElement.scrollTop
+			}
+		}
+	}
+	
+window.innerWidth/innerHeight
+	ie8以及以下不兼容
+document.documentElement.clientWidth/clientHeight
+	标准模式下，任意浏览器都兼容
+document.body.clienWidth/clientHeight
+	适用于怪异模式下的浏览器
+可视区窗口尺寸
+	function getViewportOffset() {
+		if(window.innerWidth) {
+			return {
+				w: window.innerWidth,
+				H: window.innerHeight
+			}
+		}else{
+			if(document.compatMode == 'BackCompat') {
+				return {
+					w: document.body.clienWidth,
+					H: document.body.clientHeight
+				}
+			}else{
+				return {
+					w: document.documentElement.clientWidth,
+					H: document.documentElement.clientHeight
+				}
+			}
+		}
+	}
+window上三个方法
+	scroll() scrollTo() scrollBy();
+	三个方法功能类似，用法都将x,y坐标传入。即实现让滚动轮滚动到当前位置
+	区别：
+		scrollBy会在之前的数据基础上做累加
+	var timer = 0;
+	var flag = true;
+	btn.onclick = function() {
+		if(flag) {
+			timer = setInterval(function() {
+				window.scrollBy(0, 10);
+			})
+			flag = false;
+		}
+	}	
+	stop.onclick = function() {
+		clearInterval(timer);
+		flag = true;
+	}
+********************脚本化CSS****************************
+window.getComputedStyle(div, null).width; //只读
+	第二个参数可以获取伪元素（::）
+	返回的计算样式的值都是绝对值，没有相位（ie8及以下不兼容）
+Ele.currentStyle --> CSSStyleDeclaration
+
+封装兼容方法getStyle(elem, prop)
+	function getStyle(elem, prop) {
+		if(window.getComputedStyle) {
+			return window.getComputedStyle(elem, null)[prop];
+		}else{
+			return elem.currentStyle[prop];
+		} 
+	}
 
 
 
