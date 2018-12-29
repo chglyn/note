@@ -1381,9 +1381,120 @@ Ele.currentStyle --> CSSStyleDeclaration
 					event.returnValue = false;
 				}
 			}
+			
+***********************事件对象********************
+event || window.event
+事件源对象：
+	event.target 火狐只有这个
+	event.srcElement ie只有这个
+	chrome 这俩都有
+	兼容性写法 (涉及 事件委托) 
+	//e = e ||  window.event;
+	target = event.target || event.srcElement;
+ 	适用于ie
+	elem.setCapture(); //事件的获取
+	elem.releaseCapture; //事件释放
+    顺序：mousedown > mouseup > click  
+    contextmenu 鼠标右键事件
+    查看onmousedown事件中的e.button分辨出鼠标左右键
+	如何解决mouserdown和click冲突 (设置开关)
+键盘事件
+	顺序：keydown > keypress > keyup
+		//Stirng.fromChartCode(e.chartCode)
+		keydown 检测字符不准  适应于按键事件
+		keypress  检测字符较准
+文本类事件
+	inout focus blur change
+	window.onload = function() {
+		//执行方法最慢的
+	}
+***********************json**************************   
+JSON.parse(); string --> json
+JSON.stringify(); json --> string
+/*		
+	解析html 深度优先原则，形成DOM树
+	挂载DOM -->  解析完 -->  下载完
+		DOMTree  +  cssTree  = randerTree
+		randerTree结束后，绘制界面
+	DOMTree修改：
+		reflow(较严重)   重排 	dom节点的增删改查 
+						dom节点的宽高变化...
+						offsetWidth，offsetLeft
+		repaint  重绘 	修改字体颜色，背景颜色...
+*/
+**************************js异步*******************************
+jS异步加载的三种方案
+	1、defer异步加载，但要等到dom文档全部解析完才会被执行。只有ie能用，也可以将代码写到内部 (ie9以下能用)
+	2、async异步加载，加载完就执行，async只能加载外部脚本，不能把js写在script标签里 (w3c标准)
+		1、2执行时也不阻塞页面
+	3、创建script，插入到DOM中，加载完毕后callBack
 
+		function loadScript(url, callBack) {
+			var script = document.createELement('script'); //创建
+			script.type = 'test/javascript'; //设置
+			//先绑定事件，再加载文件
+			if(script.readyState) { //ie方法
+			 	script.onreadystatechange = function() {
+			 		if(script.readyState == 'complete' || script.readyState == 'loaded') {
+			 			//执行插入js里面的方法
+			 			callBack();
 
+			 			//如果插入的js里面是对象 obj[fn]();
+			 		}
+			 	}
+			}else{ //非ie方法 chrome firefox opera safari
+				script.onload = function() {
+					//执行插入js里面的方法
+					callBack();
 
+					//如果插入的js里面是对象 obj[fn]();
+				}
+			}
+			script.scr = url  // 下载
+			document.body.appenChild(script); 插入
+	    }
+		loadScript('...js', function() { 
+			//传参在定义之前
+			fn();
+		}); 
+
+		//如果插入的js里面是对象
+		loadScript('...js', 'fn');
+
+*************************js加载时间线*********************************
+js时间线
+	1、创建Document对象，开始解析web页面。解析html元素和他们的文本内容后添加Element对象和Text节点到文档中，这阶段document.readyState = 'loading'
+	2、遇到link外部css，创建线程加载，并继续解析文档。
+	3、遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行脚本，然后继续解析文档
+	4、遇到script外部js，并且设置async、defer，浏览器创建线程加载，并继续解析文档
+		对于ascync属性的脚本，脚本加载完成后立即执行（异步禁止使用document.write()）
+	5、遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档
+	6、当文档解析完成，document.readyState = 'interactive';
+	7、文档解析完成后，所有设置有defer的脚本会按照顺序执行（注意与acync的不同，转化为事件驱动阶段）
+	8、document对象触发DOMContentLoaded事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段
+	9、当所有async的脚本加载完成并执行后，img等加载完成后，document.readyState = 'complete'，window对象触发load事件
+	10、从此，以异步响应方式处理用户输入，网络事件等。
+
+	/*
+		console.log(document.reayState)
+
+		document.onreadystatechange = function() {
+			console.log(document.reayState);
+		}
+
+		//当dom加载完就执行的部分
+		//window.onload = function() {
+		//	console.log(document.reayState);
+		//}
+
+		//当dom解析完就执行的部分
+		document.addEventListener('DOMcomtentloaded', function() {
+			console.log(document.reayState);
+		}, 'false');
+	*/
+
+	//当dom解析完就执行的部分  -->  interactive
+	$(document).ready(function() {})
 
 
 
