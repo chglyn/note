@@ -1053,7 +1053,7 @@ obj = {
 
 es5严格模式
 	'use strict'(启动es5.0模式，遵循es5.0模式，推荐局部使用)
-		为了兼容老版浏览器，不会是别的浏览器
+		为了兼容老版浏览器，不会识别的浏览器
 	不再兼容es3的一些不规则语法。使用全新的es5规范
 	两种用法：
 		全局严格模式
@@ -1161,14 +1161,14 @@ DOM  --> Document Object Model
 	children 只返回当前元素的元素子节点（除了children其他属性IE9/8以下不能识别）
 	node.childElementCount == node.children.length 当前元素节点的子元素
 	firstElementChild 返回的是第一个元素节点（IE不兼容）
-	lastElementCHild 返回的是最后一个元素节点（IE不兼容）
+	lastElementChild 返回的是最后一个元素节点（IE不兼容）
 	nextElementSibling/previosElementSibling 返回后一个/前一个兄弟元素
 节点的四个属性
 	nodeName 元素的标签名，以大写形式表示，只读
 	nodeValue Text节点或Comment节点的文本内容，可读写
 	nodeType 该节点的类型，只读
 	attributes Element节点的属性结合
-	节点的一个方法 Node.hasCHildNodes();
+	节点的一个方法 Node.hasChildNodes();
 遍历元素里面的节点类型	
 	function retElementCHild(node){
 		var arr = [],
@@ -1314,7 +1314,73 @@ Ele.currentStyle --> CSSStyleDeclaration
 			return elem.currentStyle[prop];
 		} 
 	}
+*********************事件**********************
+绑定事件
+	addEventListener('事件名', 函数, true/false)  this --> 绑定事件的本身
+	兼容性好，但是一个元素的事件上只能绑定一个处理程序
+	obj.attachEvent('on'+type, fn)  this --> window
+	ie独有，一个事件同样可以绑定多个处理程序
 
+封装addEvent方法兼容浏览器
+	function addEvent(elem, type, handle) {
+		if(elem.addEventListener) {
+			ele.addEventListener(type, handle, false);
+		}else if(elem.attachEvent) {
+			elem.attachEvent('on' + type, function() {
+				handle.call(elem);
+			})
+		}else{
+			elem['on' + type] = handle;
+		} 
+	}
+解除事件
+	elem.onclick = null;
+	//this.onclick = null 只执行一次
+
+	ele.removeEventListener
+	ele.detachEvent
+	匿名函数，不能解除
+
+事件处理模型
+	<div class="wrapper">
+		<div class="content">
+			<div class="box"></div>
+		</div>
+	</div>
+	冒泡 
+		结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一个事件，自父元素冒泡向父元素。（自底向上）
+
+	捕获
+		结构上嵌套关系的元素，会存在事件捕获的功能，即同一个事件，自父元素捕获至子元素（事件源）。（自顶向下）
+	先捕获（addEventListener(... , ..., true)），后冒泡 （addEventListener(... , ..., false)）
+	**谁先绑定谁先执行**
+	focus blur change submit select等事件不冒泡
+	取消冒泡：
+		w3c标准 e.stopPropagation(); //ie9以下不支持
+		ie独有 event.cancelBubble = true
+
+		封装取消冒泡的函数 stopBulle(event)
+			function stopBulle(event) {
+				if(event.stopPropagation) {
+					event.stopPropagation();
+				}else{
+					event.cancelBubble = true
+				}
+			}
+	阻止默认事件
+		默认事件  表单提交，a标签跳转，右键菜单等
+		return false以对象属性的方式注册的事件才生效 (句柄方式)
+		event.preventDefault() w3c标准 ie9以下不兼容
+		event.returnValue = false 兼容IE
+
+		封装阻止默认事件canaelHandler(event)
+			function canaelHandler(event){
+				if(event.preventDefault) {
+					event.preventDefault();
+				}else{
+					event.returnValue = false;
+				}
+			}
 
 
 
