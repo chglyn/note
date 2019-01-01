@@ -1496,5 +1496,77 @@ js时间线
 	//当dom解析完就执行的部分  -->  interactive
 	$(document).ready(function() {})
 
+*******************正则********************
+//一片两片三四片，落尽正则全不见
+	\ 转义符号，把后面的转义
+	\t 一个table键（制表符）
+	\r  行结束
+	\n  换行
 
+两种创建方式
+	1、直接量
+	2、new RegExp();
+	推荐直接量 ***
+	正则表达式的作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择
+
+	var str = 'abcababababd';
+	var reg = /ab/g; 
+	//中间abc连着片段匹配字符串
+	// i --> ignoreCase 忽视大小写
+	// g --> 全局匹配
+	// m  执行多行匹配
+	//字符串上面的方法match
+	str.match(reg);
+
+	var str = 'abcde\na' //多行字符串
+	var reg = /^a/gm; //^ 以a开头，添加m修饰符
+	str.match(str); //match把所有匹配出来返回
+
+	var str = 'abcabc';
+	var reg = new RegExp('ab', 'igm');
+	reg.test(str); //test判断有没有符合的片段
+	var reg = /[^ ]/g; //非
+	var reg = (a|b|c)/g; // |或
+
+	\w (word) === [0-9A-z_]
+	\W === [^\w]
+	\d === [0-9]
+	\D === [^\d]
+	\s === [\t\n\r\v\f ]
+	\S === [^/s]
+	\b === 单词边界
+	\B === 非单词边界
+	. === [^\r\n ]
+
+	var reg = /ab/g;
+	var str = 'abababab';
+	console.log(reg.exec(str));
+	console.log(reg.lastIndex);
+
+	var str = 'aa';
+	var reg = /a/g;
+	str.replace(reg, 'b'); //ba
+
+	var reg = /(\w)\1(\w)\2/g;
+	var str = 'aabb';
+	str.replace(reg, '$2$2$1$1'); //bbaa
+	str.replace(reg, function($, $1, $2) {
+		return $2 + $2 + $1 + $1;
+	});
+
+	//the-first-name --> theFirstName
+	var reg = /-(\w)/g;
+	var str = 'the-first-name';
+	str.replcae(reg, function($, $1, $2) {
+		return $1.toUpperCase(); 
+	})
+
+	var str = 'aaaaabbbbbbbcccc';
+	var reg = /(\w)\1*/g;
+	str.replace(str, '$1') //abc
+
+
+	var str = '100000000';
+	var reg = /(?=(\B)(\d{3})+$)/g;
+	str.replace(reg, '.');
 
