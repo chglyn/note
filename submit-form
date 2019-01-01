@@ -1,6 +1,40 @@
+angularjs是一个javascript框架。通过script脚本引入，是一个用Javascript编写的库。angularjs通过指令扩展了HTML，通过表达式绑定数据到HTML中。
+AngularJS主要考虑的是构建CRUD（增删改查）应用。幸运的是，至少90%的WEB应用都是CRUD应用。
+优点：
+	1、一些大公司正在使用的流行框架
+	2、开发现代Web应用程序的解决方案
+	3、是标准MEAN栈（MongoDB，Express.JS，AngularJS，NodeJS）的一部分，有许多文章和教程可用
+缺点：
+	1、学习曲线陡峭
+	2、大的代码库
+	3、无法升级到Angular2.x
+
+React是一个用于创建用户界面的开源JavaScript库，旨在解决开发单页应用程序时遇到的挑战。
+优点：
+	1、小巧，高效，快捷灵活；
+	2、简单的组件模型；
+	3、良好的文档和在线资源；
+	4、可实现服务器端渲染；
+	5、目前受欢迎，经历了快速增长。
+
+缺点：
+	1、需要学习新的概念和语法；
+	2、构建工具很重要；
+	3、需要其它类库或框架提供model和Controller部分；
+	4、与修改DOM的代码和其它类库不兼容。
+	
+vuejs
+优点：
+	1、可以快速使用，并且日益普及；
+	2、很容易提高高水平开发人员的满意度；
+	3、依赖性小，性能好。
+
+缺点：
+	1、一个较新的项目– 风险可能会更大；
+	2、部分依赖开发人员进行更新；
+	3、相比于其它框架，资源较少；
+
 //模拟form提交参数
-
-
 $.extend({
 	StandardPost:function(url, args){
 		var form = $("<form method='post' style='display:none'></form>"), input;
