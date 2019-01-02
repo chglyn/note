@@ -8,3 +8,32 @@ lang="en, zh"
 <!--ul type="disc/square/circle">
 	<li></li>
 </ul-->
+
+a 标签
+	1、超链接
+	2、anchor --> 锚点 (<a href="#Id"></a>)
+	3、打电话 (<a href="tel:130XXXXXXXX"></a>)
+	4、邮件 （<a href="mailto:liu@xxx.com"></a>）
+	5、协议限定符 （<a href="javascript:while(1){alert(1)}"></a>）
+
+主流浏览器   内核
+	firefox  Gecko
+	chrome   webkit /blink
+	ie       trident
+	safari   webkit
+	opera    presto
+
+cascading style sheet
+
+
+
+
+
+
+
+
+
+
+
+
+
