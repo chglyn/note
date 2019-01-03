@@ -116,12 +116,32 @@ margin塌陷
 				3、float:left/right
 				4、overflow:hidden
 
+	margin塌陷添加css
+	margin合并添加html
+float模型
+	left/right
+	1、浮动元素产生了浮动流（只有块级元素会产生）
+	所有产生了浮动流的元素，块级元素看不到他们
+	产生了BFC的元素和文本类属性的元素以及文本都能看到浮动元素（带有inline属性的都属于文本类属性）
+	<!-- 清除周边浮动在父级元素添加一个标签，设置使用clear:both 不推荐 -->
+	伪元素(inline属性) ::before{content:'';clear:both;display:block;}
+	content只能适用于伪元素，添加clear清除必须是块级元素所以添加block属性
+文字溢出
+	单行文本 三件套 *** white-space:nowrap overflow:hidden text-overflow:ellipsis
+	多行文本 只做截断
 
+图片处理
+	1、text-indent:设置超过盒子宽; overflow:hidden; white-space:nowrap
+	2、height:0;设置padding-top:设置一个高度;overflow:hidden;
+元素嵌套规则
+	行级元素只能嵌套行级元素
+	块级元素可以嵌套任何元素 
+	p标签特殊、a标签不能嵌套a标签
 
-
-
-
-
-
+	常识
+		凡是设置position:absoulte;float:left/right 打内部把元素转化成inline-block;
+		图片环绕文字 图片设置float:left
+		行内元素设置行块级属性里面文字和外面文字上对齐，使用进行设置vertical-align:10px;
+		行内元素里面文字和外面文字底对齐
 
 
