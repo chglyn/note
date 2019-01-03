@@ -1101,7 +1101,7 @@ DOM  --> Document Object Model
 			document.getElementsByTagName()//标签名 (用的较多，方法定义在document.prototype和Element.prototype上)
 			document.getElementsBtName()//需注意，只有部分标签name可生效（表单，表单元素，img，iframe）
 			document.getElementsByClassName()//类名 --> ie8和ie8以下的ie版本没有，可以多个class一起
-			querySelector()//css选择器 在ie7和ie7一下的版本中没有
+			querySelector()//css选择器 在ie7和ie7以下的版本中没有
 			querySelectorAll()//css选择器 在ie7和ie7以下的版本中没有
 	tab切换：
 		var btn = document.getElementsByTagName('button');
@@ -1170,7 +1170,7 @@ DOM  --> Document Object Model
 	attributes Element节点的属性结合
 	节点的一个方法 Node.hasChildNodes();
 遍历元素里面的节点类型	
-	function retElementCHild(node){
+	function retElementChild(node){
 		var arr = [],
 		/*
 			temp = {
@@ -1537,7 +1537,9 @@ js时间线
 	\b === 单词边界
 	\B === 非单词边界
 	. === [^\r\n ]
-
+	? 匹配前面的子表达式零次或一次
+	* 匹配前面的子表达式零次或多次
+	
 	var reg = /ab/g;
 	var str = 'abababab';
 	console.log(reg.exec(str));
@@ -1563,7 +1565,7 @@ js时间线
 
 	var str = 'aaaaabbbbbbbcccc';
 	var reg = /(\w)\1*/g;
-	str.replace(str, '$1') //abc
+	console.log(str.replace(reg, '$1')); //abc
 
 
 	var str = '100000000';
