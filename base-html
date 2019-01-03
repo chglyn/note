@@ -35,8 +35,6 @@ cascading style sheet
 	标签
 顺序：
 	!important > 行间样式 > id > class | 属性 > 标签选择器 > 通配符
-
-
 css权重
 	!important   --> Infinity
 	行间样式	--> 1000
@@ -47,13 +45,74 @@ css权重
  	
  	原理：
 		id，100并不是指id的一个权重值就是100，实际上这个100是一个进制数，不是2进制，也不是10进制；而是256进制，就是0到255后+1才是1。列如：通配符的权重值0到标签、伪元素的权重值1，中时间实际上差了255。依次类推。
-
 	1、父子选择器 div span
 	2、直接选择器 div > span
 	3、并列选择器 div.class
 	4、分组选择器 span, div
 
+	font-family:arial(arial --> 乔布斯研发)
 
+	1、土鳖式（纯英文）
+		color:red;
+	2、颜色代码
+		color:#0000ff (16进制)
+	3、颜色函数
+		color:rgb(0-255, 0-255, 0-255);
+
+	border:1px solid red; --> border-width + border-style + border-color
+	//border-left-color
+	//transparent 透明色
+
+	1em = 16px;
+伪类
+	a:hover
+	...
+行内元素(内联) inline
+	feature 内容决定元素所占位置
+		不可以通过css改变宽高
+	span strong em a del
+块级元素 block
+	feature 独占一行
+		可以通过css改变宽高
+	div p ul ol li form address
+行级块元素 inline-block
+	feature 内容决定大小
+		以改宽高
+	img
+	<!--
+		凡事带有inline的元素，都有文字特性 留白间距
+		文本分隔符 元素与元素直接有空白间隔
+	-->
+
+盒子模型 margin + border + padding + content(width + height)
+	盒子壁 border
+	内边距 padding
+	盒内容 width + height
+	
+	盒子可视区域  border + padding + width/height
+定位技术
+	position: relative | absolute | fixed | static
+	relative 相对定位 保留原来位置进行定位 相对于自己原来的位置进行定位
+	absolute 绝对定位 脱离原来位置进行定位 相对于最近有定位的父级进行定位；如果没有，相对于文档进行定位
+	**** 上下左右居中 设置50%，margin自身的一半
+常识
+	body有个默认的8像素 margin值
+
+两栏布局
+	<div class="right"></div>
+	<div class="left"></div>
+	.right{width:100px;height:100px;background-color:yellow;position:absolute;top:0;right:0;}
+	.left{ height:100px;background-color:blue; margin-right:100px;}
+margin塌陷
+	垂直方向上父子上的margin，取最大的那个值
+	解决：
+		1、给父级添加border-top属性
+		2、BFC（给父级改变渲染规则）
+			如何触发一个盒子BFC
+				1、position:absoulte
+				2、display:inline-block
+				3、float:left/right
+				4、overflow:hidden
 
 
 
