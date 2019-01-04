@@ -1,0 +1,257 @@
+//jQuery源码的解析
+(function(window, undefined) { //undefined --> 防止被外部修改
+	/*
+		1、首先定义一些变量和函数 
+		  平常使用jquery时的函数：jQuery = function() {};
+		  var undefined = 1;
+		  console.log(undefined) --> 1 ie6/7
+		  使用typeof window.a == 'undefined' 判断
+
+		2、jQuery基于prototype面向对象的程序 (添加一些方法和属性，只能给原生的对象使用）
+		eg：
+			$('div').css();
+			var arr=new Array();
+			arr.push();
+			arr.sort();
+			
+			jQuery.fn = jQuery.prototype = {
+				jquery：版本
+					alert($().jquery)
+				constructor: 修正指向问题
+					function A(){}
+					//A.prototype.constructor = A;
+					//A.prototype.name = 'cherry';
+					//A.prototype.age = 30;
+					A.prototype = {
+						constructor: A
+						name: 'sunny',
+						age: 18
+					}
+					var a = new A();
+					alert(a.constructor)
+				init() 初始化和参数管理
+					$('false/undefined/null/""')
+					$('#div/div/.li/ #div div.class')
+					$('<li>/<li>hello')
+						//match = null;
+						//match = [null, '<li>', null]; //$('<li>')
+						//match = ['#div', null, 'div1']; //$('#div')
+						//match = ['<li>hello</li>', '<li>', null]; //$('<li>hello')
+						//创建元素 $('<li>', document/contentWidow.document) $('<li>', $(document))
+						/*把字符串转化为数组 parseHTML
+							var str = '<li>1<li><li>2</li>';
+							//var str = '<li>1<li><li>2</li><script>alert(1)<\/script>';
+							var arr = jQuery.parseHTML(str, document, false); //document当前,还有其他;true 设置script
+							$.each(arr, function(i) {
+								$('ul').append(arr[i])
+							})
+
+							var arr = [1, 2];
+							var arr2 = [3, 4];
+							console.log($.merge(arr, arr2)); //对外合并数组 对内合并数组和JSON
+
+							$('<li>', {title:'hi', html:'hello', css:{color:'red'}}).appendTo('ul'); //只支持单标签
+							//this.html('hello')
+
+							rootjQuery : $(document)
+
+							find底层 --> sizzle看下面
+						*/
+
+					$(this/document)
+						//判断nodeType区别
+					$(function() {})
+						//判断是不是方法
+					$([]/{}) 
+						//<div></div>
+						//$('div') == $($('div'))
+					//jQuery.makeArra(selector).push() 把类数组转化成数组的方法 
+					//$.makeArra(oDiv, {length:0}) 内部使用两个参数转化成JSON
+				selector 存储选择器字符
+
+				length this对象的长度
+
+				toArray() 转数组
+					//<div></div><div></div>
+					//console.log($('div').toArray()); //[div, div]
+				get() 转原生集合
+					//<div></div><div></div><div></div>
+					//$('div').get(参数:正负数).innerHTML = 'hello';
+					//$('div').get() 不传参得到一个集合 具有length属性
+				pushStack() JQ对象的入栈
+					/*栈 --> 先进后出
+					<div>1</div><span>2</span>
+					$('div').pushStack($('span')).css('color', 'red').end().css('color', 'yellow');
+					end() 回溯到栈的下一层 --> 栈的里面 div
+					*/
+				each() 遍历集合
+					//工具方法(底层)  实例方法(架构)  
+				ready() DOM加载的接口
+					//添加一个回调promise().done()
+				slice() 集合的截取
+					//截取不包括结束位置
+				first() 集合的第一项
+
+				last() 集合的最后一项
+
+				eq() 集合的指定项
+					// eq(参数:正负数)
+				map() 返回新集合
+					//arr = $.map(Array, function(elem, i) {
+					//	return elem;
+					//})
+				end() 返回集合前一个状态
+
+				push() 内部使用
+
+				sort() 内部使用
+
+				splice() 内部使用
+			}
+		3、extend： jQuery继承方法（方便写插件）
+			/*
+				$.extend() 
+				当只写一个对象自变量的时候，JQ中扩展插件的形式
+					$.extend({
+						foo: function() {
+							console.log(1);
+						},
+						fn: function() {
+							console.log(2);
+						}
+					})
+					$.foo();
+					$.fn();
+
+				$.fn.extend() 扩展JQ实例方法
+					$.fn.extend({
+						foo: function() {
+							console.log(3);
+						},
+						fn: function() {
+							console.log(4);
+						}
+					})
+					$().foo();
+					$().fn();
+				$.extend() --> this --> this.foo() -->$.foo()
+				$.fn.extend() --> this --> $.fn --> this.foo -->$().foo() 
+				$.fn --> JQ.prototype
+
+				当写多个对象自变量的时候，后面的对象都是扩展到第一个对象身上
+				var a = {};
+				$.extend(a, {name:'sunny'}, (age: 18));
+				console.log(a);
+
+				还可以做深拷贝和浅拷贝
+				var a = {}, b = {name:'sunny'};
+				$.extend(a, b);
+				b.name = 'hello';
+				console.log(a.name); //sunny
+
+				b = {name: {age: 18}};
+				$.extend(/true/, a, b); //true深拷贝
+				b.name.age = 30;
+				console.log(a.name.age); //30
+
+			*/
+		4、jQuery.extend:扩展一些工具方法（eg：$.trim(), $.proxy() 方法，既可以给jQuery用也可以给原生js使用）
+			jQuery.extend({
+				expando 生成唯一JQ字符串（内部）
+				noConflict() 防止冲突
+				isReady DOM是否加载完（内部）
+				readyWait 等待多少文件的计数器（内部）
+				holdReady() 推迟DOM触发
+				ready() 准备DOM触发
+				isFunction() 是否为函数
+				isArray() 是否为数组
+				isWindow() 是否为window
+				isNumberic() 是否为数字
+				type() 判断数据类型
+				isPlanObject() 是否为对象自变量
+				isEmptyObject 是否为空对象
+				error() 抛出错误
+				parseHTML() 解析节点
+				parseJSON() 解析JSON
+				parseXML() 解析XML
+				noop() 空函数
+				globalEval() 全局解析JS
+
+			})
+		5、Sizzle：复杂选择器的实现
+		  eg：$('ul li + p input')
+
+		6、Callbacks: 回调对象： 对函数的统一管理
+		  eg: 
+			function fn1() { console.log(1); }
+			function fn2() { console.log(2); }
+			var cb = $.Callbacks();
+			cb.add(fn1);
+			cb.add(fn2);
+
+			cb.fire(); //1, 2
+			cb.remove(fn2);
+			cb.fire(); //1
+
+		7、Deferred：延迟对象：对异步的统一管理
+		eg:
+			/*
+			setTimeout(function() {
+				alert(1)
+			}, 1000)
+			alert(2);
+			*/
+			var fd = $.Deferred();
+			setTimeout(function() {
+				alert(1);
+				fd.resolve();
+			}, 1000)
+			fd.done(function() {
+				alert(2);
+			})
+			done函数先存储在fd里面，在resolve执行后done再执行
+
+		8、support：功能检测
+		  support.checkOn --> true 新版本webkit 否则旧版本 webkit
+
+		9、data() ：数据缓存
+		eg：
+			$('div').data('name', 'hello');
+			$('div').data('name');//hello
+
+		10、队列管理
+			queue：入队
+			dequeue：出队
+			eg:
+				$('div').animate({ left:100 });
+				$('div').animate({ top:100 });
+
+		11、对元素属性的操作
+		attr() prop() val() add() 等方法
+
+		12、事件操作的方法
+			eg：on() trigger()等方法
+
+
+		13、DOM操作
+			eg：添加 删除 获取 包装等
+
+
+		14、css方法：样式的操作
+			eg： 加减乘除等
+
+
+		15、提交的数据和ajax()操作
+			eg：跨域 ajax load getJSON 等
+
+
+		16、animate()：运动的方法 show() hide() fadeout()等
+
+		17、offset() scrollTop()等 位置和尺寸的方法
+
+		18、JQ支持模块化模式
+
+		19、在底部挂载window上暴露出去(对外提供的接口) window.jQuery = window.$ = jQuery;
+
+	*/
+}(window)) //window --> 传参比较快，压缩可以识别
