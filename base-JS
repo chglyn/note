@@ -6,7 +6,7 @@
 	var num = 123;
 	delete window.num //false
 
-typef null => object
+typeof null => object
 typeof NaN => number
 true => 1
 false => 0
