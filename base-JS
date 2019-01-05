@@ -275,71 +275,81 @@ new String、new Boolen、new Number
 	function Person() {}
 	var person = new Person();
 	var person1 = new Person();
-	console.log(person.name, person1.name);
+	//person.constuctor --> function Person() {}
+	//person1.constuctor --> function Person() {}
+	console.log(person.name, person1.name); //hehe hehe
 	
-	利用原型的特点和概念，可以提取公有属性
-	Person.prototype.name = 'BMW';
-	Person.prototype.width = 4900;
-	Person.prototype.height = 1400;
-	/*
-	Person.prototype = {
-		name: 'BMW',
-		width: 4900,
-		height: 1400
+	function Person() {}
+	Car.prototype = {
+		//constructor更改了指向
+		constructor:Person
 	}
-	*/
-	function Person(color) {
-		/*
-			var this = {
-				__proto__: Person.prototype
-			}
-		*/
-		this.color = color;
-	}
-	var person = new Person('red');
+	function Car();
+	var car = new Car();
+	//car.prototype -- > function Person() {}
 	
-	1.
+	Perototype.name = 'sunny';
+	function Person(){}
+	var person = new Person();
+	//person.__proto__
+
+	Person.prototype.name = 'abc';
+	function Person () {
+		//var this = {
+		//	__proto__: Person.prototype
+		//}
+	}
+	var obj = { name: 'sunny' };
+	//person.__proto__ = obj; --> abc
+	var person = new Person();
+	person.__proto__ = obj;
+	console.log(person.name);//sunny
+
 	Person.prototype.name = 'sunny';
 	function Person () {}
 	var person = new Person();
-	Person.prorotype = {
+	Person.prototype.name = 'cherry';
+	console.log(person.name); //cherry
+	
+	Person.prototype.name = 'sunny';
+	function Person () {}
+	var person = new Person();
+	Person.prototype.name = 'cherry';
+	console.log(person.name);  //cherry
+	
+	Person.prototype.name = 'sunny';
+	function Person(){
+		//var this = { __proto__ : Person.prototype }
+	}
+	var person = new Person(); //{ __proto__ : Person.prototype }
+	Person.prototype = {
+		//原型给修改了，换了个新对象 
+		//Person函数里面的__proto__没有修改，只是修改了Person.prototype 带点写法只是在原基础上修改属性
 		name: 'cherry'
 	}
 	console.log(person.name); //sunny
-	/*
+	
+	Person.prototype.name = 'sunny';
+	function Person(){
+		//var this = { __proto__ : Person.prototype }
+	}
+	Person.prototype = {
+		name: 'cherry'
+	}
+	var person = new Person(); //{ __proto__ : Person.prototype }
+	console.log(person.name); //cherry 没生成 就改变了
+	
+	/*解析
 	var obj = { name: 'a' };
 	var obj1 = obj;
 	obj = { name: 'b' };
 	console.log(obj1.name); //a
+	
 	Person.prorotype = {  name: 'a' };
 	__proto__ = Person.prototype;
 	Person.prototype = { name: 'b' };
 	*/
-	2.
-	Person.prototype.name = 'sunny';
-	function Person () {}
-	Person.prorotype = {  
-		name: 'cherry'
-	}
-	var person = new Person();
-	console.log(person.name); //cherry
-
-************************原型链*********************************
-	eg:
-	Person.prototype.name = 'abc';
-	function Person () {
-		/*
-			var this = {
-				__proto__: Person.prototype
-			}
-		*/
-	}
-	var obj = { name: 'sunny' };
-	var person = new Person();
-	Person.__proto__ = obj;
-	console.log(person.name);//sunny
-
-
+******************原型链************************
 //Grand.prototype.__proto__ = Object.prototype;
 Grand.prototype.lastName = 'Deng';
 function Grand() {}
