@@ -146,12 +146,12 @@
 				还可以做深拷贝和浅拷贝
 				var a = {}, b = {name:'sunny'};
 				$.extend(a, b);
-				b.name = 'hello';
+				a.name = 'hello';
 				console.log(a.name); //sunny
 
 				b = {name: {age: 18}};
 				$.extend(/true/, a, b); //true深拷贝
-				b.name.age = 30;
+				a.name.age = 30;
 				console.log(a.name.age); //30
 
 			*/
