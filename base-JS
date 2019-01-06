@@ -195,77 +195,58 @@ a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返�
 		x += typeof f;
 	}
 	console.log(x); //1undefined
-***********************对象************************
-名词：函数引用、 函数执行()
-
-对象创建方法： 
-	字面量、
-	var obj = {}
-	构造函数（1:系统自带、2:自定义） 特点：大驼峰命名
-	1:
-	var obj = new Object{}
-	2:
-	function Person(color) {
-		/*隐式
-		var this = {
-			name:'',
-			height:''
-			...
-		}; 
-		AO:{ this:{ name:... } }
-		*/
-		this.name = 'BMW';
-		this.height = '1400';
-		this.width = '4900';
-		this.color = color;
-		//显示 return {}; 返回空对象
-		//显示 return 123; 返回这个对象里面的属性值 
-		/*
-		隐式 return this;
-		*/
-	}
-	var person = new Person();
-	内部原理：
-		在函数体最前面隐式的加上this = {};
-		执行this.xxx = xxx;
-		隐式的返回this;
-	
-	Person.prototype.anme = 'sunny';
-	function Person() {
-		/*
-		var this = {
-			__proto__ : Person.prototype
+******************************对象************************
+//js对象比较灵活 可以增加、改变方法
+对象模型：
+	var obj = {
+		//属性: 值
+		name: 'sunny',
+		sex: 'male',
+		age: '20',
+		health: 100,
+		say: function() {
+			//obj.health --;
+			console.log(this.name);  //this --> obj
 		}
-		*/
 	}
+	访问属性：obj.name;
+	删除对象属性：delete obj.sex;
+	修改对象属性：obj.age = 18;
+	添加对象属性：obj.sex = 'female';
+对象创建方法：
+	var obj = {} plainObject 对象字面量/对象直接量
+	var obj = new Object(); //系统自带的构造函数  new Array() new String()
+	自定义 
+	//（构造函数和普通函数结构上没区别，存在new才会返回一个对象）
+	//构造函数命名规则 --> 大驼峰命名
+	function Person() {}
 	var person = new Person();
 	
-*****************包装类**************************
-原始值没有属性和方法
-new String、new Boolen、new Number
-	1.
-	var num = 4;
-	num.len = 3;
-	//new Number(4).len = 3; delete 删除
-	//new Number(4).len 重新生成
-	console.log(num.len);//undefined
-	2.
-	var str = 'abcd';
-	str.length = 2;
-	//new String('abcd').length  delete 删除
-	//new String('abcd').length 重新生成
-	console.log(str); //abcd
-	console.log(str.length) //4
-	3.
-	var str = 'abc';
-	str += 1；
-	var test = typeof str;
-	if(test.length == 6) {
-		test.sign = 'typeof返回的结果有可能是string';
-		//new String('test').sign = XXX
+	function Car(color) { // color --> 参数
+		this.color = color;  // color --> 接受参数
+		this.name = 'BMW';
+		this.width = 4900;
+		this.height = height;
+		this.health = 100;
+		this.run = function() {
+			this.health --;
+		}
 	}
-	//new String('test').sign = '';
-	console.log(test.sign); // undefined	
+	var car = new Car('red')//car变量写成Car走预编译环节，进行覆盖
+	//console.log(car); --> 返回一个对象
+	var car1 = new Car('green');
+	car.name = 'Maserati';
+	car1.name = 'Marz';
+	//打印car car1 的name属性不同互不影响
+	//car调用run -->health降低，car1没调用-->health没变化
+	
+	function Student(name, age, sex){
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+	}
+	var student = new Student();
+	
 ************************原型*********************************
 定义：
 	原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象。
