@@ -159,6 +159,8 @@
 			jQuery.extend({
 				expando 生成唯一JQ字符串（内部）
 				noConflict() 防止冲突
+					var $ = 123;
+					$.noConflict($);
 				isReady DOM是否加载完（内部）
 				readyWait 等待多少文件的计数器（内部）
 				holdReady() 推迟DOM触发
@@ -166,17 +168,28 @@
 				isFunction() 是否为函数
 				isArray() 是否为数组
 				isWindow() 是否为window
-				isNumberic() 是否为数字
+					$.isWindow(window);
+				isNumber() 是否为数字
 				type() 判断数据类型
 				isPlanObject() 是否为对象自变量
 				isEmptyObject 是否为空对象
+					var obj = {name:'sunnyt'};
+					console.log($.isEmptyObject(obj));//true
 				error() 抛出错误
+					$.error('msg');
 				parseHTML() 解析节点
+					str = '<li></li><script><\/script>';
+					console.log($.parseHTML(str, document, true)); //true处理script标签,默认false; 返回一个数组
 				parseJSON() 解析JSON
 				parseXML() 解析XML
 				noop() 空函数
 				globalEval() 全局解析JS
-
+				camelCase() 转驼峰
+				nodeName() 是否为指定节点名
+				each() 遍历集合
+				trim() 去前后空格
+				makeArray() 类数组转化为真数组
+				inArray() 数组版indexOf
 			})
 		5、Sizzle：复杂选择器的实现
 		  eg：$('ul li + p input')
