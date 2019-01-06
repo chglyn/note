@@ -11,6 +11,7 @@ typeof NaN => number
 true => 1
 false => 0
 Number([]); --> 0
+数据类型：number string boolean undefined function object
 ***************************************
 函数声明整体提升
 变量 声明提升
@@ -238,16 +239,106 @@ a = (1 - 1, 1 + 1); //2 计算前面结果，再计算后面运算结果 => 返�
 	car.name = 'Maserati';
 	car1.name = 'Marz';
 	//打印car car1 的name属性不同互不影响
-	//car调用run -->health降低，car1没调用-->health没变化
+	//car调用run -->health降低，car1没调用-->health没变化、、
+构造函数内部原理（有new存在时）
+	在函数体最前面隐式的加上this = {};
+	执行this.xxx = xxx;
+	隐式的返回this;
 	
 	function Student(name, age, sex){
+		//隐式添加 this = {
+		//	name: '',
+		// 	...
+		//}; 
+		//AO:{this:{name:'xiaoliu'}};
 		this.name = name;
 		this.age = age;
 		this.sex = sex;
+		this.grade = 2018;
+		//隐式添加 return this;
 	}
-	var student = new Student();
+	var student = new Student('xiaozhang', 18, 'male');
+	//打印studen返回一个对象
 	
-************************原型*********************************
+	 function Person(name, height) {
+	 	//隐式添加 var this = {};
+	 	this.name = name;
+		this.height = height;
+		this.say = function() {
+			console.log(this.say); 
+		}
+		//显示添加 return {};  --> 返回一个空对象
+		//显示添加 return 123/(原始值); 返回原始值相当于renturn this --> 返回一个对象
+		//隐式添加 return this;
+	 } 
+	 console.log(new Person('xiaoliu', 180).name);
+	 var person = new Person(); 
+	
+	function Person(name, height) {
+		var that = [};
+		var that.name = name;
+		var that.height = height;
+		return that;
+	}
+	var person = new Person('xiaoliu', 180);
+	var person1= new Person('xiaozhang', 175);
+	//person person1 各自返回一个各自的对象
+************************包装类************************
+原始值没有属性和方法
+var num = 123;
+var num = new Number(num);
+num.abc = 'a';
+console.log(num); --> 返回一个对象
+console.log(num * 2); 246 --> 能计算，又返回原类型
+
+由对象特征给String添加属性
+var str = new String('abcd');
+//str.abc = 'a';
+//访问str.abc --> undefined
+
+var num = 4;
+num.len = 3;
+//new Number(4).len = 3; 新建一个数字对象，新建的数字对象；len赋值3 然后销毁delete
+//new Number(4).len; 再一次重新创建数字对象，添加一个属性len；和上面new Number不用
+console.log(num.len); //undefined
+
+var str = 'abcd';
+str.length = 2;
+//new String('abcd').length = 2; delete
+//new String('abcd');
+console.log(str); //abcd
+console.log(str.length); //4
+
+var bol = new Boolean('true');
+eg:
+	var str = 'abc';
+	str += 1；
+	var test = typeof str; //test == 'string'
+	if(test.length == 6) { 
+		test.sign = 'typeof返回的结果有可能是string';
+		//创建new String('test').sign = 'typeof返回的结果有可能是string';
+	}
+	//再次访问重新创建new String('test').sign;
+	console.log(test.sign); // undefined
+(undefine.String/null.String 没有String)
+
+function Person(name, age, sex) {
+	var a = 0;
+	this.name = name;
+	this.age = age;
+	this.sex = sex;
+	function sss() {
+		a++;
+		document.write(a);
+	}
+	this.say = sss;
+}
+var person = new Person();
+Person.say(); //1
+Person.say(); //2
+var person1 = new Person();
+person1.say(); //1
+************************原型**************************
 定义：
 	原型是function对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象。
 	//Person.prototype --> 原型
