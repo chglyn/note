@@ -422,7 +422,7 @@ person1.say(); //1
 	Person.prototype = { name: 'b' };
 	*/
 ******************原型链************************
-//Grand.prototype.__proto__ = Object.prototype;
+Grand.prototype.__proto__ = Object.prototype; //Object.prototype 是所有对象的最终原型
 Grand.prototype.lastName = 'Deng';
 function Grand() {}
 var grand = new Grand;
@@ -437,8 +437,9 @@ function Son() {
 	this.hobbit = 'smoke';
 }
 var son = new Son();
-son.num ++
+son.num ++ //--> 101
 console.log(father.num); //100;
+//引用值可以自己操作自己
 
 //a.sayName() sayName里面的this指向是谁调用的这个方法，this就是指向谁
 Person.prototype = {
@@ -461,7 +462,7 @@ function Person() {
 	this.name = 'b';
 }
 var person = new Person();
-console.log(person.name); //b
+console.log(person.name); //b 就近原则 --> 近的有值就取值，没有往上获取
 
 Person.prototype = {
 	height: 100
