@@ -287,7 +287,8 @@
 			$.Callbacks('unique'); --> 去重, 相同的参数名只处理一次
 			$.Callbacks('stopOnFalse'); --> 所添加的函数, 再添加数组过程中返回值是false, 后续的函数不会执行
 			//$.Callbacks(once, memory); $.Callbacks(once:true, memory:true); 参数可以组合
-			//fire(参数) 可以添加参数, 函数里面接受参数
+			//fire(参数) 可以添加参数, 函数里面接受参数 
+			// disable静止方法, lock 锁方法 
 		------------------------------------------------------
 			var cb = $.Callbacks();
 			setTimeout(function() {
@@ -298,7 +299,7 @@
 				console.log(2);
 			})
 			//result --> 1, 2
-		7、Deferred：延迟对象：对异步的统一管理  --> 其实还是调用Callbacks
+		7、Deferred：延迟对象(只对应一个延迟操作，)：对异步的统一管理  --> 其实还是调用Callbacks
 			var fd = $.Deferred();
 			setTimeout(function() {
 				console.log(1);
@@ -319,6 +320,25 @@
 			}, 1000)
 			fd.then(function() { //成功... }).then(function() { //失败... }).then(function() {  //进度... });
 			//promise没有三种类型状态，不能调用; deferred可以
+			
+			//when 辅助方法... （when对应多个延迟对象）
+			语法：$.when().done()	
+			function fn1() {
+				var df = $.Deferred();
+				df.resolve();
+				return df;
+			}
+			function fn2() {
+				var df = $.Deferred();
+				//df.resolve();
+				df.reject();
+				return df;
+			}
+			$.when(fn1, fn2).done(function() {
+				console.log('成功'); //都完成才执行
+			}).fail(function() {
+				console.log('失败'); //只要有一个未完成就执行
+			})
 		8、support：功能检测
 		  support.checkOn --> true 新版本webkit 否则旧版本 webkit
 
