@@ -181,49 +181,144 @@
 					str = '<li></li><script><\/script>';
 					console.log($.parseHTML(str, document, true)); //true处理script标签,默认false; 返回一个数组
 				parseJSON() 解析JSON
+					var str = '{name: "hello"}';
+					console.log($.parseJSON(str));
+					//JSON.parse和eval  JSON.parse安全性高
+					//JSON.stringify()
 				parseXML() 解析XML
 				noop() 空函数
-				globalEval() 全局解析JS
-				camelCase() 转驼峰
-				nodeName() 是否为指定节点名
+					function fn() {
+						this.default = {
+							show: function() {}
+							//show: $.noop --> $.noop 代替 function() {}
+						}
+					}
+					fn.prototype.init = function(opt) {
+						$.extend(this.default, opt);
+					}
+				globalEval() 全局解析JS --> 局部变量转化全局的
+					function fn() {
+						var val = true;  //函数外访问不了
+						jQuery.globalEval(var val = true); 
+					}
+					fn();
+					//源码中判断 严格模式下不支持eval，进行判断
+					function fn() {
+						var val = eval;
+						val('var a = 1');
+						//eval('var a = 1'); 不能直接写成eval, js中eval是关键字
+					}
+					fn();
+					alert(a); //1
+				camelCase() 转驼峰(内部)
+					//margin-top --> marginTop; ie下不转化首字母大写-->msTransform
+				nodeName() 是否为指定节点名(内部)
+					alert($.nodeName(document.body, 'body'));		
 				each() 遍历集合
+					$.each(json, function(key, val) {
+						console.log(val);
+						return false; //只打印第一个值
+					})
 				trim() 去前后空格
-				makeArray() 类数组转化为真数组
-				inArray() 数组版indexOf
+					str.trim();
+				makeArray(参数) 类数组转化为真数组
+					//内部使用 makeArray(参数, {length:0})
+				inArray() 数组版出现的位置 indexOf-->字符串中出现的位置
+					var arr = ['a', 'b', 'c'];
+					$.inArray('b', arr); //1-->b在数组中出现的位置
+				merge(arr1, arr2) 合并数组
+				grep() 过滤新数组
+					var arr = [1, 2, 3, 4];
+					var newArr = $.grep(arr, function(n, i) { //n 对应的值，i对应的下标
+						return n > 2; //为真存入新数组
+					}, true); //true 取相反值; false取真值
+					console.log(newArr);
+				map() 映射新数组
+					var arr = [1, 2, 3, 4];
+					arr = $.map(arr, function(n) {
+						return n + 1; //使用map必须使用return
+					})
+					console.log(arr);
+				guid 唯一标识符，可以累加 (内部) 例如：绑定标识 
+				proxy() 改this指向	<!-- jquery中方式 -->
+					function fn(参数1, 参数2) {
+						console.log(this);
+						console.log(参数1, 参数2);
+					}
+					fn(); // window
+					// $.proxy(fn, document) == fn(); 
+					//执行this指向document 添加括号执行 传参方式
+					$.proxy(fn, document)(参数1, 参数2); 
+					$.proxy(fn, document, 参数1, 参数2)();
+					$.proxy(fn, document, 参数1)(参数2);
+				access() 多功能值操作（内部）
+					eg: $().css(); $().attr(); --> set/get; 字符串格式和JSON格式
+				now() 当前时间  --> Date.now 距离1970的毫秒数 == $.now().getTime()
+				swap() css交换(内部) -->  能获取隐藏元素的值 原生js不能获取
+				//jQuery中隐式的添加block-->设置绝对定位-->计算完再还原隐藏
+				isArraylike() 判断是不是类数组
 			})
 		5、Sizzle：复杂选择器的实现
 		  eg：$('ul li + p input')
 
 		6、Callbacks: 回调对象： 对函数的统一管理
-		  eg: 
+		  eg: --> 观察者模式
 			function fn1() { console.log(1); }
 			function fn2() { console.log(2); }
 			var cb = $.Callbacks();
 			cb.add(fn1);
 			cb.add(fn2);
-
-			cb.fire(); //1, 2
-			cb.remove(fn2);
-			cb.fire(); //1
-
-		7、Deferred：延迟对象：对异步的统一管理
-		eg:
-			/*
+			//合并添加参数 cb.add(fn1, fn2);  cb.add([fn1, fn2]);
+			cb.fire(); //调用fire()方法执行 1, 2; 支持出发多次
+			cb.remove(fn2); //删除一个方法
+			cb.fire(); //调用fire()方法执行 1 
+			//外部不能直接调用立即函数里面的函数; 使用Callbacks调用立即执行函数,如下:
+			var opt = $.Callbacks();
+			(function() {
+				function fn() {
+					console.log(1);
+				}
+				opt.add(fn);
+			}())
+			opt.fire(); //1
+			//Callbacks参数剖析 
+			$.Callbacks('once'); --> 只触发一次
+			$.Callbacks('memory'); --> 记忆 先调用fire() 再add()也可以执行
+			$.Callbacks('unique'); --> 去重, 相同的参数名只处理一次
+			$.Callbacks('stopOnFalse'); --> 所添加的函数, 再添加数组过程中返回值是false, 后续的函数不会执行
+			//$.Callbacks(once, memory); $.Callbacks(once:true, memory:true); 参数可以组合
+			//fire(参数) 可以添加参数, 函数里面接受参数
+		------------------------------------------------------
+			var cb = $.Callbacks();
 			setTimeout(function() {
-				alert(1)
-			}, 1000)
-			alert(2);
-			*/
+				console.log(1);
+				cb.fire();
+			}, 1000);
+			cb.add(function() {
+				console.log(2);
+			})
+			//result --> 1, 2
+		7、Deferred：延迟对象：对异步的统一管理  --> 其实还是调用Callbacks
 			var fd = $.Deferred();
 			setTimeout(function() {
-				alert(1);
+				console.log(1);
 				fd.resolve();
+				//fd.reject(); --> fd.fail(function() { ... }); 失败触发的回调
+				//fd.notify() --> fd.progress(function() { ... }); 进行时触发的回调
 			}, 1000)
-			fd.done(function() {
-				alert(2);
+			fd.done(function() { //成功触发的回调
+				console.loag(2);
 			})
-			done函数先存储在fd里面，在resolve执行后done再执行
-
+			//result --> 1, 2
+			//done函数先存储在fd里面，在resolve执行后done再执行
+			//调用ajax简写 $.ajax('xxx.php').done(function() { ... }).fail(function() { ... });
+			
+			var fd = $.Deferred();
+			setTimeout(function() {
+				fd.reject(); //可以传参数 对应then接受参数
+			}, 1000)
+			fd.then(function() { //成功... }).then(function() { //失败... }).then(function() {  //进度... });
+			//promise没有三种类型状态，不能调用; deferred可以
 		8、support：功能检测
 		  support.checkOn --> true 新版本webkit 否则旧版本 webkit
 
@@ -245,18 +340,14 @@
 		12、事件操作的方法
 			eg：on() trigger()等方法
 
-
 		13、DOM操作
 			eg：添加 删除 获取 包装等
-
 
 		14、css方法：样式的操作
 			eg： 加减乘除等
 
-
 		15、提交的数据和ajax()操作
 			eg：跨域 ajax load getJSON 等
-
 
 		16、animate()：运动的方法 show() hide() fadeout()等
 
