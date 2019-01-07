@@ -358,7 +358,7 @@ person1.say(); //1
 	}
 	function Car();
 	var car = new Car();
-	//car.prototype -- > function Person() {}
+	//Car.prototype -- > function Person() {}
 	
 	Perototype.name = 'sunny';
 	function Person(){}
@@ -739,7 +739,7 @@ instanceof
 		for(var prop in origin) {
 			target[prop] = origin[prop];
 		}
-		retrun target;
+		return target;
 	}
 	clone(obj, obj1);
 
@@ -782,7 +782,7 @@ instanceof
 				}
 			}
 		}
-		retrun target;
+		return target;
 	}
 	deepClone(obj, obj1);
 
@@ -803,7 +803,6 @@ function myIsNaN(num) {
 
 {} == {} //false
 
-
 this:
 	1、函数预编译过程中this -> window
 	2、全局作用域里this -> window
@@ -822,7 +821,6 @@ this:
 		a: undefined,
 		b:  function b() {}
 	}
-
 
 	var name = '222';
 	var a = {
@@ -932,16 +930,14 @@ this:
 		}
 	}
 	print()();
-
-
+	
 arguments.calee （运行时的函数）
 	function foo() {
 		console.log(arguments.calee);
 		console.log(arguments.calee == foo); //true
 	}
 	foo();
-
-
+	//递归
 	var num  = (function(n) {
 		if(n ==1) {
 			return 1;
@@ -957,12 +953,11 @@ arguments.calee （运行时的函数）
 		tes();
 	}
 	foo();
-func.caller （函数自己的属性）
+func.caller （函数自己）
 	function test() {
 		console.log(test.caller); //test函数
 	}
 	test();
-
 *********************数组*****************************
 var arr = [1, 2, 3];
 Array.toString.push = function() {
@@ -983,7 +978,6 @@ Array.toString.push = function() {
 	slice = function (pos) {
 		pos += pos > 0 ? 0 : this.length;
 	}
-
 	/*
 		必须写俩形参
 		返回值 
@@ -1009,8 +1003,6 @@ Array.toString.push = function() {
 	arr.sort(function(){
 		return Math.random() - 0.5;
 	})
-
-
 不改变原数组
 	concat join  --> split toString slice
 	var arr = [1, 2, 3, 4, 5, 6];
@@ -1018,7 +1010,6 @@ Array.toString.push = function() {
 	slice(1, 3); //2, 3
    join() //返回数组
    split()// 返回字符串
-
 *********************类数组****************************
 类数组必须有length属性(能像数组/对象一样使用)
 function foo() {
@@ -1169,7 +1160,6 @@ es3.0 和 es5.0产生冲突部分
 es5.0严格模式 那么es3.0和es5.0产生冲突部分就是用es5.0，否则会使用es3.0
 
 ***************DOM、BOM****************
-
 DOM  --> Document Object Model
 	DOM定义了表示和修改文档所需的方法。
 	DOM对象即为宿主对象，有浏览器厂商定义，用来操作html和xml功能的一类对象的集合。
@@ -1201,7 +1191,6 @@ DOM  --> Document Object Model
 				}
 			}(i))
 		}
-
 
 	var div = document.creatElement('div');
 	document.body.appendChild(div);
