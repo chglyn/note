@@ -108,7 +108,7 @@
 
 				splice() 内部使用
 			}
-		3、extend： jQuery继承方法（方便写插件）
+		3、extend： 比如jQuery类方法（方便写插件）
 			/*
 				$.extend() 
 				当只写一个对象自变量的时候，JQ中扩展插件的形式
@@ -155,7 +155,7 @@
 				console.log(a.name.age); //30
 
 			*/
-		4、jQuery.extend:扩展一些工具方法（eg：$.trim(), $.proxy() 方法，既可以给jQuery用也可以给原生js使用）
+		4、jQuery.extend:扩展一些工具方法(jQuery.prototype)（eg：$.trim(), $.proxy() 方法，既可以给jQuery用也可以给原生js使用）
 			jQuery.extend({
 				expando 生成唯一JQ字符串（内部）
 				noConflict() 防止冲突
@@ -332,30 +332,69 @@
 				var df = $.Deferred();
 				//df.resolve();
 				df.reject();
-				return df;
+				return df; 
 			}
-			$.when(fn1, fn2).done(function() {
-				console.log('成功'); //都完成才执行
+			//--> 上面函数return必须是个延迟对象, 省略和普通函数一样直接跳过不执行
+			$.when(fn1(), fn2()).done(function() {
+				console.log('成功'); //传过来的参数都完成才执行
 			}).fail(function() {
-				console.log('失败'); //只要有一个未完成就执行
+				console.log('失败'); //只要传过来的参数有一个未完成就执行
 			})
-		8、support：功能检测
-		  support.checkOn --> true 新版本webkit 否则旧版本 webkit
-
+		8、support：功能检测 （处理原生js浏览器兼容性问题）
+		   	support.checkOn --> true 新版本webkit 否则旧版本 webkit
+			//在每个浏览器上打印属性
+		 	for(var prop in $.support) {
+				console.log($.support[prop]); 
+			}
+			//onfocusin onfocusout 支持冒泡事件(只有ie) 
+			//content-box 标准模式 向外伸张 border-box 怪异模式 向内收缩
 		9、data() ：数据缓存
-		eg：
-			$('div').data('name', 'hello');
-			$('div').data('name');//hello
-
-		10、队列管理
-			queue：入队
-			dequeue：出队
-			eg:
-				$('div').animate({ left:100 });
-				$('div').animate({ top:100 });
-
+			//DOM元素与对象之间相互在引用，大部分浏览器就会出现内存泄漏
+			var oDOM = document.getElementById(div), 
+			    obj = {};
+			oDOM.name = obj;
+			obj.name = oDOM;
+			
+			$('div').data('name', 'hello'); 
+			// data适合挂载JSON  obj...
+			
+			var obj = { name: 'helllo' };
+			//Object.freeze(obj);  只能读取对象的属性, 不能修改对象的属性
+			obj.name = 'hi';
+			console.log(obj.name);
+			
+			Object.defineProperty(obj, 0, { 
+				get: function() {
+					return {};
+				}
+			})
+			
+			//html5获取属性 
+			<div data-cs-all="测试"></div>
+			console.log($('div').get(0).dataset.csAll);
+		10、队列方法 队列管理 (可控)
+			queue：入队  相当于数组 push()
+			dequeue：出队 相当于数组 shift()
+			//例如 连续改变元素的位置
+			$('div').animate({ left:100 });
+			$('div').animate({ top:100 });
+			//只调用进队 没有出队不会执行
+			function fn() {
+				console.log(1);
+			}
+			//$.queue(document, 'fn');
+			//$.queue(document, 'fn', a);
+			$.queue(document, 'fn', [fn, ...]);
+			//$.dequeue('fn');
+			//内部名字 fx --> $(elem).animate({ ... }).queue('fx', function(next) { text();(出队...) }).animate({ ... });
 		11、对元素属性的操作
-		attr() prop() val() add() 等方法
+			attr() prop() val() addClass() 等方法对元素属性的操作
+			//底层实现方法
+			$(elem).attr('name', 'hello'); --> setAttribute('name', 'hellow');
+			$(elem).prop('name', 'hello'); --> document.getElementById('div').name = 'hello';或 elem.['name'] = 'hello';
+			//以上适合挂载id class ...
+			attr() --> 可以获取自定义属性 eg: elem.attr('title');
+			prop() --> 自定义属性有些浏览器不识别 eg: elem.prop('title'); --> 火狐不识别
 
 		12、事件操作的方法
 			eg：on() trigger()等方法
