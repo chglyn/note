@@ -68,9 +68,7 @@
 					//jQuery.makeArra(selector).push() 把类数组转化成数组的方法 
 					//$.makeArra(oDiv, {length:0}) 内部使用两个参数转化成JSON
 				selector 存储选择器字符
-
 				length this对象的长度
-
 				toArray() 转数组
 					//<div></div><div></div>
 					//console.log($('div').toArray()); //[div, div]
@@ -91,9 +89,7 @@
 				slice() 集合的截取
 					//截取不包括结束位置
 				first() 集合的第一项
-
 				last() 集合的最后一项
-
 				eq() 集合的指定项
 					// eq(参数:正负数)
 				map() 返回新集合
@@ -101,11 +97,8 @@
 					//	return elem;
 					//})
 				end() 返回集合前一个状态
-
 				push() 内部使用
-
 				sort() 内部使用
-
 				splice() 内部使用
 			}
 		3、extend： 比如jQuery类方法（方便写插件）
@@ -355,7 +348,7 @@
 			oDOM.name = obj;
 			obj.name = oDOM;
 			
-			$('div').data('name', 'hello'); 
+			$(elem).data('name', 'hello'); 
 			// data适合挂载JSON  obj...
 			
 			var obj = { name: 'helllo' };
@@ -376,8 +369,8 @@
 			queue：入队  相当于数组 push()
 			dequeue：出队 相当于数组 shift()
 			//例如 连续改变元素的位置
-			$('div').animate({ left:100 });
-			$('div').animate({ top:100 });
+			$(elem).animate({ left:100 });
+			$(elem).animate({ top:100 });
 			//只调用进队 没有出队不会执行
 			function fn() {
 				console.log(1);
@@ -395,26 +388,36 @@
 			//以上适合挂载id class ...
 			attr() --> 可以获取自定义属性 eg: elem.attr('title');
 			prop() --> 自定义属性有些浏览器不识别 eg: elem.prop('title'); --> 火狐不识别
-
+		 	
+			//连续删除多个属性 $(elem).removeAttr(id, class, ...);
+			//连续添加多个class $(elem).addClass(class1, class2, ...);
+			
+			//toggleClass存在的className就删除，没有就添加className; eg:切换 $(elem).toggleClass(className);
+			toggleClass(className, true); //true --> 不管className是否存在都是添加, false不管className是否存在都是删除
+			//hasClass 检测是否存在class
+			
+			//addClass 回调
+			$(elem).addClass(function() {
+				//console.log(index); 给元素动态添加className
+				return className + index;
+			})
+			
+			//能通过链式操作 是通过return this实现(this指向一个对象) ***
+			$(elem).addClass(classsName).html('xxx').click(function() { ... });
+			//每次执行完都返回一个对象($(elem).addClass(classsName)返回一个对象); this指的每次生成的对象
+			
+			//下拉多选 multiple属性
 		12、事件操作的方法
 			eg：on() trigger()等方法
-
 		13、DOM操作
 			eg：添加 删除 获取 包装等
-
 		14、css方法：样式的操作
 			eg： 加减乘除等
-
 		15、提交的数据和ajax()操作
 			eg：跨域 ajax load getJSON 等
-
 		16、animate()：运动的方法 show() hide() fadeout()等
-
 		17、offset() scrollTop()等 位置和尺寸的方法
-
 		18、JQ支持模块化模式
-
 		19、在底部挂载window上暴露出去(对外提供的接口) window.jQuery = window.$ = jQuery;
-
 	*/
 }(window)) //window --> 传参比较快，压缩可以识别
