@@ -1,0 +1,77 @@
+
+*******************bind**********************
+// 初探 bind
+var a = 1;
+function fn() {
+  console.log(this.a);
+}
+fn();
+
+var obj = {
+  a: 2
+}
+var newObj = fn.bind(obj); //this指向bind里面的参数obj, 最终指向新的函数
+newObj(); //2
+console.log(new fn().constructor); //构造函数还是指向fn 而且this指向新的对象上
+
+//单对象编程
+var obj = {
+  init: function() { 
+    this.msg = 1;
+    this.dom = document.getElementbyId(elem);
+  },
+  fn: function() { 
+    //this --> obj; 执行click时候有个this --> this.dom 
+    this.dom.onclick = this.showMessage.bind(this);
+  },
+  showMessage: function() {
+      console.log(this.msg);
+  }
+}
+obj.init();
+
+//拓展
+var a = 1;
+function fn(x, y) {
+  console.log(this.a, x, y);
+}
+fn('x', 'y');
+
+var obj = {
+  a: 2
+}
+var newObj = fn.bind(obj, 'z1', 'z2');//bind第一个参数之后, 执行函数时候都会把参数放到newObj(...)里面
+newObj(..., 'z2');
+/*
+  总结：
+  函数A调用bind方法时，需传递的参数o, x, y, z...
+  返回新的函数B
+  函数B在执行时候，具体的功能实际上还是使用的A 只不过this执行变成了o 不传指向window
+  函数B在执行时候，传递的参数会拼接到x, y, z 后面 一并在内部传递给A执行
+  new B() 构造函数依旧是A 而且o不会起到任何作用
+*/
+Function.prototype.newBind = function(target) {// target改变函数指向时this的指向
+  var self = this;
+  var args = [].slice.call(arguments, 1);
+  var temp = function() {};
+  var f = function() {
+    var _arg = [].slice.call(arguments, 0);
+    return self.apply(this instanceof temp ? this : (target || window), args.concat(_arg));
+  }
+  temp.prototype = self.prototype;
+  f.prototype = new temp();
+  return f;
+}
+function show(x, y, z, w) {
+  console.log(this, x, y, z, w);
+}
+var obj = { a:1 }
+var newBind = show.newBind(obj, 'a', 'b');
+newBind('c', 'd');
+new newShow();
+*************************纯函数***************************
+/*
+  对于相同的输入, 永远会得到相同的输出, 而且没有任何可观察的副作用, 也不依赖外部环境的状态
+  指不依赖, 修改其作用域之外变量的函数
+*/
+
