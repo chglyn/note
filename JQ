@@ -1,4 +1,6 @@
 //jQuery源码的解析
+$(function(){ ... }) --> $(document).ready(function(){ ... }) --> $().ready() -->jQuery.ready.promise().done(fn) -->if(document.readyStatus === 'complate') { ... }else{ ...//complated }
+
 (function(window, undefined) { //undefined --> 防止被外部修改
 	/*
 		1、首先定义一些变量和函数 
