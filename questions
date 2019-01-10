@@ -52,14 +52,14 @@ console.log('8');
   
   
 (function() {
-  var a = b = 1;
+	var a = b = 1;
 }())
 console.log(a !== 'undefined'); //false
 console.log(b !== 'undefined'); //true
 
 function Foo() {
-  getName = function() { console.log(1); };
-  return this;
+	getName = function() { console.log(1); };
+	return this;
 }
 Foo.getName = function() { console.log(2); };
 Foo.prototype.getName = function() { console.log(3); };
@@ -73,6 +73,15 @@ new Foo.getName(); // 2
 new Foo().getName(); // 3
 new new Foo().getName(); // 3
   
-  
-  
+function fn() {
+	y = function() {
+		X = 2;
+	};
+	return function() {
+		var x = 3;
+		y();
+		console.log(this.X); 
+	}.apply(this, arguments);
+}
+fn();//2
   
