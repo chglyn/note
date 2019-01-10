@@ -1,5 +1,6 @@
 //jQuery源码的解析
-$(function(){ ... }) --> $(document).ready(function(){ ... }) --> $().ready() -->jQuery.ready.promise().done(fn) -->if(document.readyStatus === 'complate') { ... }else{ ...//complated }
+$(function(){ ... }) --> $(document).ready(function(){ ... }) --> $().ready() -->jQuery.ready.promise().done(fn) 
+-->if(document.readyStatus === 'complate') { ... }else{ ...//complated } --> $.ready() --> readyList.resolveWidth(document, [jQuery]) --> fn
 
 (function(window, undefined) { //undefined --> 防止被外部修改
 	/*
