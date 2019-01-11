@@ -1011,6 +1011,18 @@ Array.toString.push = function() {
 	slice(1, 3); //2, 3
    join() //返回数组
    split()// 返回字符串
+
+//使用指定的函数 将元素进行组合 最终生成单个值
+var arr = [1, 2, 3, 4, 5];
+//传参 函数 初始值(可传可不传)
+arr.reduce(function(prev, current, index, arr) {
+	return prev + current;
+}, 13); //init
+//案例 时间 14：10：09 拼成141009
+[h, m, s].reduce(function(prev, current, index, arr) {
+	return prev + ('0' + current).slice(-2);
+}, 13);
+
 *********************类数组****************************
 类数组必须有length属性(能像数组/对象一样使用)
 function foo() {
