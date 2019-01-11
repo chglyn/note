@@ -57,11 +57,15 @@ v-for注意点：
 			}
 		}
 	}
-
-
-
-
-
-
-
-
+//vue-cli
+	//查看github --> https://github.com/vuejs/vue-cli
+	基于render 
+	
+//组件
+	data: function() {
+		return { ... } //返回一个新的对象, 不这样写影响相同的组件数据
+	}
+	//父向子传值 props
+	//子向父传值 $.emit('自定义事件名', { 其他参数... })触发;  自定义事件名接受: @自定义事件名="fn($event, '18')"
+	//父向子传DOM节点  slot 插槽
+	//兄弟传值 $.emit $.on结合
