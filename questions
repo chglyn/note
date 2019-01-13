@@ -98,3 +98,22 @@ var obj = {
 }
 obj.methods(fn, 1);
   
+//冒泡排序
+var arr = [2, 1, 4, 6, 5, 7, 2];
+function sort(arr) {
+	var len = arr.length,
+	    temp;
+	for(var i = len; i>= 2; i--) {
+		for(var j = 0; j < i - 1; j++) {
+			if(arr[j+1] < arr[j]) {
+				temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+	return arr;
+}
+
+var arr2 = sort(arr);
+var arr3 = arr2.reverse();
