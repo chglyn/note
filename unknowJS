@@ -140,7 +140,7 @@ new newShow();
 		<button id="btn">click me</button>
 
 		var oDiv = document.getElementById('show'),
-			oBtn = document.getElementById('btn');
+		    oBtn = document.getElementById('btn');
 		function throttle(handle, wait) {
 			var lastTime = 0;
 			return function (e) {
@@ -169,7 +169,7 @@ new newShow();
 			var timer = null;
 			return function() {
 				var self = this,
-					arg = arguments;
+				    arg = arguments;
 				clearTime(timer);
 				timer = setTimeout(function() { 
 					handle.apply(self, arg);
@@ -183,7 +183,7 @@ new newShow();
 		/*
 		oInp.onclick = function(e) {
 			var self = this,
-				arg = arguments;
+			    arg = arguments;
 			clearTimeout(timer);
 			timer = setTimeout(function() { 
 				ajax.apply(self, arg);
@@ -200,21 +200,21 @@ new newShow();
 	function bindEvent(elem, wrap) {
 		//down  mover --> up
 		var X,
-			Y,
-			boxL,
-			boxT,
-			disL,
-			disT,
-			drag = false;
+		    Y,
+		    boxL,
+		    boxT,
+		    disL,
+		    disT,
+		    drag = false;
 		elem.onmousedown = function(e) {
 			drag = true;
 			var event = e || window.event;
-				X = event.clientX;
-				Y = event.clientY;
-				boxL = elem.offsetLeft;
-				boxT = elem.offsetTop;
-				disL = X - boxL;
-				disT = Y - boxT;
+			    X = event.clientX;
+			    Y = event.clientY;
+			    boxL = elem.offsetLeft;
+			    boxT = elem.offsetTop;
+			    disL = X - boxL;
+			    disT = Y - boxT;
 		};
 		wrap.onmousemove = function(e) {
 			var event = e || window.event;
@@ -256,11 +256,11 @@ new newShow();
 	<div id="box"></div>
 
 	var can = document.getElementById('can'),
-		oBox = document.getElementById('box'),
-		ctx = can.getContext('2d'),
-		timer,
-		angle = 0,
-		per;
+	   oBox = document.getElementById('box'),
+	   ctx = can.getContext('2d'),
+	   timer,
+	   angle = 0,
+	   per;
 	CanvasRenderingContext2D.prototype.sector = function(x, y, r, sDeg, eDeg) {
 		//圆心点 半径 角度 起始角度 结束角度
 		this.save();
