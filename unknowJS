@@ -170,7 +170,7 @@ new newShow();
 			return function() {
 				var self = this,
 				    arg = arguments;
-				clearTime(timer);
+				clearTimeout(timer);
 				timer = setTimeout(function() { 
 					handle.apply(self, arg);
 				}, delay);
