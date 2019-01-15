@@ -117,3 +117,19 @@ function sort(arr) {
 
 var arr2 = sort(arr);
 var arr3 = arr2.reverse();
+
+
+var dad = {};
+var son = {};
+function show() {
+	return this;
+}
+
+var newShow = show.bind(dad);
+var newShow1 = newShow.bind(son);
+console.log(newShow() == dad);
+console.log(newShow1() == son);
+
+
+
+
