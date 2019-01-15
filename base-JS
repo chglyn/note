@@ -1185,7 +1185,7 @@ DOM  --> Document Object Model
 			document代表整个文档
 			document.getElementById()//元素id在ie8以下的浏览器，不区分id大小，二期也返回匹配name属性的元素
 			document.getElementsByTagName()//标签名 (用的较多，方法定义在document.prototype和Element.prototype上)
-			document.getElementsBtName()//需注意，只有部分标签name可生效（表单，表单元素，img，iframe）
+			document.getElementsByName()//需注意，只有部分标签name可生效（表单，表单元素，img，iframe）
 			document.getElementsByClassName()//类名 --> ie8和ie8以下的ie版本没有，可以多个class一起
 			querySelector()//css选择器 在ie7和ie7以下的版本中没有
 			querySelectorAll()//css选择器 在ie7和ie7以下的版本中没有
@@ -1433,7 +1433,7 @@ Ele.currentStyle --> CSSStyleDeclaration
 		</div>
 	</div>
 	冒泡 
-		结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一个事件，自父元素冒泡向父元素。（自底向上）
+		结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一个事件，自子元素冒泡向父元素。（自底向上）
 
 	捕获
 		结构上嵌套关系的元素，会存在事件捕获的功能，即同一个事件，自父元素捕获至子元素（事件源）。（自顶向下）
