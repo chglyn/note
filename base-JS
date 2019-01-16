@@ -1515,7 +1515,7 @@ jS异步加载的三种方案
 	3、创建script，插入到DOM中，加载完毕后callBack
 
 		function loadScript(url, callBack) {
-			var script = document.createELement('script'); //创建
+			var script = document.createElement('script'); //创建
 			script.type = 'test/javascript'; //设置
 			//先绑定事件，再加载文件
 			if(script.readyState) { //ie方法
