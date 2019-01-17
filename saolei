@@ -21,7 +21,7 @@
 	<div class="box" id="box"></div>
 	<div class="alertBox" id="alertBox">
 		<button class="closeBtn" id="closeBtn">Close</button>
-		Game Over
+		<span id="fight">Game Over</span>
 	</div>
 </div>
 
@@ -41,6 +41,7 @@ window.onload = function() {
 	var flagBox = document.getElementById('flagBox');
 	var alertBox = document.getElementById('alertBox');
 	var closeBtn = document.getElementById('closeBtn');
+	var fight = document.getElementById('fight');
 	var mineNum; //雷的数量
 	var mineOver; //已经标记雷
 	var block; //格子数
@@ -60,7 +61,7 @@ window.onload = function() {
 			return false;
 		}
 		elem2.onmousedown = function(e) {
-			var event = e.target || srcElement;
+			var event = e.target || src.Element;
 			if(e.which == 1) {
 				leftClick(event);
 			}else if(e.which == 3) {
@@ -159,11 +160,10 @@ window.onload = function() {
 		} 
 		score.innerHTML = mineOver;
 		if(mineOver == 0) {
-				alertBox.style.display = 'block';
-				alertBox.style.backgroundColor = 'red';
-				alertBox.innerHTML = 'Fighting'
+			alertBox.style.display = 'block';
+			alertBox.style.backgroundColor = 'red';
+			fight.innerHTML = 'Fighting'
 		}
-	}		
-  
+	}			
 }
 </script>
