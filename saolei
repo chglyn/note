@@ -1,0 +1,169 @@
+<style>
+.top{ display: flex;justify-content: center; padding:20px 0;}
+.btn{ margin-right: 10px;border: 0; padding:0 10px;}
+.box{width:500px;height: 500px;border-left:1px solid #B25f27;border-top: 1px solid #B25f27;margin:0 auto;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.3);display: none;}
+.flagBox{ display: none; }
+.alertBox {width:520px;height:550px;position: absolute;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#c0c0c0; line-height:200px;text-align: center;color: #fff;border-radius: 10px; display: none;}
+.closeBtn{ position: absolute;top: 5;right: 5px; }
+.block{ width: 49px;height: 49px;border-right: 1px solid #B25f27; border-bottom: 1px solid #B25f27;float:left;box-shadow: 0 0 4px #333 inset;background-color:green;}
+.show{ background-color: #000; }
+.num{ background-color: #ECD0A1; line-height:49px;text-align: center; font-size:18px;font-weight:400;}
+.flag{ background-color: red; }
+.ml20{ margin-left:20px; }
+</style>
+
+<div class="wrapper">
+	<div class="top">
+		<button class="btn" id="btn">Start</button>
+		<div id="flagBox" class="flagBox">当前剩余雷数<span id="score">10</span></div>
+		<span class="ml20">红色代表小红旗， 黑色代表雷</span>
+	</div>
+	<div class="box" id="box"></div>
+	<div class="alertBox" id="alertBox">
+		<button class="closeBtn" id="closeBtn">Close</button>
+		Game Over
+	</div>
+</div>
+
+
+<script>
+/*
+* 动态生成100个小格--> div
+*  leftClick 没有雷 --> 显示数字(代表以当前小格位置为中心, 周围8个雷数) 
+*  --> 扩散 (当前周围8个格子没有雷) --> 有雷 --> game over
+*  rightClick 没有标记 --> 进行标记 有标记 --> 取消标记 --> 标记是否正确, 10个都正确标记, 提示成功 
+*  已经出现数字 --> 无效果
+*/
+window.onload = function() {
+	var startBtn = document.getElementById('btn');
+	var box = document.getElementById('box');
+	var score = document.getElementById('score');
+	var flagBox = document.getElementById('flagBox');
+	var alertBox = document.getElementById('alertBox');
+	var closeBtn = document.getElementById('closeBtn');
+	var mineNum; //雷的数量
+	var mineOver; //已经标记雷
+	var block; //格子数
+	var mineMap = []; //小格是否有雷
+	var startGame = true; //控制重复生成格子
+	bindEvent(startBtn, box, flagBox, closeBtn, alertBox);
+	function bindEvent(elem1, elem2, elem3, elem4, elem5) {
+		elem1.onclick= function() {
+			if(startGame) {
+				elem2.style.display = 'block';
+				elem3.style.display = 'block';
+				init();
+				startGame = false;
+			}
+		}
+		elem2.oncontextmenu = function() {
+			return false;
+		}
+		elem2.onmousedown = function(e) {
+			var event = e.target || src.Element;
+			if(e.which == 1) {
+				leftClick(event);
+			}else if(e.which == 3) {
+				rightClick(event);
+			}
+		}
+		elem4.onclick = function() {
+			elem2.style.display = 'none';
+			elem3.style.display = 'none';
+			elem5.style.display = 'none';
+			elem2.innerHTML = '';
+			startGame = true;
+		}
+	}
+	function init() {
+		mineNum = 10;
+		mineOver = 10;
+		score.innerHTML = mineOver;
+		for(var i = 0; i < 10; i++) {
+			for(var j = 0; j < 10; j++) {
+				var con = document.createElement('div');
+				con.classList.add('block');
+				con.setAttribute('id', i + '-' + j);
+				box.appendChild(con);
+				mineMap.push({ mine:0 });
+			}
+		}
+		block = document.getElementsByClassName('block');
+		while(mineNum) {
+			var mineIndex  = Math.floor(Math.random() * 100); //雷的位置
+			if(mineMap[mineIndex].mine === 0) { 
+				mineMap[mineIndex].mine = 1;
+				block[mineIndex ].classList.add('isLei');
+				mineNum --;
+			}
+		}
+	}
+	function leftClick(dom) {
+		if(dom.classList.contains('flag')) { //当前被插过旗
+			return;
+		}
+		var isLei = document.getElementsByClassName('isLei');
+		if(dom && dom.classList.contains('isLei')) {
+			for(var i = 0;i < isLei.length; i++) {
+				isLei[i].classList.add('show');
+			}
+			setTimeout(function() {
+				alertBox.style.display = 'block';
+				alertBox.style.backgroundColor = 'red';
+			}, 800)
+		}else{
+			var n = 0; //计数周围的雷个数
+			var posArr = dom && dom.getAttribute('id').split('-');
+			var posX = +posArr[0];
+			var posY = +posArr[1];
+			dom && dom.classList.add('num');
+			/*
+			*   i - 1, j - 1   i - 1, j   i - 1, j + 1
+			*	i, j -1        i, j       i, j + 1
+			*   i + 1, j - 1   i + 1, j   i + 1, j + 1
+			*/
+			for(var i = posX - 1; i <= posX + 1; i ++) {
+				for(var j = posY - 1; j <= posY + 1; j++ ) {
+					var aroundBox = document.getElementById(i + '-' + j);
+					if(aroundBox && aroundBox.classList.contains('isLei')) {
+						n ++;
+					}
+				}
+			}
+			dom && (dom.innerHTML = n);
+			if( n == 0) {
+				for(var i = posX - 1; i <= posX + 1; i ++) {
+					for(var j = posY - 1; j <= posY + 1; j++ ) {
+						var nearBox = document.getElementById(i + '-' + j); //周围雷个数
+						if(nearBox && nearBox != 0) {
+							if(nearBox.classList.contains('check')) {
+								nearBox.classList.add('check');
+								leftClick(nearBox);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	function rightClick(dom) { 
+		if(dom.classList.contains('num')) { //被点击的dom 是否包括数字
+			return;
+		}
+		dom.classList.toggle('flag');
+		if(dom.classList.contains('isLei') && dom.classList.contains('flag')) {
+			mineOver --;
+		} 
+		if(dom.classList.contains('isLei') && !dom.classList.contains('flag')) {
+			mineOver ++;
+		} 
+		score.innerHTML = mineOver;
+		if(mineOver == 0) {
+				alertBox.style.display = 'block';
+				alertBox.style.backgroundColor = 'red';
+				alertBox.innerHTML = 'Fighting'
+		}
+	}		
+  
+}
+</script>
