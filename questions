@@ -130,6 +130,10 @@ var newShow1 = newShow.bind(son);
 console.log(newShow() == dad);
 console.log(newShow1() == son);
 
-
-
+console.log(1 + '2' + '2' );
+console.log(1 + + '2' + '2');
+console.log(1 + - '1' + '2');
+console.log(+ '1' + '1' + '2');
+console.log('A' - 'B' + '2');
+console.log('A' - 'B' + 2);
 
