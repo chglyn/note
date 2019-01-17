@@ -771,15 +771,15 @@ instanceof
 		for(var prop in origin) {
 			if(origin.hasOwnProperty(prop)) {
 				if(origin[prop] !== 'null' && typeof(origin[prop]) == 'object') { //引用值
-					if(toStr.call(oringin[prop] == arrStr)) {
+					if(toStr.call(origin[prop] == arrStr)) {
 						target[prop] = [];
 					}else{
 						target[prop] = {};
 					}
-					//target[prop] = toStr.call(oringin[prop] == arrStr ? [] : {};
+					//target[prop] = toStr.call(origin[prop] == arrStr ? [] : {};
 					deepClone(origin[prop], target[prop]);
 				}else{
-					target[prop] = oringin[prop];
+					target[prop] = origin[prop];
 				}
 			}
 		}
