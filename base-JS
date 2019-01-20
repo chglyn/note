@@ -1135,7 +1135,7 @@ obj = {
 	function unique(arr) {
 		arr.sort();
 		var len = arr.length;
-		var newArr = [];
+		var newArr = [arr[0]];
 		for(var i = 0; i < len; i++){
 			if(arr[i] !== newArr[newArr.length - 1]) {
 				newArr.push(arr[i]);
