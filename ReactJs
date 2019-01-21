@@ -1,0 +1,99 @@
+组件化分析：
+	模块化：从代码角度进行分析 --> 把可复用的代码, 抽离为单个模块, 便于项目维护开发
+	组件化：从UI界面角度进行分析 --> 把一些可复用的UI元素, 抽离为单个组件
+	组件化好处：随着项目的增大, 组件越来越多, 很方便把现有的组件, 拼接为一个完整的界面
+	Vue是如何实现组件化的：创建.vue文件, 创建对应的组件
+	React是如何实现组件化的：一切都是基于JS来表现
+
+DOM和虚拟DOM
+	DOM的本质是什么：浏览器中的概念, 用JS对象来表示页面上的元素, 并提供了操作DOM对象的API
+	什么是React中的虚拟DOM：是框架中的概念, 用JS对象来模拟, 页面上的DOM和DOM嵌套
+	虚拟DOM的目的：为了实现界面中, DOM元素的高效更新
+	本质：用JS对象来模拟, 页面上的DOM和DOM嵌套关系
+	目的：为了实现页面元素的高效更新
+
+Diff算法
+	tree diff：
+		新旧两颗DOM树, 一层一层对比的过程, 就是Tree diff; 当整颗DOM对比完毕, 则所有需要被按需要的元素, 必然能够找到
+	component diff： 
+		在进行tree diff时候, 每一层中, 组件级别的对比; 
+		如果对比前后, 组件类型相同, 则暂时不需要被更新；
+		如果对比前后, 组件类型不同, 创建新组建, 并追加到页面上
+	elem diff：
+		在进行组件对比的时候, 如果两个组件类型相同, 则需要进行元素级别的对比
+    
+Node和Chrome之间的关系
+	如果chrome浏览器支持的, 则node就支持
+  
+// cnpm i react react-dom -s
+使用React创建基本的虚拟DOM
+  //必须这么写
+  import React from 'react'
+  import ReactDOM from 'react-dom'
+
+  //参数1 创建的元素类型, 字符串, 表示元素的名称
+  //参数2 是一个对象或null, 表示当前这个DOM元素的属性
+  //参数3 子节点(包括其他, 虚拟DOM, 获取文本子节点)
+  //参数n 其他子节点	
+  const myh1 = React.createElement('h1', null, '这是一个h1');
+  const myh1 = React.createElement('h1', { id:'myh1', title:'这是个h1' }, '这是一个h1');
+
+  //使用ReactDOM把虚拟DOM渲染到界面上
+  //参数1 要渲染的那个虚拟DOM
+  //参数2 指定页面上一个容器, 第二个元素接收的应该是一个DOM元素 而不是选择器
+  ReactDOM.render(myh1, document.getElementById('app'));
+
+节点嵌套
+	const myh1 = React.createElement('h1', { id:'myh1', title:'这是个h1' }, '这是一个h1');
+	const mydiv = React.createElement('div', null, '这是一个div元素', myh1);
+	ReactDOM.render(mydiv, document.getElementById('app'));
+  
+jsx语法事项
+	//注意：在js文件中不能使用这种html的标记
+	//可以使用babel来转换 
+	//添加.babelrc文件 { 'presets'：['env', 'stage-0', 'react'], 'plugins':['transform-runtime'] }
+	//jsx语法, 符合xml规范的js
+	//jsx语法本质: 在运行时候, 被转化成了React.createElement形式来执行
+	//配置webapck module时添加excludes
+jsx中书写js代码
+	let a = 10
+	let str = 'hello world'
+	let boo = true
+	const h1 = <h1>这是一个h1</h1>
+	const arr = [
+		<h2>这是h2</h2>,
+		<h3>这是h3</h3>
+	];
+	const arrstr = ['三毛', '娃哈哈'];
+	/*	外部使用遍历
+      需要把key添加给forEach、map、for循环直接控制的元素
+		const newArr = [];
+		arr.forEach(item=>{
+			const temp = <h5 key={item}>{item}</h5>
+			newArr.push(temp);
+		})
+	*/
+	//书写必学闭合标签
+	//什么情况下使用{}： 需要在jsx控制区域内写js表达式, 则需要把js代码写到{}中
+	ReactDOM.render(<div>
+		{a + 2}
+		<hr />
+		{str}
+		<hr />
+		{boo?'条件为真':'条件为假'}
+		<hr />
+		<p title={str}>p标签</p>
+		<hr />
+		{h1}
+		<hr />
+		{arr}
+		<hr />
+		{newArr}
+		<hr />
+		{arr.map(item => <h3 key={item}>{item}</h3>)}
+	</div>, document.getElementById('app'))
+vue和React中key的作用
+  需要保存状态, 使用:key="item.id"
+
+
+
