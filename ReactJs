@@ -70,7 +70,7 @@ jsx中书写js代码
 	vue和React中key的作用 需要保存状态, 使用:key="item.id"
 	const newArr = [];
 	arr.forEach(item=>{
-		const temp = <h5 :key={item}>{item}</h5>
+		const temp = <h5 key={item}>{item}</h5>
 		newArr.push(temp);
 	})
 	书写必学闭合标签
