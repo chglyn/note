@@ -65,16 +65,27 @@ jsx中书写js代码
 		<h3>这是h3</h3>
 	];
 	const arrstr = ['三毛', '娃哈哈'];
-	/*	外部使用遍历
-      需要把key添加给forEach、map、for循环直接控制的元素
-		const newArr = [];
-		arr.forEach(item=>{
-			const temp = <h5 key={item}>{item}</h5>
-			newArr.push(temp);
-		})
+	/*外部使用遍历
+	需要把key添加给forEach、map、for循环直接控制的元素
+	vue和React中key的作用 需要保存状态, 使用:key="item.id"
+	const newArr = [];
+	arr.forEach(item=>{
+		const temp = <h5 :key={item}>{item}</h5>
+		newArr.push(temp);
+	})
+	书写必学闭合标签
+	什么情况下使用{}： 需要在jsx控制区域内写js表达式, 则需要把js代码写到{}中
+	jsx语法注意事项
+		注释使用js语法
+			1、	{ /* 注释 */}
+			2、	{
+					//注释...
+				}
+
+		为jsx中的元素添加class类名：需要使用className来代替, htmlFor替换for属性
+		在jsx创建DOM时候, 所有的节点, 必须有唯一的根元素进行包裹
+		在jsx语法中, 标签必须成对出现, 则必须自闭合
 	*/
-	//书写必学闭合标签
-	//什么情况下使用{}： 需要在jsx控制区域内写js表达式, 则需要把js代码写到{}中
 	ReactDOM.render(<div>
 		{a + 2}
 		<hr />
@@ -92,8 +103,155 @@ jsx中书写js代码
 		<hr />
 		{arr.map(item => <h3 key={item}>{item}</h3>)}
 	</div>, document.getElementById('app'))
-vue和React中key的作用
-  需要保存状态, 使用:key="item.id"
 
+创建第一种组件并为组件传递prop值
+	function Hello(props) {
+		//如果在一个组件中 return null, 则表示组建为空的 什么也不渲染
+		//在组件中必须返回一个合法的jsx虚拟DOM元素
+		//不论是vue 还是react 组件中的props只能只读 不能赋值
+
+		return <h1>这是Hello组件 --> {props.name}</h1>
+	}
+	const person = {
+		name: 'sunny',
+		age: 18,
+		sex: male
+	}
+	ReactDOM.render(<div>
+		{/* 直接把组建的名称 以标签的方式 丢在页面上 */}
+		{ /*单个传值*/ }	<Hello name={person.name}></Hello>
+ 		{ /*多个传值*/ } <Hello {...person} />
+	</div>, document.getElementById('app'))
+
+	抽离组件
+		//(webpack-->resolve模块-->extensions属性-->.js/.jsx/.json, 按顺序填写 表示这几个文件的后缀名可以省略)
+		//webpack-->resolve模块-->alias-->'@':path.join(__dirname, './src') @表示项目根目录中src这一层目录
+		创建components文件夹, 在该目录下创建Hello.jsx文件, 存放Hello代码
+		然后使用 export default Hello 导出组件, 再引入import React from 'react';  
+		导入组件 import Hello from './components/Hello'
+			  //import Hello from '@/components/Hello' --> @表示项目根目录中的src这一层目录
+
+es5构造函数
+	function Person(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+	//info属性 直接挂在了构造函数 所以是静态属性 可以通过Person.info访问
+	Person.info = 'info'; 
+	//实例方法
+	Person.prototype.say = function() {
+		console.log('Person的实例方法')
+	}
+	//静态方法
+	Person.say = function() {
+		console.log('Person静态方法')
+	}
+	var p = new Person('sunny', 18);
+	console.log(p);
+	p.say();
+	Person.show();
+	//静态属性：通过构造函数 直接访问到的属性
+//========================================
+es6 class关键字
+	//在class{}的区域内 只能写构造器 静态方法 静态属性 实例方法
+	//class关键字内部 还是用原来的配方实现的 简称语法糖
+	class Son{
+		//这是类中的构造器
+		// 类中的构造器：每一个类中都有一个构造器, 如果没有手动指定构造器 可以认为内部有一个隐藏的构造器
+		// 构造器作用：new这个类的时候 优先执行构造器中的代码
+		constructor(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+		//在class内部, 通过static修饰的属性, 就是静态属性
+		static.info = 'info'
+		//实例方法
+		say() {
+			console.log('Son的实例方法');
+		}
+		//静态方法
+		static say() {
+			console.log('Son静态方法');
+		}
+	}
+	const s = new Son('sunny', 18);
+	console.log(s);
+	s.say();
+	Son.say();
+
+class继承
+	//理解成原型对象 prototype
+	class People{
+		constructor(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+		say() {
+			console.log('hello');
+		}
+	}
+	//在class类中 使用extends关键字实现子类继承父类
+	//语法： class 子类 extends 父类
+	class American extends People{
+		constructor(name, age) {
+			// 为何在constructor中使用super
+			// 如果一个子类 通过extends关键字继承父类, 那么在子类的constructor构造函数中必须优先调用一下super();
+			// super是什么
+			//super是一个函数 是父类的构造器; 子类中的super就是父类中的constructor构造器的一个引用
+			// 调用了super之后a1实例的name和age都变成undefined
+			super(name, age);
+		}
+	}
+	const a1 = new American('sunny', 18);
+	console.log(a1);
+	a1.say();
+
+	class Chinese extends People{
+		//IdNumber 身份号 中国独有的 就不能挂载父类上
+		constructor(name, age, IdNumber) {
+			//子类中 this只能放在super后面使用
+			super(name, age);
+			this.IdNumber = IdNumber;
+		}
+	}
+	const c1 = new Chinese('cherry', 18, '13100*****');
+	console.log(c1);
+	c1.say();
+创建第二种组件并为组件传递prop值
+	class Hello extends React.Component{
+		//在组件中, 必须有render函数
+		//render作用：渲染当前组件所对应的虚拟DOM结构, render相当于实例方法
+		render() {
+			//render函数中, 必须有返回的合法jsx虚拟DOM结构
+			//在class关键字创建的组件中, 如果使用外界传递过来的props参数, 不需要接收, 直接通过this.xxx = xxx访问即可
+			return <div>
+				{/*在class组件内部, this表示当前组件的实例对象*/}
+				这是第二个Hello组件 --> {this.props.name}
+				}
+			</div>
+		}
+	}
+	var user = {
+		name: 'cherry',
+		age: 18
+	}
+	ReactDOM.render(<div>
+		{/*<Hello name={user.name} />*/}
+		<hr />
+		<Hello {...user} />
+	</div>, document.getElementById('app'))
+两种创建组件方式的对比
+	使用构造函数创建出来的组件, 叫无状态组件
+	使用class关键字创建出来的组件, 叫有状态组件
+	什么情况下使用有状态组件, 什么情况下使用无状态组件
+		如果一个组件需要有自己的私有数据, 推荐使用class创建有状态组件
+		如果一个组件需要有自己的私有属性, 推荐使用无状态组件
+		React官方： 无状态组件,有雨没有自己的state和生命周期函数, 所以运行效率必有状态运行效率高
+	有状态组件和无状态组件之间的本质区别就是：有无state属性, 有无生命周期函数
+	组件中的props和state/data之间的区别
+		props中数据, 都是外界传递过来的
+		state/data中数据, 都是组件私有的
+		props中数据都是只读状态, 不能赋值
+		state/data中的数据, 可读可写
 
 
