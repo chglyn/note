@@ -18,7 +18,7 @@ Diff算法
 	component diff： 
 		在进行tree diff时候, 每一层中, 组件级别的对比; 
 		如果对比前后, 组件类型相同, 则暂时不需要被更新；
-		如果对比前后, 组件类型不同, 创建新组建, 并追加到页面上
+		如果对比前后, 组件类型不同, 创建新组件, 并追加到页面上
 	elem diff：
 		在进行组件对比的时候, 如果两个组件类型相同, 则需要进行元素级别的对比
     
@@ -164,7 +164,7 @@ es6 class关键字
 			this.age = age;
 		}
 		//在class内部, 通过static修饰的属性, 就是静态属性
-		static.info = 'info'
+		static info = 'info'
 		//实例方法
 		say() {
 			console.log('Son的实例方法');
@@ -198,7 +198,7 @@ class继承
 			// 如果一个子类 通过extends关键字继承父类, 那么在子类的constructor构造函数中必须优先调用一下super();
 			// super是什么
 			//super是一个函数 是父类的构造器; 子类中的super就是父类中的constructor构造器的一个引用
-			// 调用了super之后a1实例的name和age都变成undefined
+			//如果没有传参 调用了super之后a1实例的name和age都变成undefined
 			super(name, age);
 		}
 	}
