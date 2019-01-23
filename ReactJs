@@ -73,7 +73,6 @@ jsx中书写js代码
 		const temp = <h5 key={item}>{item}</h5>
 		newArr.push(temp);
 	})
-	书写必学闭合标签
 	什么情况下使用{}： 需要在jsx控制区域内写js表达式, 则需要把js代码写到{}中
 	jsx语法注意事项
 		注释使用js语法
@@ -104,7 +103,7 @@ jsx中书写js代码
 		{arr.map(item => <h3 key={item}>{item}</h3>)}
 	</div>, document.getElementById('app'))
 
-创建第一种组件并为组件传递prop值
+创建第一种组件并为组件传递props值
 	function Hello(props) {
 		//如果在一个组件中 return null, 则表示组建为空的 什么也不渲染
 		//在组件中必须返回一个合法的jsx虚拟DOM元素
@@ -149,7 +148,7 @@ es5构造函数
 	var p = new Person('sunny', 18);
 	console.log(p);
 	p.say();
-	Person.show();
+	Person.info();
 //========================================
 es6 class关键字
 	//在class{}的区域内 只能写构造器 静态方法 静态属性 实例方法
@@ -216,7 +215,7 @@ class继承
 	const c1 = new Chinese('cherry', 18, '13100*****');
 	console.log(c1);
 	c1.say();
-创建第二种组件并为组件传递prop值
+创建第二种组件并为组件传递props值
 	class Hello extends React.Component{
 		//在组件中, 必须有render函数
 		//render作用：渲染当前组件所对应的虚拟DOM结构, render相当于实例方法
