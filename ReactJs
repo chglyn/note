@@ -417,7 +417,7 @@ React组件生命周期
 	组件运行阶段 根据props属性或state状态的改变, 有选择的执行0到多次
 		componentWillRecelveProps
 		shouldComponentUpdate
-		componentWIllUpdate
+		componentWillUpdate
 		render
 		componentDidUpdate
 	组件销毁阶段 特点：只执行一次
