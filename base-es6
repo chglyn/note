@@ -331,7 +331,59 @@ Array类上的扩展
 	let arr = (new Function("return "+str))();
 	console.log(arr); //arr --> [{name:"sunny"}, {age:18}]
 	
-	
+参数作用域问题
+	//函数执行时候先给形参赋值, 形参也是私有变量, 如果给形参的默认值是一个变量先看是不是自己的私有变量, 不是自己的在全局中是否有这个变量, 没有就报错
+	let m = 10, n =100;
+	function fn(x = m, y = n) {
+		//私有作用域：私有变量 x, y, m, n
+		console.log(x, y);
+		let m = 'sunny';
+		//var m = 'cherry';
+		let n = 18
+	}
+	fn(); // 10 100
+
+	let x = 10;
+	function fn(x, y = x) {
+		console.log(x, y);
+	}
+	fn(1); // 1 1
+
+扩展运算符 ...
+	//将费数组变成数组(类数组 length)
+	let str = '123';
+	console.log([...str]);//['1', '2', '3']
+	function fn() {
+		console.log([...arguments]);
+	}
+	fn(1, 2); // [1, 2]
+	//将数组变成非数组
+	var arr = [1, 2];
+	console.log(...arr); 1 2
+	//求数组最大值
+	let arr = [121, 123, 134];
+	console.log(Math.max.apply(null, arr));
+	console.log(eval("Math max("+arr+")"));
+	console.log(Math.max(...arr));
+
+箭头函数	
+	//箭头函数是匿名函数
+	//函数体只有一行代码return 可以省略
+	//形参只有一个时候可以省略括号
+	//语法：let fn = (形参)=>{ 函数体 }
+	//注意：
+	//箭头函数没有this指向, 里面的this是上一级作用域下的this
+	//箭头函数没有arguments
+		let fn = (...arg)=>{
+			console.log(arg);
+		}
+		fn(1, 2);
+	//箭头函数不可以用作构造函数 因为不可以使用new执行
+		let F = ()=>{}
+		console.log(new F);//F not constructor
+
+	let fn = x=>x+1;  == let fn = x=>{return x+1}
+	//通常函数当做参数时使用箭头函数	
 	
 	
 	
