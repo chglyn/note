@@ -1,0 +1,337 @@
+let, const定义变量
+	var fn 存在变量声明; 声明的变量会给window增加属性（全局作用域下）
+	var 只会提前声明, fn 即声明又定义
+
+	console.log(a, fn)
+	var a;
+	function fn() {}
+
+	var a = 2;
+	console.log(window.a) //2
+
+	//没有变量提升
+	//不可以重复声明
+	//不会给window增加属性
+	console.log(a); //'a' has already been declared
+	let a = 1;
+	console.log(window.a) //undefined
+
+	//没有变量提升
+	//不可以重复声明
+	//不会给window增加属性
+	//定义变量一旦声明必须赋值
+	//定义的是一个常量（不可以重新赋值）
+	const a = 1;
+
+	块级作用域
+		//在fn{} for{} if{} obj{}情况下, 一个{}就是一个块级作用域;
+		//在块级作用域下, var 和fn声明的变量依然是全局的
+		//在块级作用域下, let和const声明的变量是私有的
+		// {} 想表示一个对象, 不可以放在行首
+		{
+			var a = 0;
+			function fn() {}
+			let b = 1;
+		}
+		console.log(a); //0
+		fn();
+		console.log(b); // b not undefined
+		//{name:'sunny'} 看成一个块级作用域
+		//转变 ({name:'sunny'}) 
+		console.log(eval('({name:'sunny'})'));
+
+		//if(){} 中的fn只会提前声明不会定义, 当条件成立先给函数赋值, 代码再执行
+		console.log(a);
+		console.log(fn);
+		if(1或0) {
+			console.log(fn);
+			var a = 1;
+			function fn() {}
+		}
+
+		for() {} 点击li获取索引
+
+结构赋值
+	let arr = [1, 2, 3, 4, 5];
+	//let x = arr[0];
+	//let y = arr[1];
+	//let z = arr[3];
+	let[x, y, z, m] = arr;
+	console.log(x, y, z);
+	//设置默认值 只有后面结构的值是undefined时候才会走默认值
+	let[x, y=10] = [1, 2];
+	console.log(x, y); //1 2
+
+	let[x, y=10] = [1];
+	console.log(x, y); //1 10
+	//省略赋值
+	let [ , , z] = [1, 2, 3];
+	console.log(z); //3
+	//不定参数 将后面的项放在一个数组中赋值给y3
+	let [x, y, ...y3] = [1, 2, 3, 4];
+	console.log(y3);// [3, 4]
+	//对象的结构赋值 
+	//如果变量名和属性名一样, 可以直接省略写法
+	let {name} = {name:'sunny'};
+	console.log(name)
+	//对象设置默认值
+	let {name, age:18} = {name:'sunny', age:undefined};
+	console.log(name, age); // sunny 18
+	//嵌套
+	let {name, age:18, list} = {name:'sunny', age:undefined, list:['js', 'vue']};
+	console.log(name. age, x1, x2); //sunny 18 js vue
+
+	let x, y;
+	[x, y] = [1, 2];
+	console.log(x, y); //1 2
+	({x, y} = {x:1, y:2});
+	console.log(x, y); //1 2
+	//使用数组结构赋值, 如果等号右边不是一个数组, 默认将其转化为类数组
+	let[x, y] = '123';
+	console.log(x, y); //1 2
+	//使用对象结构赋值, 如果等号右边右边不是一个对象, 默认将其转化为对象
+	let {a} = 1;
+	console.log(a); //undefined
+	console.log(Object(a)); //{__proto__:}
+
+	let {length:a} = '123';
+	console.log(Object('123'));
+	console.log(a);
+
+	函数结构赋值
+		function fn([x, y, ...z]) {
+			console.log(x, y, z); //1, 2, [3, 4]
+		}
+		fn(1, 2, 3, 4);
+
+		function fn({name='cherry', age=18}) {
+			console.log(name, age); //sunny 18
+		}
+		fn({name:'sunny'});
+
+		function fn({name='cherry', age=18}={}) {
+			console.log(name, age); 
+		}
+		fn();//sunny 18
+		fn({});// sunny 18
+
+		function fn({name, age}={name:'sunny', age:18}) {
+			console.log(name, age); 
+		}
+		fn(); //sunny 18
+		fn({});//undefined undefined
+
+字符串的扩展
+	console.log(String.prototype);
+	//include 返回值布尔 true/false
+	//片段字符串中有没有指定字符
+	//includes(指定字符, 开始查找的位置(可选))
+	//参数2 如果不是数字默认会转化为数字 Number方法转化
+	let str = 'abc123';
+	console.log(str.includes('a')); //true
+	console.log(str.includes('a', 2)); //false
+	console.log(str.includes('a', null)); //true
+
+	//startsWith endsWith
+	//startsWith 判断字符串是不是以指定字符作为开头
+	//语法：startsWith('指定字符', 开始查找的位置(可选))
+	console.log(str.startsWith('a')); //true
+	//endsWith 判断字符串是不是以指定字符作为结尾
+	//语法： endsWith('指定字符', n); n：从前n个中查看 
+	console.log(str.startsWith('c', 3)); //true
+
+	//repeat(n) 将字符串重复n次; n 取整 不可以是负数 Infinity
+	//0到-1, 取整0
+	console.log(str.repeat(1));
+
+	//padStart padEnd; 按照指定字符补全字符串的指定长度 (es7方法)
+	//参数1：长度lenght, 参数2：指定字符
+	//语法： padStart/padEnd(length, '指定字符')
+	let str = 'ab';
+	console.log(str.padStart(4, 'jj')); //jab
+	console.log(str.padStart(5, 'cdef')); //cdeab
+
+模版字符串
+	let name = 'sunny';
+	document.body.innerHTML = `<div>${name}</div>`;
+
+Array类上的扩展
+	console.dir(Array);
+	//Array 类, 是一个函数; 返回一个数组
+	//Array(x, y) 将参数变成一个数组返回 [x, y];
+	//只有一个参数并且参数是个数字, 返回一个有n个空位的数组
+	console.log(Array('3')); //['3']
+	console.log(Array(3)); //[empty x 7]
+
+	//Array.of() 跟Array一样, 唯一不同是： 参数是一个数字的时候返回是一个只有一项的数组
+	console.log(Array.of(3)); //[3]
+
+	//Array.from() 返回一个数组; 参数是 数组或类数组
+	console.log(Array.from(123)); //[1, 2, 3]
+	console.log(Array.from('123')); //['1', '2', '3']
+
+数组原型上的扩展方法 (所有数组实例方法 参数从索引n到索引m, 包n不包m)
+	console.log(Array.prototype);
+	//copyWithin 从原数组中读取内容, 替换数组的指定位置的内容
+	//参数(替换的目标起始位置, 查找的起始位置, 查找的结束位置/默认到结尾)
+	//原数组length不变, 如果有超出部分截取掉
+	let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+	console.log(arr.copyWithin(4, 2, 4)); //[1, 2, 3, 4, 3, 4, 7, 8]
+	console.log(arr.copyWithin(3, 2)); //[1, 2, 3, 3, 4, 5, 6, 7]
+
+	//includes 判断数组中有没有某一项, 参数2是开始查找的位置
+	console.log([1, 2].include(1)); //true
+
+	let arr = [1, 2, 3, 4]; 
+	//遍历数组的方法, 参数是一个函数, 自个函数中的this是window; 改变this指向, 可以通过第二个参数改变函数中的this
+	//reduce, reduceRight不可以改变this, 第二参数给初始值赋值
+
+	//fill 按照指定字符填充数组的指定位置(会改变原数组) 
+	//将数组的每一项都变成指定字符
+	console.log(arr.fill('sunny')); //['sunny', 'sunny', 'sunny', 'sunny']
+	console.log(arr.fill('sunny', 2, 3)); //[1, 2,'sunny', 4]
+
+	//filter 遍历数组, 根据返回值去过滤原数组（原数组不变） es5
+	let arr = ['sunny', 1, 2, 'sunny'];
+	let newArr = arr.filter(function(item, index) {
+		//如果返回true留下当前项, 返回false不留下当前项;  结果返回一个新数组 
+		//return true;
+		//return false
+		return typeof item === 'number';
+	})
+	console.log(newArr); //[1, 2]
+
+	//find 先遍历数组, 一旦参数函数返回true, 停止查找 返回当前项 (es6)
+	//只会查找一个
+	let num = arr.find(function(item) {
+		return typeof item === 'number';
+	})
+	console.log(num); // 1
+
+	//findIndex 先遍历数组, 一旦参数函数返回true, 停止查找 返回当前索引
+	//只会查找一个
+	let index = arr.find(function(item) {
+		return typeof item === 'string';
+	})
+	console.log(index); // 0 
+
+	//every 遍历数组, 如果遍历每一项都返回true, 最后结果为true; 只要有一个为false, 结果为false
+    let num = [1, 2, 3].every(function(item) {
+    	return item === 'number'
+	});
+	console.log(num); //true
+
+    let num = [1, 2, 3, 'sunny'].every(function(item) {
+    	return item === 'number'
+	});
+	console.log(num); //false
+
+	//some 遍历数组, 只要有一项都是true, 结果为true
+    let num = [1, 2, 3, 'sunny'].every(function(item) {
+    	return item === 'number'
+	});
+	console.log(num); //true
+
+	//reduce 迭代
+	let arr = [1, 2, 3];
+	let num = arr.reduce(function(prev, item) {
+		//prev 上一次的返回值
+		//item 当前项
+		console.log(prev);
+		//return 1;
+		// return prev + item;
+	}, n); // n初始的值
+	console.log(num); // 1 1; 6
+
+	//reduceRight 和reduce顺序相反
+
+	//keys 遍历每一项的索引的接口 使用for of遍历
+	console.log([1, 2].keys());
+	for(let key of arr.keys()) {
+		console.log(key); //打印索引
+	}
+	//for of 遍历数组每一项的值; for in 遍历数组每一项的索引
+
+	//entries 遍历接口 可以遍历到索引和每一项 每一次遍历得到一个数组[索引, 当前项]
+	//一般可以通过数组的结构赋值获取到遍历的结果
+	for(let [index, item] of arr.entries()) {
+		console.log(index, item);
+	}
+
+数组的空位
+	//当前数组的某个索引位置 没有任何值, undefined不是空位
+	//判断一个数组中某一个位置是不是空位 使用in方法判断
+	//in 判断数组索引位置上有没有治
+	let arr = [, undefined, , ,];
+	console.log(arr.length); //4 --> 查看有几个逗号
+	console.log(1 in arr); //true
+	console.log(0 in arr); //false
+
+	//es5中数组方法对空位处理不一致, 一般直接跳过空位
+	//es6中将空位处理为undefined
+	let arr = [1, , , 3];
+	arr.fillter(function(item) {
+		console.log(item);
+	})
+
+	arr.find(function(item) {
+		console.log(item);
+	})
+
+	for(let item of arr) {
+		console.log(item);
+	}
+
+函数的扩展
+	//参数默认值
+	function fn(x='sunny', y='cherry') {
+		console.log(x, y);
+	}
+	fn(0); //0, cherry
+
+	//参数使用结构赋值
+	function fn({name='sunny', age=18}) {
+		//{name='sunny', age=18} = undefined
+		console.log(name, age)
+	}
+	fn(); //undefined undefined 
+
+	//length 如果形参有默认值length就会失真, 如果没有默认值就是形参的个数
+	function fn(x, y=10) {}
+	fn(1, 2);
+	//fn(, 2); 会报错; 参数默认值一般放在最后面
+	console.log(fn.length); //1
+
+	//arguments 是一个类数组
+	function fn(...arg) {
+		console.log(arguments);
+		console.log(arg); //数组 [1, 2]
+	}
+	fn(1, 2);
+
+	有名函数的name
+	function fn() {}
+	console.log(fn.name) // 'fn'
+	console.log((function() {}())); // ''
+	//特殊情况
+	//1. 通过bind方法得到一个新函数, name是bound + 原函数名
+	let fn1 = fn.bind(null);
+	console.log(fn1.name); //bound fn
+
+	//2. 通过够着函数方式创建一个函数
+	//new Functon('形参', '函数体')
+	//new Function('函数体');
+	// Function fn(形参) { 函数体}
+	let fn2 = new Function('x, y', 'console.log(x, y)', return x + y);
+	console.log(10, 100); // 10, 100; 110
+	console.log(fn2.name);// 匿名
+
+	//JSON字符串变成JSON对象 使用new Function()
+	var str = '[{name:"sunny"}, {age:18}]';
+	let arr = (new Function("return "+str))();
+	console.log(arr); //arr --> [{name:"sunny"}, {age:18}]
+	
+	
+	
+	
+	
