@@ -13,6 +13,25 @@ true => 1
 false => 0
 Number([]); --> 0
 数据类型：number string boolean undefined function object
+
+typeof:返回数据类型的字符串表达 
+	能判断：undefined 数值 字符串 布尔 function 
+	不能判断：null object Array
+instanceof 判断对象的具体类型 (实例)
+var a;
+	a === undefined //true
+	typeof a==='undefined' //true
+	a = null;
+	a===null // true;
+	typeof a === 'object' //true
+
+var o = null;
+	o = 2;
+	o =null; //让o指向的对象成为垃圾对象(被垃圾回收器回收)
+
+内存的分类
+	栈：全局变量/局部变量 (标识这个对象的变量)
+	堆：对象（对象本身）
 ***************************************
 函数声明整体提升
 变量 声明提升
