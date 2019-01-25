@@ -142,7 +142,8 @@ let, const定义变量
 
 	//repeat(n) 将字符串重复n次; n 取整 不可以是负数 Infinity
 	//0到-1, 取整0
-	console.log(str.repeat(1));
+	let str = '123'; 
+	console.log(str.repeat(2)); //123123
 
 	//padStart padEnd; 按照指定字符补全字符串的指定长度 (es7方法)
 	//参数1：长度lenght, 参数2：指定字符
@@ -167,7 +168,7 @@ Array类上的扩展
 	console.log(Array.of(3)); //[3]
 
 	//Array.from() 返回一个数组; 参数是 数组或类数组
-	console.log(Array.from(123)); //[1, 2, 3]
+	console.log(Array.from([123])); //[123]
 	console.log(Array.from('123')); //['1', '2', '3']
 
 数组原型上的扩展方法 (所有数组实例方法 参数从索引n到索引m, 包n不包m)
@@ -258,12 +259,12 @@ Array类上的扩展
 		console.log(index, item);
 	}
 
-数组的空位
-	//当前数组的某个索引位置 没有任何值, undefined不是空位
+数组的空位 --> 当前数组的某个索引位置 没有任何值, undefined不是空位
 	//判断一个数组中某一个位置是不是空位 使用in方法判断
 	//in 判断数组索引位置上有没有值
 	let arr = [, , , ,];
 	console.log(arr.length); //4 --> 查看有几个逗号
+	
 	let arr = [, undefined, , ,];
 	console.log(1 in arr); //true
 	console.log(0 in arr); //false
@@ -319,7 +320,7 @@ Array类上的扩展
 	let fn1 = fn.bind(null);
 	console.log(fn1.name); //bound fn
 
-	//2. 通过够着函数方式创建一个函数
+	//2. 通过构造函数方式创建一个函数
 	//new Functon('形参', '函数体')
 	//new Function('函数体');
 	// Function fn(形参) { 函数体}
@@ -334,7 +335,7 @@ Array类上的扩展
 	
 参数作用域问题
 	//函数执行时候先给形参赋值, 形参也是私有变量,
-	//如果给形参的默认值是一个变量先看是不是自己的私有变量, 不是自己的在全局中是否有这个变量, 没有就报错
+	//如果给形参的默认值是一个变量, 先看是不是自己的私有变量, 不是自己的, 查看在全局中是否有这个变量, 没有就报错
 	let m = 10, n =100;
 	function fn(x = m, y = n) {
 		//私有作用域：私有变量 x, y, m, n
