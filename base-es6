@@ -387,5 +387,30 @@ Array类上的扩展
 	let fn = x=>x+1;  == let fn = x=>{return x+1}
 	//通常函数当做参数时使用箭头函数	
 	
-	
+对象的扩展
+	let name = 'sunny', age = 18;
+	let person = {name, age} == person{name:name, age:age}
+
+	let str = 'cherry';
+	let obj = {
+		fn() {},
+		//fn: function() {}
+		//属性名是字符串 属性名使用[] 里面放变量
+		[str]:name
+	}
+
+	//Object.is(参数1, 参数2) 判断两个值是否相等
+	// -0 === 0 true   NaN === NaN false
+
+	console.dir(Object);
+
+	//Object.assign(参数1, 参数2) 合并对象  将参数2合并到参数1上 返回一个对象
+	let obj1 = {name:'sunny'};
+	let obj2 = {age:18};
+	let person = Object.assign(obj1, obj2); //{name:'sunny', age:18}
+
+	es7中提供了对象的扩展运算符...
+	let person = {...obj1, ...obj2}; //{name:'sunny', age:18}
+
+	Object.getOwnPropertyDescriptor
 	
