@@ -161,7 +161,7 @@ Array类上的扩展
 	//Array(x, y) 将参数变成一个数组返回 [x, y];
 	//只有一个参数并且参数是个数字, 返回一个有n个空位的数组
 	console.log(Array('3')); //['3']
-	console.log(Array(3)); //[empty x 7]
+	console.log(Array(3)); //[empty x 3]
 
 	//Array.of() 跟Array一样, 唯一不同是： 参数是一个数字的时候返回是一个只有一项的数组
 	console.log(Array.of(3)); //[3]
@@ -183,7 +183,7 @@ Array类上的扩展
 	console.log([1, 2].include(1)); //true
 
 	let arr = [1, 2, 3, 4]; 
-	//遍历数组的方法, 参数是一个函数, 自个函数中的this是window; 改变this指向, 可以通过第二个参数改变函数中的this
+	//遍历数组的方法, 参数是一个函数, 自己函数中的this是window; 改变this指向, 可以通过第二个参数改变函数中的this
 	//reduce, reduceRight不可以改变this, 第二参数给初始值赋值
 
 	//fill 按照指定字符填充数组的指定位置(会改变原数组) 
@@ -261,9 +261,10 @@ Array类上的扩展
 数组的空位
 	//当前数组的某个索引位置 没有任何值, undefined不是空位
 	//判断一个数组中某一个位置是不是空位 使用in方法判断
-	//in 判断数组索引位置上有没有治
-	let arr = [, undefined, , ,];
+	//in 判断数组索引位置上有没有值
+	let arr = [, , , ,];
 	console.log(arr.length); //4 --> 查看有几个逗号
+	let arr = [, undefined, , ,];
 	console.log(1 in arr); //true
 	console.log(0 in arr); //false
 
@@ -332,7 +333,8 @@ Array类上的扩展
 	console.log(arr); //arr --> [{name:"sunny"}, {age:18}]
 	
 参数作用域问题
-	//函数执行时候先给形参赋值, 形参也是私有变量, 如果给形参的默认值是一个变量先看是不是自己的私有变量, 不是自己的在全局中是否有这个变量, 没有就报错
+	//函数执行时候先给形参赋值, 形参也是私有变量,
+	//如果给形参的默认值是一个变量先看是不是自己的私有变量, 不是自己的在全局中是否有这个变量, 没有就报错
 	let m = 10, n =100;
 	function fn(x = m, y = n) {
 		//私有作用域：私有变量 x, y, m, n
@@ -350,7 +352,7 @@ Array类上的扩展
 	fn(1); // 1 1
 
 扩展运算符 ...
-	//将费数组变成数组(类数组 length)
+	//将非数组变成数组(类数组 length)
 	let str = '123';
 	console.log([...str]);//['1', '2', '3']
 	function fn() {
