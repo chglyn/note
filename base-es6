@@ -413,5 +413,435 @@ Array类上的扩展
 	es7中提供了对象的扩展运算符...
 	let person = {...obj1, ...obj2}; //{name:'sunny', age:18}
 
-	Object.getOwnPropertyDescriptor
+	//Object.getOwnPropertyDescriptor 获取一个对象中某个描述
+	console.log(Object.getOwnPropertyDescriptor('123', 'length'));
+	
+	//字符串的length不可以修改, 字符串中的方法是不可以改变原字符串
+	let str = '123';
+	str.length = 0;
+	console.log(str); //123
+	/*
+	* configurable:false 是否可配置 可以删除这个属性
+	* enumerable:false 是否枚举 (用for in遍历不出来)
+	* value: 3
+	* writeable: false 是否可以修改
+	*/
+	
+	let person = {name:'sunny', age:18};
+
+	//Object.keys()  返回值是数组 [所有可枚举的属性]
+	console.log(Object.keys(person)); //['name', 'age']
+
+	//Object.values() 返回值是数组 [所有可枚举的属性的键值]
+	console.log(Object.values(person)); // sunny 18
+
+	//Object.entries() 返回值是数组 [每一项也是一个数组[键, 值]]
+	console.log(Object.entries(person)); //[['name', 'sunny'], ['age', '18']]
+
+对象的set和get
+	let obj = {
+		_name: 'A',
+		get name(){
+			//通过obj获取name属性就会触发这个函数
+			//可以通过teturn获取返回值
+			//console.log(1);
+			return this._name;
+		}
+		set name(val) {
+			//val 设置的值--> 通过obj给name属性设置值就会触发这个函数
+			//console.log(2); this == obj
+			this._name = val;
+		}
+	}
+	console.log(obj.name); // sunny
+	obj.name = 'cherry';
+
+Symbol
+	//Symbol 是一个新的基本数据类型  而且是一个值类型
+	//使用Symbol函数执行 得到一个Symbol数据类型
+	//Symbol跟字符串类型差不多 但是使用Symbol函数得到一个数据 每一个是完全不同的
+	let sym = Symbol(); 
+	let sym2 = Symbol();
+	typeof sym; //'symbol'
+	sym == sym2; // false
+
+	//Symbol可以接受一个参数(); 参数是对Symbol数据类型的描述
+	//即使描述一样, 但是值也是不一样的 
+	let sym = Symbol('fn');
+	let sym2 = Symbol('fn');
+	sym == sym2; // false
+
+	//一般当做对象的属性； 任意一个Symbol得到的值都是不同的
+	let obj = {
+		sym: 'sunny',
+		[sym]: 'sunny'
+	}
+	obj.[sym2] = 'sunny';
+	console.log(obj); //得到三个不同的值
+
+	//Symbol值不可以跟其他值计算
+	//Symbol 不可以转化为数字
+	//Symbol 不可以字符串拼接
+	console.log(Symbol('1') + 1); //报错
+	Number(Symbol(1)); //报错
+	Symbol(1) +'1';
+
+	//可以转化为布尔值
+    !Symbol('1'); //false
+
+    //可以toString变成显示字符串
+    console.log(Symbol('ZF').toString()); // "Symbol('ZF')"
+
+    //Symbol.for() 如果之前有相同参数的Symbol的值, 找到这个值返回
+    //如果没有找到, 就创建一个新的Symbol值
+    let foo = Symbol('sunny');
+    let foo2 = Symbol.for('Sunny');
+    let foo3 = Symbol.for('Sunny');
+    foo == foo2; //false
+    foo2 == foo3; // true
+
+   // Symbol.keyFor(symbol值) 找到使用Symbol.keyFor()创建的值的描述
+   //如果使用的是Symbol创建的是获取不到的 
+   Symbol.keyFor(foo2); //sunny
+   Symbol.keyFor(foo); //undefined
+
+set
+	//类似数组 只有值val,  没有键key
+	//通过构造函数方式, 创建一个set实例
+	 new Set(); //{ ... }
+
+	//参数是一个数组 或者是类数组 只要是有enterable接口
+	//有interable接口： 数组, arguments 元素集合 map  Set 字符串
+	//特点： 会默认去重
+	new Set([1, 2, 2]); // {1, 2}
+
+	//size: set实例的大小个数
+	// add 增加 如果之前没有则添加上， 如果存在，不加; 返回值是增加后的set实例(可以实现链式写法)
+	//参数一次添加一个
+	let  set = new Set([1, 2, null, true]);
+	set.add(1).add(10).add(20, 300); // 
+
+	//delete(删除的值) 删除 返回值是true/false 如果里面有这一项就删除成功/true, 否则删除失败/false
+	set.delete(1);// true
+	set.delete(1000); //false
+
+	//has 判断有没有这一项 返回值是true/false
+	set.has(NaN); //false
+
+	//clear 清空; 没有返回值 undefined
+	set.clear(); //{ }
+
+	// forEach keys values entries 遍历方法
+	set.forEach((item, index, input)=>{
+		//item, index 当前项
+		//input 当前set实例
+		console.log(item, index); 
+	})
+
+	for(let key of set.keys()) {
+		//key 是val
+	}
+
+	for(let value of set.values()) {
+		//value 是val
+	}
+
+	for(let key of set.entries()) {
+		//key 是val
+	}
+
+set使用场景
+	//数组去重
+
+	let arr1 = [1, 3, 5, 8, 9];
+	let arr2 = [2, 4, 6, 8, 0];
+	
+	//并集
+	function add(arg, arg2) {
+		return [...new Set([...arg, ...arg2])]
+	}
+
+	//交集
+	function same(arg, arg2){
+		return arr.filter(item=>arg2.includes(item));
+	}
+
+	//差集   并集 - 交集
+	function diff(arg, arg2)  {
+		return add(arg, arg2).filter(item=>!same(arg, aeg2).includes(item));
+	}
+
+Map
+	//构造函数方式创建一个Map实例
+	//参数是一个数组, 数组的每一项也是一个数组, 有两项key, value
+	//属性名不可以重复
+	let map = new Map([[key, val], [] ])
+	let map = new Map([ [], [] ])
+
+	//一个对象属性名必须是一个字符串, 如果写的不是字符串也默认转化为字符串
+	//Map实例的 可以是任意数字类型
+	//size: 键值对的个数
+	let map = new Map([['name', 'snuuy'], [1, 'money'], [[1, 2], [1, 2]]]);
+
+	//get(key) 获取value
+	map.get('name'); //snuuy
+
+	//set(ke, vale); 之前有key, 会修改之前的value; 没有返回新的实例(可以链式写法)
+	map.set(1, 2);
+
+	//has(key); 判断key有没有对应的value; 返回true/false
+	map.has(1);
+
+	//delete(key); 删除实例中的属性; 返回值true/false
+	map.delete(1);
+
+	//clear 清空 没有返回值 
+	map.clear();
+
+	//forEach keys values entries 遍历方法
+	map.forEach((val, key, input)=>{
+		console.log(val, key, input);
+	})
+
+	for(var key in map.keys()) {
+		console.log(key);
+	}
+
+	for(var value in map.values()) {
+		console.log(value);
+	}
+
+	for(var [key, val] in map.entries()) {
+		console.log(key, val);
+	}
+
+	//???数组变成Map实例
+	var arr = [...];
+	let map = new Map();
+	for(var [key, val] of arr) {
+		map.set(key, val);
+	}
+Proxy --> 对象默认操作拦截
+	//new Proxy({参数1:目标对象}, {参数2:拦截的方法}); 
+	let obj = {name:'sunny'};
+
+	//让proxy代理了 obj; 需要通过proxy 操作代理的obj
+	let proxy = new Proxy(obj, {
+		//get 只要是获取,  例如：proxy.name 就会触发get
+		get(target, key, proxy) { // target:目标对象 key：属性名 proxty：当前实例
+			console.log(arguments);
+			//return 'cherry'
+			//return 什么, 就获取什么, 或者就是undefined
+			return target[key];
+		}
+	});
+	console.log(proxy.name);//sunny
+
+	let proxy = new Proxy(obj, {
+		get(target, propKey, receiver) {
+			return target[propKey]
+		},
+		set(target, propKey, value, receiver) {
+			target[propKey] = value;
+			return true
+		},
+		has(target, propKey) {
+			if(propKey.startsWith('_')) {
+				return false;
+			}
+			return propKey in target;
+		},
+		apply() {
+
+		}
+	}) 
+	proxy.name = 'cherry';
+	consoel.log(obj);
+
+	console.log('name' in proxy);//true
+	console.log('__proto__' in proxy);//false
+
+
+	function fn() {
+		return {name:'sunny'};
+	}
+	let proxy = new Proxy(fn,{
+		apply(target, object, args) {
+			//函数直接执行 call apply
+			//args 函数执行的参数
+			//object 给函数修改this
+			if(object){
+				object.fn=target;
+				object.fn(...args);
+				delete object.fn;
+			}else{
+				target(...args);
+			}
+		}
+	});
+
+	proxy();
+
+class中的constructor
+	class Fn{
+		constructor(x) {
+			//this:当前实例
+			this.x = x; //增加私有属性
+			//return 的是基本数据类型队实力没有影响, 
+			//如果是引用数据类型 会改变实例
+		}
+	}
+
+	let fn = new Fn(10); --> { x:10 }
+	// Fn();  类必须使用new执行, 不可以作为普通函数执行
+	typeof Fn; // 'function'
+
+	//class的name问题
+	class Fn(){
+		constructor() {
+			console.log(Fn.name); //Fn
+		}
+		getFn() {
+			console.log(Fn.name); //fn
+		}
+	}
+	/*
+	let Fn1 = class Fn(){
+		//Fn 只能在类里面使用
+		constructor() {
+			console.log(Fn.name); //Fn  -->就近原则
+		}
+	}
+	*/
+	let fn = new Fn();
+
+class中的执行变量
+	class Person{
+		constructor(name) {
+			this.name = name;
+		}
+	}
+	let person = new Person('sunny');
+
+	//采用class表达式让类执行
+	// es6中class 和 let const 一样没有变量提升
+	let person = new Class{
+		constructor(name) {
+			console.log(name);
+		}
+	}('sunny');
+
+class静态方法
+	//类就相当于原型, 
+	//写在原型上的方法都被实例继承
+	//static关键字不会被实例继承 可以被子类继承
+	class Person() {
+		constructor() {}
+		getName() {
+			console.log('sunny');
+		}
+		static getAge() { //静态方法
+			console.log('cherry'); 
+		}
+	}
+
+	class Son extends Person{
+		getPerson() {
+			super.getAge()
+		}
+	}
+
+	let person = new Person;
+	person.getName(); // sunny
+	person.getAge();
+
+	let son = new Son;
+	son.getPerson();
+
+	//子类继承父类 子类中没有this; super执行完之后才会有this
+	class A{
+		constructor(x) {
+			//super 父类的constructor
+			this.x = x;
+		}
+		getX() {
+			console.log(this.x);
+		}
+		getY() {}
+	}
+
+	class B extends A{
+		constructor(x) {
+			//super 执行不能写this
+			//super就是父类的constructor
+			super(x); 
+		}	
+		getA() {
+			//super 指向父类的原型
+			super.getX() {}
+		}	
+		//static 父类的静态方法也可以继承
+		static getY() {
+			//super 指向父类本身
+			super.getY();
+		}
+	}
+	let a = new A(10);
+ 	let b = new B(100);
+
+promise
+	//执行顺序：先执行new Promise中的函数 --> 队列中同步代码 --> then中的回调函数
+	let pro = new Promise((resolve, reject)=>{
+		//resolve 
+		//reject
+		//resolve 和 reject 只能执行一个
+		console.log('promise')
+		resolve('success');
+		reject('error');
+	})
+	//then函数异步执行
+	pro.then((res)=>{
+		//resolve 成功的回调
+	},(e)=>{
+		//失败的回调
+		console.log(e);
+	})
+
+	//catch捕获错误异常 如果new promise中有错误被捕获
+	//如果then中回调有错误, 也会被捕获; 一般最后添加catch 不会一直向下then
+
+
+	console.dir(promise);
+
+	//all 
+	//Promise.all([每一项都是Promise, 如果不是默认转化为Promise])
+	// 一旦发现有一项是错误 就会走失败;
+	//每一项都是成功 才会走成功回调; 默认将每一项的参数放在一个数组中, 传给毁掉函数
+	let pro = new Promise((resolve, reject)=>{
+		resolve('ok');
+	})
+	let pro1 = new Promise((resolve, reject)=>{
+		reject('error');
+	})
+
+	let pro2 = new Promise((resolve, reject)=>{
+		resolve('ok');
+	})
+
+	let proAll = Promise.all([pro, pro1, pro2]);
+	console.log(proAll);//----
+	proAll.then((res)=>{
+		console.log(res); //['ok', 'ok']
+	}, catch(e)=>{
+		console.log(e)
+	})	
+
+	//race 
+	//只要有一个状态改变, 此时当前实例的状态就改变
+	Promise.race([pro, pro1, pro2]).then((res)=>{
+		console.log(res);
+	}, catch(e)=>{
+		console.log(e);
+	})
+
 	
