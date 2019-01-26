@@ -844,4 +844,35 @@ promise
 		console.log(e);
 	})
 
-	
+async 
+	//async 默认返回一个Promise对象
+	async function fn() {
+		//return出的内容就是成功回调函数
+		//有错误就会被catch捕获到
+		return 'sunny';
+	}
+	fn().then((res)=>{
+		console.log(res); //sunny
+	}, catch(e) {
+		console.log(e);
+	})
+
+
+	let p = new Promise((resolve, reject)=>{
+		resolve('sunny');
+	});
+	async function foo() {
+		//await 后面是一个promise实例, 如果不是也会转化为promise
+		//直接让promise实例的回调执行, 返回执行时的参数
+		//await 不用通过then就可以拿到resolve或reject参数
+		console.log(await p); // sunny
+		//先将await 后面的异步执行完成后, 再执行后面的代码
+		let a = await p;
+		console.log(a);
+	}
+	foo().then((res)=>{
+		console.log(res);
+	}, catch(e)=>{
+		consoel.log(e);
+	})
+
