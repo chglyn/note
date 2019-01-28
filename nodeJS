@@ -12,14 +12,46 @@ NodeJS适合开发什么样的应用程序？
 	比如： 用户表单收集、考试系统、聊天室、图文直播、提供JSON的API(为前台Angular使用)
 
 第一个运行包
-  // require引包
-  var http = require("http");
-  //创建服务器 参数是一个回调函数, 表示如果有请求进来, 要做什么
-  var server = http.createServer(function(req, res) {
-    //req表示请求, request; res表示相应response
-    //设置HTTP头部, 状态码是200, 文件类型是html, 字符集是utf-8
-    res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
-    res.end("第一个node界面");
-  });
-  //运行服务器 监听3000端口(端口号可以任意修改)
-  server.listen(3000, "127.0.0.1");
+	// require引包
+	var http = require("http");
+	var fs = require('fs');
+	//创建服务器 参数是一个回调函数, 表示如果有请求进来, 要做什么
+	var server = http.createServer(function(req, res) {
+		if(req.url == "/fang") {
+			fs.readFile("./test.html", function(err, data) { //读取html内容 不是一个文件夹, 可能是物理上, 同目录的文件
+				//req表示请求, request; res表示相应response
+				//设置HTTP头部, 状态码是200, 文件类型是html, 字符集是utf-8
+				res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
+				//res.end("我买了一个iPhone"+(1+2+3)+'s');
+				res.end(data);
+			})
+		}else if(req.url == "yuan") {
+			fs.readFile("./yuan.html", function(err, data) {
+				res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
+				res.end(data);
+			})
+		}else if(req.url == "b.css") { // link中的css名字
+			fs.readFile("./a.css", function(err, data) { //写css的文件名字
+				res.writeHead(200, {"Content-type":"text/css"});
+				res.end(data);
+			})
+		}else if(req.url == "0.jpg") {
+			fs.readFile("./0.jpg", function(err, data) {
+				res.writeHead(200, {"Content-type":"image/jpg"});
+				res.end(data);
+			})
+		}else{
+			res.writeHead(400, {"Content-type":"text/html;charset=UTF-8"});
+			res.end("没有此界面");
+		}
+	});
+	//运行服务器 监听3000端口(端口号可以任意修改)
+	server.listen(3000, "127.0.0.1");
+	//浏览器访问:127.0.0.1:3000
+ 	//NodeJS是服务器的程序, 写的js语句, 都将运行在服务器上, 返回给客户的, 都是已经处理好的纯html
+	//相对命令，相对盘符命令 重新创建文件夹, 复制文件到该文件夹中
+
+
+
+
+
