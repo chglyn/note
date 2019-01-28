@@ -228,7 +228,7 @@ Array类上的扩展
 	console.log(num); //false
 
 	//some 遍历数组, 只要有一项都是true, 结果为true
-    let num = [1, 2, 3, 'sunny'].every(function(item) {
+    let num = [1, 2, 3, 'sunny'].some(function(item) {
     	return item === 'number'
 	});
 	console.log(num); //true
@@ -687,7 +687,7 @@ class中的constructor
 		constructor(x) {
 			//this:当前实例
 			this.x = x; //增加私有属性
-			//return 的是基本数据类型队实力没有影响, 
+			//return 的是基本数据类型对实例没有影响, 
 			//如果是引用数据类型 会改变实例
 		}
 	}
@@ -816,7 +816,7 @@ promise
 	//all 
 	//Promise.all([每一项都是Promise, 如果不是默认转化为Promise])
 	// 一旦发现有一项是错误 就会走失败;
-	//每一项都是成功 才会走成功回调; 默认将每一项的参数放在一个数组中, 传给毁掉函数
+	//每一项都是成功 才会走成功回调; 默认将每一项的参数放在一个数组中, 传给回调函数
 	let pro = new Promise((resolve, reject)=>{
 		resolve('ok');
 	})
