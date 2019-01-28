@@ -1,0 +1,25 @@
+NodeJS特点
+	单线程
+	非阻塞I/O
+	事件驱动
+
+	<!--（回调函数嵌套回调函数）-->
+NodeJS适合开发什么样的应用程序？
+	善于I/O, 不善于计算; 因为NodeJS最擅长就是任务调度
+
+	当应用程序需要处理大量并发的I/O, 而在向客户端发出相应之前, 应用程序内部并不需要进行非常复杂的处理的时候, NodeJS非常适合。 
+	NodeJS也非常适合与web socket配合, 开发长链接的实时交互应用程序。
+	比如： 用户表单收集、考试系统、聊天室、图文直播、提供JSON的API(为前台Angular使用)
+
+第一个运行包
+  // require引包
+  var http = require("http");
+  //创建服务器 参数是一个回调函数, 表示如果有请求进来, 要做什么
+  var server = http.createServer(function(req, res) {
+    //req表示请求, request; res表示相应response
+    //设置HTTP头部, 状态码是200, 文件类型是html, 字符集是utf-8
+    res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
+    res.end("第一个node界面");
+  });
+  //运行服务器 监听3000端口(端口号可以任意修改)
+  server.listen(3000, "127.0.0.1");
