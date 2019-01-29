@@ -17,14 +17,54 @@ NodeJS适合开发什么样的应用程序？
 	var fs = require('fs');
 	//创建服务器 参数是一个回调函数, 表示如果有请求进来, 要做什么
 	var server = http.createServer(function(req, res) {
+		//req表示请求, request; res表示相应response
+
+		if(req.url == '/favicon.ico') return;
+
 		if(req.url == "/fang") {
-			fs.readFile("./test.html", function(err, data) { //读取html内容 不是一个文件夹, 可能是物理上, 同目录的文件
-				//req表示请求, request; res表示相应response
+			fs.readFile("./test.html", function(err, data) { //读取html内容
+				//第一个参数是完整路径, 当前目录 /
+				//第二个参数, 就是回调函数, 表示文件读取成功之后, 做的事情
 				//设置HTTP头部, 状态码是200, 文件类型是html, 字符集是utf-8
 				res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
 				//res.end("我买了一个iPhone"+(1+2+3)+'s');
-				res.end(data);
+				res.wite(data);
+				res.end(data); //必须写; end里面不能直接写成1+2
+				//res.end((1+2).toString());
+
+				/*
+					if(error) {
+						throw err;
+					}
+
+					//fs模块 ------------
+
+					//stat检测状态 (path, callback)
+					fs.stat('./a/b', function(err, stats) { 
+						//检测这个路径是不是一个文件夹 是文件夹返回true, 否则返回false
+						console.log(stats.isDirectory());
+					});
+
+					//使用数组进行遍历获取文件或文件夹
+					fs.readir('./a/', function(err, files) {
+						//files是个数组, 表示a文件下所有的东西, 包括文件及文件夹
+						console.log(files);
+						var wenjianjia = [];
+						(function fn(i){
+							if(i == files.length) return; //遍历结束
+							fs.atat('./a/' + files[i], function() {
+								if(stats.isDirectory()) {
+									wenjianjia.push(files[i]);
+								}
+								fn(i+1);
+							});
+						}(0))
+					});
+					res.end(data);
+				*/
+				console.log(1);
 			})
+			console.log(2); 
 		}else if(req.url == "yuan") {
 			fs.readFile("./yuan.html", function(err, data) {
 				res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
@@ -49,9 +89,51 @@ NodeJS适合开发什么样的应用程序？
 	server.listen(3000, "127.0.0.1");
 	//浏览器访问:127.0.0.1:3000
  	//NodeJS是服务器的程序, 写的js语句, 都将运行在服务器上, 返回给客户的, 都是已经处理好的纯html
-	//相对命令，相对盘符命令 重新创建文件夹, 复制文件到该文件夹中
+url:
+ 	URL和真是物理文件是没有关系。URL通过Node的顶层路由设计, 呈现一个静态文件。
+ 
+ 	var http = require("http");
+ 	var url = require('url');  127.0.0.1:3000/a/b?id=1&age=2;
+ 	http.createServer(function(req, res) {
+ 		var path = url.parse(req.url).pathname; /a/b
+ 		//var query = url.parse(req.url).query;  //id=1
+ 		//var query = url.parse(req.url, true).query; //成对存在{id:1, age:2} 
+ 		//url.path()如果第二个参数是true, 那么就可以将会所有的查询变成对
+ 		//就可以直接打点得到这个参数
+ 		console.log(query);
+ 		console.log(path);
 
+ 		/* 静态服务器
+ 		var extname = path.extname(pathname);
+ 		fs.readFile('./static/' + pathname, function(err, data) {
+ 			if(err) {
+ 				//如果此文件不存在, 应该用404
+ 				fs.readFile('./static/404.html', function(err, data) {
+ 					res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
+ 					res.end(data);
+ 				})
+ 			}
+ 			//HTML类型, text/html
+ 			//jpg文件 image/jpg
+ 			var mime = getMine(extname);
+ 			res.writeHead(200, {'Content-type':mime});
+ 			res.end(data);
+ 		})
 
+ 		*/
+ 		res.end();
+ 	}).listen(300, 'localhost');
 
-
-
+ 	function getMine(extname) {
+ 		switch(extname){
+ 			case: '.html':
+ 				return "text/html";
+ 				break;
+ 			case: '.jpg':
+ 				return "image/jpg";
+ 				break;
+ 			case: '.css':
+ 				return 'text/css';
+ 				break;
+ 		}
+ 	}
