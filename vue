@@ -69,3 +69,34 @@ v-for注意点：
 	//子向父传值 $.emit('自定义事件名', { 其他参数... })触发;  自定义事件名接受: @自定义事件名="fn($event, '18')"
 	//父向子传DOM节点  slot 插槽
 	//组件间传值 $.emit $.on结合
+	
+router
+	Vue.component('login', {
+		template:'<div>login----{{$route.query.id}}',
+		//template:'<div>{{$route.params.id}}</div></div>',
+		created() {
+			console.log(this.$route.query.id);
+			//console.log(this.$route.params.id);
+		}
+	})
+	//在new路由对象的时候, 可以为构造函数 传递一个配置对象
+	var routerObj = new VueRouter({
+		//route表示路由匹配规则
+		routes: [
+			//每个路由规则 都是一个对象 有两个必须的属性
+			//属性1 是path表示监听每个路由链接地址
+			//属性2是component表示如果路由是前面匹配到的path, 则表示component属性对应的组件
+			//{path:'/login/:id', component:login},
+			{path:'/login', component:login},
+			{path:'/', redirect: '/login'}  //重定向使用; 和Node中的redirect不同
+		],
+		linkActiveClass:'active'
+	});
+	new Vue({
+		...
+		router: routerObj
+	})
+	
+	<a href="#/login"></a>  -->	<router-link to="/login?id=1"></router-link>
+				-->	//<router-link to="/login/2"></router-link>
+	
