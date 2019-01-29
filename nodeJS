@@ -108,7 +108,7 @@ url:
 
  		/* 静态服务器
  		var extname = path.extname(pathname);
- 		fs.readFile('./static/' + pathname, function(err, data) {
+ 		fs.readFile('./static/' + path, function(err, data) {
  			if(err) {
  				//如果此文件不存在, 应该用404
  				fs.readFile('./static/404.html', function(err, data) {
