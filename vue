@@ -113,4 +113,45 @@ router
 vuex 组件之间共享数据
 	//组件中访问store中的数据 使用 this.$store.state.xxx = ***访问;
 	//挂载了vue上就能全局访问使用, 任何组件都能使用store存储数据
-	
+	//如果操作store中的数据, 只能通过使用mutations提供的方法操作, 防止导致数据的紊乱
+	//不能快速定位错误, 因为每个组件都有可能使用操作数据的方法
+	<input tye="button" @click="add" />
+	<input tye="button" @click="substr" />
+	<input type="text" v-module="$store.state.count" />
+	<!-- <span>{{ $store.state.count }}</span> -->
+	<span>{{ $store.getters.optCount }}</span>
+	new vuex.Store({
+		state: {
+			count: 0
+		},
+		mutations:{
+			incrent(state){
+				state.count++;
+			},
+			//如果组件中想使用mutations方法, 只能使用this.$store.commit('方法名')
+			//mutations 最多支持两个参数 参数1 是state状态, 参数2是commit提交过来的数据
+			substr(state, obj) {
+				state.count -= (obj.a + obj.b)
+			}
+		},
+		getters:{
+			//和fillter类似 都没有修改元数据, 都是把原数据做包装对外提供使用
+			//和computed类似, 只有state中的数据发生变化, 如果gettes正好也使用了该数据, 那么就会立即触发getters重新求值
+			//getters：只对外提供数据, 不负责修改数据
+			optCount：function(state) { 
+				return '当前最新的count值是' + state.count;
+			}
+		}
+	})
+
+	new Vue({
+		...
+		methods: {
+			add() {
+				this.$store.commit('incrent');
+			},
+			remove() {
+				this.$store.commit('substr', {a:1, b:2});
+			}
+		}
+	})
