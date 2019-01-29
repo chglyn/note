@@ -1,7 +1,7 @@
 NodeJS特点
 	单线程
-	非阻塞I/O
-	事件驱动
+	非阻塞I/O  Non-blocking 
+	事件驱动   Event Driven
 
 	<!--（回调函数嵌套回调函数）-->
 NodeJS适合开发什么样的应用程序？
