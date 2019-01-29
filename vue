@@ -88,6 +88,13 @@ router
 			//属性2是component表示如果路由是前面匹配到的path, 则表示component属性对应的组件
 			//{path:'/login/:id', component:login},
 			{path:'/login', component:login},
+			{
+				path:'/login',
+				component: login,
+				children: {
+					{ path:'login1', component:login1 }
+				}
+			},	
 			{path:'/', redirect: '/login'}  //重定向使用; 和Node中的redirect不同
 		],
 		linkActiveClass:'active'
@@ -97,6 +104,9 @@ router
 		router: routerObj
 	})
 	
-	<a href="#/login"></a>  -->	<router-link to="/login?id=1"></router-link>
-				-->	//<router-link to="/login/2"></router-link>
+	<a href="#/login"></a>  -->	<router-link to="/login?id=1">登录</router-link>  <router-view></router-view>
+				-->	//<router-link to="/login/2">登录</router-link>  <router-view></router-view>
+	//路由嵌套
+	<router-link to="/login/login1">登录</router-link>
 	
+	<router-view></router-view>
