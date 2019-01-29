@@ -142,7 +142,8 @@ url:
 				return;
 			}
 			var minJSON = JSON.parse(data);
-			return mineJSON[extname];
+			var mine = mineJSON[extname] || 'text/plain';
+			callback(mine);
 		})
 		*/
  		switch(extname){
@@ -157,3 +158,4 @@ url:
  				break;
  		}
  	}
+	
