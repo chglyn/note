@@ -108,6 +108,7 @@ url:
 
  		/* 静态服务器
  		var extname = path.extname(pathname);
+		var fileUrl =  './' + path.normalize('./static/' + path);
  		fs.readFile('./static/' + path, function(err, data) {
  			if(err) {
  				//如果此文件不存在, 应该用404
@@ -121,6 +122,12 @@ url:
  			var mime = getMine(extname);
  			res.writeHead(200, {'Content-type':mime});
  			res.end(data);
+			/*
+			getMine(extname, function(mime) {
+ 				res.writeHead(200, {'Content-type':mime});
+ 				res.end(data);	
+			});
+			*/
  		})
 
  		*/
@@ -128,6 +135,16 @@ url:
  	}).listen(300, 'localhost');
 
  	function getMine(extname) {
+		//读取文件 抛出错误 
+		/*
+		fs.readFile('./mine.json', function(err, data) {
+			if(err) {
+				return;
+			}
+			var minJSON = JSON.parse(data);
+			return mineJSON[extname];
+		})
+		*/
  		switch(extname){
  			case: '.html':
  				return "text/html";
