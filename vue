@@ -110,7 +110,7 @@ router
 	<router-link to="/login/login1">登录</router-link>
 	
 	<router-view></router-view>
-vuex 共享数据管理
+vuex 组件之间共享数据
 	//组件中访问store中的数据 使用 this.$store.state.xxx = ***访问;
 	//挂载了vue上就能全局访问使用, 任何组件都能使用store存储数据
 	
