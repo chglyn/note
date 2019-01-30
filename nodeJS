@@ -159,3 +159,56 @@ url:
  		}
  	}
 	
+
+模块的概念
+	//每各模块都是独立的文件, 文件中的函数, 变量在这个JS文件中生效, 外部文件不能访问
+	//使用exports进行暴露, 提供外部使用
+	//exports可以多次, require只需一次
+	a.js
+		var msg = 'sunny';
+		exports.msg = msg;
+	b.js
+		var A = reuqire('./a.js'); //如果不写./, 默认从node_modules中读取
+		console.log(A.msg);
+	
+
+	function Person(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype = {
+		say: function() {
+			console.log(this.name);
+		}
+	}
+	//Person被视为构造函数, 可以用new实例化
+	module.exports = Person;
+
+	var Person = require('./Person.js');
+	var sunny = new Person('sunny', 18);
+	sunny.say(); //'sunny'
+
+	//某一文件中, 提供了函数, 共别人使用, 只需要暴露函数就行。 exports.xxx = xxx;
+	//某一文件中, 描述了一个类。 module.exports = xxx;
+
+	//	./都不写从main文件中读取
+	//如果node_modules中没有index.js文件，推荐使用package.json文件
+	//package.json  存在模块文件夹根目录(与exports文件同级)
+		{
+			name: '',
+			version: '0.0.1',
+			main: '' //入口文件
+		}
+	
+路径
+	//a要引用b;
+		var b = require('./b.js');
+	//b要引用c
+		var b = require('./c.js');
+	//但是, fs等其他的模块用到路径的时候, 都是相当于cmd命令光标所在位置
+	//所以, 在b中想读1.txt文件, 推荐绝对路径
+	fs.readFile(__dirname + '/1.txt', function(err, data) {
+		if(err) { throw error; }
+		console.log(data);
+	});
+
