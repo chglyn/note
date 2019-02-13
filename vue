@@ -9,19 +9,19 @@
   
 事件绑定
 	{{value}}
-	<input v-bind.value="value" v-on.input="input" />
+	<input v-bind:value="value" v-on:input="input" />
 	methods:{
 		input: function(event) {
 			this.value = event.target.value;
 		}
 	}
-	v-bind 控制界面数据层 v-on控制改变数据层
+	v-bind 控制界面数据层 v-on控制数据层
 	综合: v-module 结合了v-bind, v-on
   
 输出代码为字符串 --> 防止xss攻击; 防止修改DOM
 
 v-for注意点：
-	Vue.set(要修改的数组, 要修改的索引, 改变后的结果); --> Vue.set(this.[], 1, 10);
+	Vue.set(要修改的数组, 要修改的下表, 改变后的结果); --> Vue.set(this.[], 1, 10);
 	观察者模式 修改了数组push方法
 	//数组倒序
 	<div v-for="item in arr" v-bind:key="...">
