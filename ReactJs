@@ -105,7 +105,7 @@ jsx中书写js代码
 
 创建第一种组件并为组件传递props值
 	function Hello(props) {
-		//如果在一个组件中 return null, 则表示组建为空的 什么也不渲染
+		//如果在一个组件中 return null, 则表示组件为空的 什么也不渲染
 		//在组件中必须返回一个合法的jsx虚拟DOM元素
 		//不论是vue 还是react 组件中的props只能只读 不能赋值
 
