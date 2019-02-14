@@ -283,9 +283,8 @@ style行内样式
 
 	class Hello extends React.Component{
 		render() {
-			return className="title">
+			return <div className="title">
 				这是第二个Hello组件 --> {this.props.name}
-				}
 			</div>
 		}
 	}
