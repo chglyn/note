@@ -31,7 +31,7 @@ NodeJS适合开发什么样的应用程序？
 				//设置HTTP头部, 状态码是200, 文件类型是html, 字符集是utf-8
 				res.writeHead(200, {"Content-type":"text/html;charset=UTF-8"});
 				//res.end("我买了一个iPhone"+(1+2+3)+'s');
-				res.wite(data);
+				res.write(data);
 				res.end(data); //必须写; end里面不能直接写成1+2
 				//res.end((1+2).toString());
 
