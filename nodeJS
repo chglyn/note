@@ -221,3 +221,121 @@ url:
 		console.log(data);
 	});
 
+post请求
+	相比较get请求, post请求比较复杂。 因为node认为, 使用post请求时, 数据量会比较多。
+	为了追求极致的效率, 它将数据拆分为了众多小的模块, 然后通过特定的事件, 将这些小模块有序的传递给回调函数。
+
+	var postData = '';
+	req.addListener('data', function(chunk) {
+		postData += chunk;
+	})
+
+	req.addListener('end', function() {
+		console.log(postData);
+		var param = querystring.parse(postData);
+		res.writeHead(200, {'Content-Type':'text/html;charset=utf-8'});
+		res.end(param.name);
+	})
+
+
+
+	//html
+	<form method="post" action="/dopost">
+		姓名：<input type='text' name="name" />
+		<input type="submit" />
+	</form>
+
+	//js
+	var http = require('http');
+	var querystring = require('querystring');
+	var server = http.createServer(function(req, res) {
+		if(req.url == '/dopost' && req.method.toLowerCase() == 'post') {
+			//post请求的一个公式
+			var allData = '';
+			req.addListener('data', function(chunk) {
+				allData += chunk;
+				console.log(chunk);
+			})
+
+			req.addListener('end', function() {
+				console.log(allData.toString());
+				dataString = allData.toString();
+				//querystring.parse(dataString, null, null, { decodeURIComponent: gbkDecodeURIComponent})
+				var obj = querystring.parse(dataString);
+				console.log(obj.name);
+			})
+		}
+	}).listen(80, '127.0.0.1'); 
+
+
+formidable
+	//html 
+	<form method="post" action="/dopost" enctype="multipart/form-data"></form>
+
+	//js
+	var http = require('http');
+	var fromidable = require('fromidable');
+	var server = http.createServer(function(req, res) {
+		if(req.url == '/dopost' && req.method.toLowerCase() == 'post') {
+			var form = new fromidable.IncomingForm();
+			form.uploadDir = './uploads'; //上传图片存放地址
+			//执行里面的回调函数时候, 表单已经全部接收完毕
+			form.parse(req, function(err, fields, files) {
+				//所有的文本域都在fields存放
+				//所有文件域files存放
+
+				if(err) { throw err };
+
+				console.log(fields);
+				console.log(files);
+
+				res.writeHead(200, {'content-type':'text/plain'});
+				res.end('成功');
+
+				//res.write('received upload:\n\n');
+				//res.end(util.inspect({fields:fields, files:files}));
+			})
+		}
+	}).listen(80, '127.0.0.1'); 
+
+上传改名
+	rename(oldpath, newpath, callback);
+
+	var http = require('http');
+	var fs = require('fs');
+	var fromidable = require('fromidable');
+
+	var server = http.createServer(function(req, res) {
+		if(req.url == '/dopost' && req.method.toLowerCase() == 'post') {
+			var form = new fromidable.IncomingForm();
+			form.uploadDir = './uploads'; //上传图片存放地址
+			//执行里面的回调函数时候, 表单已经全部接收完毕
+			form.parse(req, function(err, fields, files) {
+				if(err) { throw err };
+
+				var old = __dirname + '/' + files.tupian.path;
+				var new = __dirname + '/' + (Math.randon());
+
+				fs.rename(old, new);
+
+				res.writeHead(200, {'content-type':'text/plain'});
+				res.end('成功');
+			})
+		}
+	}).listen(80, '127.0.0.1'); 
+
+
+ejs模版引擎
+
+	var ejs = require('ejs');
+	var fs = require('fs');
+	var http = require('http');
+
+	var server = http.createServer(function(req, res) {
+		fs.readFile('./views/index.ejs', function(err, data) {
+			var template = data.toString();
+			var dictionary = { a:6 };
+			var html = ejs.render(template, dictionary);
+			console.log(html);
+		})
+	}).listen(80, 127.0.0.1);
