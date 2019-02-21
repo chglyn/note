@@ -399,8 +399,8 @@ person1.say(); //1
 
 	Person.prototype.name = 'sunny';
 	function Person () {}
-	var person = new Person();
 	Person.prototype.name = 'cherry';
+	var person = new Person();
 	console.log(person.name); //cherry
 	
 	Person.prototype.name = 'sunny';
