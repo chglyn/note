@@ -148,3 +148,12 @@ function test() {
 	console.log(this.x);
 }
 test();
+
+
+var bar = 1;
+function fn(bar) {
+	bar = 2;
+	console.log(bar);
+}
+fn(bar);
+console.log(bar);
