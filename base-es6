@@ -89,7 +89,7 @@ let, const定义变量
 	//使用数组结构赋值, 如果等号右边不是一个数组, 默认将其转化为类数组
 	let[x, y] = '123';
 	console.log(x, y); //1 2
-	//使用对象结构赋值, 如果等号右边右边不是一个对象, 默认将其转化为对象
+	//使用对象结构赋值, 如果等号右边不是一个对象, 默认将其转化为对象
 	let {a} = 1;
 	console.log(a); //undefined
 	console.log(Object(a)); //{__proto__:}
@@ -109,7 +109,7 @@ let, const定义变量
 		}
 		fn({name:'sunny'});
 
-		function fn({name='cherry', age=18}={}) {
+		function fn({name='sunny', age=18}={}) {
 			console.log(name, age); 
 		}
 		fn();//sunny 18
