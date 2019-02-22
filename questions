@@ -157,3 +157,24 @@ function fn(bar) {
 }
 fn(bar);
 console.log(bar);
+
+
+/*  斐波那契数列的实现
+实现一个fibonacci函数, 要求其参数和返回值如下
+fibonacci数列为[1, 1, 2, 3, 5, 8, 13, 21, 34 ...]
+则getNthFibonacci(0)返回值1;
+则getNthFibonacci(4)返回值为5
+*/
+function getNthFibonacci(count){
+	return count < 2 ? 1 : getNthFibonacci(count - 1) + getNthFibonacci(count - 2);
+}
+for(var i = 0; i < 9; i++){
+	console.log(getNthFibonacci(i));
+}
+
+如何通过正则表达式使字符串 'abab' 变成 'baba'
+var reg = /(\w)(\w)\1\2/g;
+str.replace(reg, function($, $1, $2) {
+	return $2 + $1 + $2 + $1;
+})
+
