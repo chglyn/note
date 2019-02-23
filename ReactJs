@@ -363,6 +363,9 @@ React中的绑定事件、 this.setState修改state上的数据、绑定文本�
 				<input type="text" style={{width:'100%'}} value={this.state.msg} readonly />
 				<hr />
 				<input type="text" style={{width:'100%'}} value={this.state.msg} onChange={(e)=>this.txtChange(e)} ref="txt" />
+				<!-- 不使用箭头函数 
+					<input type="text" style={{width:'100%'}} value={this.state.msg} onChange={this.txtChange.bind(this)} />
+				-->
 			</div>
 		}
 
@@ -398,6 +401,11 @@ React中的绑定事件、 this.setState修改state上的数据、绑定文本�
 				msg: newVal
 			})
 		}
+		/*
+		txtChange(e) {
+			console.log(e.target.value);
+		}
+		*/
 	}
 
 	import BindEvent from '@/components/BindEvent'
