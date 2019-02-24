@@ -1,0 +1,252 @@
+v16.2.x之后的版本
+React Fiber 加入了事件优先级概念
+
+//Create-react-app
+
+//PWA serviceWork
+index.js:
+	inport 'React' from './react'
+	import 'ReactDOM' from './react-dom'
+	import 'Todolist' from './Todolist'
+	RactDOM.render(</Todolist>, document.getElementById('app'))
+
+
+todolist(父组件)：
+import React, { Component, Fragment } from './react'
+import TodoItem from './TodoItem'
+import './style.css'
+
+class todolist extends Component{
+	constructor(props) {
+		super(props); //调用父类构造函数, 调用一次
+		//当组件的state或者props发生改变的时候, render函数就会重新执行
+		this.state = {
+			inputVal: '',
+			list: []
+		}
+		this.handleChangeVal = this.handleChangeVal.bind(this);
+		this.handleBtn = this.handleBtn.bind(this);
+		this.handleItemDelete = this.handleItemDelete.bind(this);
+	}
+
+	//在组件即将被挂载到页面的时刻自动执行
+	componentWillMount() {
+		console.log('componentWillMount');
+	}
+
+	render() {
+		console.log('render');
+		return {
+			<Fragment> {/* 隐藏外层标签, 使用Fragment标签占位符 */}
+				<div>
+					<label htmlFor="insertArea">输入内容</label>  {/* insertArea光标聚焦 */}
+					<input 
+						id="insertArea" 
+						className="input"
+						value={this.state.inputVal}
+						onChange={this.handleChangeVal}
+						ref={(input) => {this.input = input}}
+					 />
+					 <button onClick={this.handleBtn}>提交</button>
+				</div>
+				<ul>
+					{ this.getTodoItem() }
+				</ul>
+			</Fragment>
+		}
+	}
+
+	//组件被挂载到页面之后, 自动执行
+	componentDidMount() {
+		console.log('componentDidMount');
+	}
+
+	//组件被更新之前, 会被执行
+	shouldComponentUpdate() {
+		console.log('shouldComponentUpdate');
+		return true;
+	}
+
+	//组件被更新之前, 会被执行, 会在showComonent之后被执行, 
+	//如果shouldComponent返回true会执行, 返回false不会执行
+	componentWillUpdate() {
+		console.log('componentWillUpdate');
+	}
+
+	//组件更新完成之后, 会被执行
+	componentDidUpdate() {
+		console.log('componentDidUpdate');
+	}
+
+	getTodoItem() {
+		return this.state.list.map((item, index) => {
+			return (
+				<div key={index}>
+				<TodoItem 
+					conten={item} 
+					index={index} 
+					deleteItem={this.handleItemDelete} />
+
+				{/*<li 
+					key={index}
+					onClick={this.handleItemDelete.bind(this, index)}
+					dangerouslySetInnerHTML={{__html:item}} {/* 里面花括号: js对象 */}
+				>
+				</li>*/}
+				<div>
+			)
+		})
+	}
+
+	handleChangeVal(e) {
+		//const val = e.target.value;
+		const val = this.input.value;
+		this.setState(() => {
+			return {
+				inputVal: val
+			}
+		})
+		/* 上面演变如下：
+			this.setState(() => ({ inputVal: val }))
+		*/
+
+		// this.setState({
+		// 	inputVal: e.target.value
+		// })
+	}
+
+	handleBtn() {
+		this.setState((prevState)=>({
+			list: [...prevState.list, prevState.inputVal], // prevState === this.state
+			inputVal: ''
+		}))
+
+		// this.setState({
+		// 	list: [...this.state.list, this.state.inputVal], //往list添加数据
+		// 	inputVal: ''
+		// })
+	}
+
+	handleItemDelete(index) {
+		/*
+			immutable --> state不允许做任何的改变
+			不能直接修改数据, 如:
+			this.state.list.splice(index, 1);
+		*/
+		//const list = [...this.state.list];
+		//list.splice(index, 1);
+
+		// this.setState({
+		// 	list: list
+		// })
+
+
+		this.setState((preState)=>{
+			const list = [...preState.list];
+			list.splice(index, 1);
+			return { list }
+		})
+	}
+
+}
+
+export default todolist;
+
+
+TodoItem(子组件):
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+class Todolist extends Component{
+	constructor(props) {
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		if(nextProps.content !== this.props.content) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	render() {
+		const { conten, test } = this.props;
+		return( 
+			<div onClick={this.handleClick}>{this.props.conten}</div> 
+			<div onClick={this.handleClick}>{test} - {conten}</div> 
+			{/* 父组件向子组件传值使用属性, 子组件使用props接收值 */}
+		)
+	}
+
+	handleClick() {
+		const { deleteItem, index } = this.props;
+		deleteItem(index);
+		
+		/*
+			this.props.deleteItem(this.props.index);
+			console.log(this.props.index);
+		*/
+	}
+
+	//当一个组件从父组件接受参数
+	//只要父组件render函数被执行了, 子组件的这个生命周期函数会被执行
+	//或者如果这个组件第一次存在于父组件中, 不会执行; 如果这个组件之前已经存在于父组件中, 才会执行
+	componentWillReceiveProps() {
+		console.log('child componentWillReceiveProps');
+	}
+
+	//当这个组件即将被从页面中剔除时候, 会被执行
+	componentWillUnmount() {
+		console.log('child componentWillUnmount');
+	}
+
+}
+TodoItem.propTypes = { //校验数据类型
+	test: PropTypes.String.isRequired; //必须传值
+	content: PropTypes.oneOfType([PropTypes.number, PropTypes.string]), 
+	//arrayOf(PropTypes.number, PropTypes.string),
+	deleteItem: PropTypes.func,
+	index: PropTypes.number
+}
+TodoItem.defaultProps = { //默认值
+	test: 'hello world'
+}
+export default Todolist;
+
+
+style.css:
+	input{ border:1px solid red;}
+
+/*	总结：
+	声明式开发(减少dom操作)
+	可以与其他框架并存
+	组件化
+	单向数据流
+	视图层框架
+	函数是编程 (自动化测试)
+*/
+
+Reactdevelopertools调试工具
+
+什么是虚拟DOM
+	虚拟DOM就是一个js对象, 用它描述真实的DOM
+	JSX 通过 React.createElement('div', {}, 'item') 变成JS对象(虚拟DOM)
+	diff算法 作比对
+
+	setState触发 生成新的DOM
+
+	setState为何设计成异步
+		提高reat底层性能
+
+	虚拟DOM对比: 同层对比, 有差异不会往下作对比, 把原始DOM删除掉, 新的DOM替换 
+	不要使用index作为key值, 不稳定
+
+生命周期函数指在某一时刻会自动调用执行的函数
+初始化(Initialzation)
+挂载(组件第一次挂载页面时候执行Mounting) --> componentWillMount、render、componentDidMount
+组件更新(Updation) props 和 states 发生变化
+	props: componentWillReceiveProps shouldComponentUpdate componentWillUpdate render componentDidUpdate
+	states: shouldComponentUpdate componentWillUpdate render componentDidUpdate
+去除(Unmounting) componentWillUnmount
