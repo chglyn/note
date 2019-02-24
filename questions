@@ -178,3 +178,8 @@ str.replace(reg, function($, $1, $2) {
 	return $2 + $1 + $2 + $1;
 })
 
+js有哪些内置对象
+	数据封装类对象：Object、Array、Boolean、Number、String
+	其他对象： Function、Arguments、Math、Date、RegExp、Error
+
+线程与进程的区别？
