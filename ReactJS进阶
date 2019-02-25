@@ -265,3 +265,146 @@ Reactdevelopertools调试工具
 去除(Unmounting) componentWillUnmount
 
 charles模拟接口数据mock
+
+
+
+二、 react-transition-group实现动画
+
+index.js:
+	import React from './react'
+	import ReactDOM from './react-dom'
+	import App from './App'
+	ReactDOM.render(<app />, document.getELementById('app'))
+
+App.js:
+	import React, { Component } from './react'
+	import { CSSTransition } from 'css-transition-group'
+	import './style.css'
+
+	class App extends Component {
+		constructor(props) {
+			super(props);
+			this.state = {
+				show: true,
+				list: []
+			}
+			this.handleToggle = this.handleToggle.bind(this);
+			this.handleAddItem = this.handleAddItem.bind(this);
+		}
+
+		render() {
+			return (
+				<Fragment>
+					<div className={ this.state.show ? 'show' : 'hide' }>hello</div>
+					<CSSTransition
+					 in = {this.state.show}
+					  timeout = {1000}
+					   classNames="fade" 
+					   unmountOnExit {/* 隐藏dom结构 */}
+					   onEntered={(el) => {el.style.color='blue'}} {/* 某一时刻自动执行 */}
+					   appear={true} {/* 第一次展示时候也需要动画效果 */}
+					 >
+						<div>hello</div>
+					</CSSTransition>
+					<button onClick={this.handleToggle}>toggle</button>
+
+					<br/>
+					<br/>
+					<br/>
+
+					<TransitionGroup>
+					{
+						this.state.map((item, index)=>{
+							return (
+							<CSSTransition
+							  timeout = {1000}
+							   classNames="fade" 
+							   unmountOnExit
+							   onEntered={(el) => {el.style.color='blue'}}
+							   appear={true}
+							    key={index}
+							 >
+								<div>{item}</div>
+							</CSSTransition>
+							)
+						})
+					}
+					</TransitionGroup>
+					<button onClick="{this.handleAddItem}">toggle</button>
+				</Fragment>
+			)
+		}
+
+		handleToggle() {
+			this.setState({
+				show: this.state.show ? false : true
+			})
+		}
+
+		handleAddItem() {
+			this.setState((prevState) => {
+				return {
+					list: [...prevState.list, 'item']
+				}
+			})
+		}
+	}
+	export default App;
+
+style.css:
+	.show{ animation: show-item 2s ease-in forwards;}
+	.hide{ aniation: hide-item 2s ease-in forwards;}
+	@keyframes hide-item {
+		0% {
+			opacity: 1;
+			color: red;
+		}
+		50% {
+			opacity: 0.5;
+			color: green;
+		}
+		100% {
+			opacity: 0;
+			color: blue;	
+		}
+	}
+
+	@keyframes show-item {
+		0% {
+			opacity: 0;
+			color: red;
+		}
+		50% {
+			opacity: 0.5;
+			color: green;
+		}
+		100% {
+			opacity: 1;
+			color: blue;	
+		}
+	}
+
+
+	.fade-enter,.fade-appear-active{
+		opacity: 0;
+	}
+	.fade-enter-active,.fade-appear-active{
+		opacity:1;
+		transition: all 1s ease-in;
+	}
+	.fade-enter-done{
+		opacity:1;
+		//color:red;
+	}
+
+	.fade-exit{
+		opacity:1
+	}
+	.fade-exit-active{
+		opacity:0;
+		transition: all 1s esae-in;
+	}
+	.fade-exit-done{
+		opacity: 0;
+	}
+
