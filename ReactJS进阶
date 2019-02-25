@@ -5,8 +5,8 @@ React Fiber 加入了事件优先级概念
 
 //PWA serviceWork
 index.js:
-	inport 'React' from './react'
-	import 'ReactDOM' from './react-dom'
+	inport 'React' from 'react'
+	import 'ReactDOM' from 'react-dom'
 	import 'Todolist' from './Todolist'
 	RactDOM.render(<Todolist />, document.getElementById('app'))
 
@@ -271,13 +271,13 @@ charles模拟接口数据mock
 二、 react-transition-group实现动画
 
 index.js:
-	import React from './react'
-	import ReactDOM from './react-dom'
+	import React from 'react'
+	import ReactDOM from 'react-dom'
 	import App from './App'
 	ReactDOM.render(<app />, document.getELementById('app'))
 
 App.js:
-	import React, { Component } from './react'
+	import React, { Component } from 'react'
 	import { CSSTransition } from 'css-transition-group'
 	import './style.css'
 
@@ -422,14 +422,14 @@ public/index.html
 	...
 
 src/index.js:
-	import React from './react'
-	import ReactDOM from './react-dom'
+	import React from 'react'
+	import ReactDOM from 'react-dom'
 	import Todolist from './Todolist'
 
 	ReactDOM.render(<Todolist />, document.getElementById('root'))
 
 src/Todolist.js
-	import React, { Component } from './react'
+	import React, { Component } from 'react'
 	import 'antd/dist/antd.css'
 	import { Input, Button, List } from 'antd'
 	import store from './store/index.js'
