@@ -412,8 +412,8 @@ style.css:
  redux = Reducer + Flux
 
  Action Creaters(图书) -->   Store(管理员) --> <--- Reducers(记录本)
- 								|
- 							React Components
+ 							|
+ 				React Components
 
 Ant Design of React布局库
 Reduce devetools 调试工具
@@ -431,10 +431,11 @@ src/index.js:
 src/Todolist.js
 	import React, { Component } from 'react'
 	import 'antd/dist/antd.css'
-	import { Input, Button, List } from 'antd'
+	//import { Input, Button, List } from 'antd'
 	import store from './store/index.js'
 	import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators'
 	//import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes' // actionCreators包括了暂时无用
+	import TodolistUI from './TodolistUI'
 
 	class Todolist extends Component{
 		constructor(props) {
@@ -445,10 +446,12 @@ src/Todolist.js
 			this.handleStoreChange = this.handleStoreChange.bind(this);
 			store.subscribe(this.handleStoreChange);
 			this.handleBtnClick = this.handleBtnClick.bind(this);
+			this.handleItemDelete = this.handleItemDelete.bind(this);
 		}
 
 		render() {
 			return (
+				{/*
 				<div style={{margin:'10px'}}>
 					<div>
 						<input 
@@ -466,6 +469,17 @@ src/Todolist.js
 						renderItem={(item, index) =>(<List.item onClick={this.handleItemDelete.bind(this, index)}>{item}</List.item>)}
 					/>
 				</div>
+				*/}
+				<br />
+				<br />
+				<br />
+				<TodolistUI
+				 inputVal={this.state.inputVal} 
+				 list={this.state.list}
+				 handleInputChange={this.handleInputChange}
+				 handleBtnClick={this.handleBtnClick}
+				 handleItemDelete={this.handleItemDelete}
+				/>
 			)
 		}
 
@@ -507,6 +521,37 @@ src/Todolist.js
 
 	}
 	export default Todolist;
+
+src/TodolistUI.js:
+	//拆分UI部分
+	import React, { Component } from 'react'
+	import { Input, Button, List } from 'antd'
+
+
+	class TodolistUI extends Component{
+		render() {
+			return (
+				<div style={{margin:'10px'}}>
+					<div>
+						<input 
+						value={this.props.inputVal}
+						 placeholder="todo info"
+						  style={{width:'300px', marginRight:'10px'}} 
+						  onChange={this.props.handleInputChange}
+						   />
+						<Button type="primarty" onClick={this.props.handleBtnClick}>提交</Button>
+					</div>
+					<List
+						style={{width:'300px', marginTop:'10px'}}
+						bordered
+						dataSource={this.props.list}
+						renderItem={(item, index) =>(<List.item onClick={(index)=>{this.props.handleItemDelete(index)}}>{item}</List.item>)}
+					/>
+				</div>
+			)
+		}
+	}
+	export default TodolistUI;
 
 
 store/index.js:
