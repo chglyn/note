@@ -408,3 +408,178 @@ style.css:
 		opacity: 0;
 	}
 
+三、 Redux Store数据管理
+ redux = Reducer + Flux
+
+ Action Creaters(图书) -->   Store(管理员) --> <--- Reducers(记录本)
+ 								|
+ 							React Components
+
+Ant Design of React布局库
+Reduce devetools 调试工具
+
+public/index.html
+	...
+
+src/index.js:
+	import React from './react'
+	import ReactDOM from './react-dom'
+	import Todolist from './Todolist'
+
+	ReactDOM.render(<Todolist />, document.getElementById('root'))
+
+src/Todolist.js
+	import React, { Component } from './react'
+	import 'antd/dist/antd.css'
+	import { Input, Button, List } from 'antd'
+	import store from './store/index.js'
+	import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators'
+	//import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes' // actionCreators包括了暂时无用
+
+	class Todolist extends Component{
+		constructor(props) {
+			super(props);
+			this.state = store.getState();
+			//console.log(this.state);
+			this.handleInputChange = this.handleInputChange.bind(this);
+			this.handleStoreChange = this.handleStoreChange.bind(this);
+			store.subscribe(this.handleStoreChange);
+			this.handleBtnClick = this.handleBtnClick.bind(this);
+		}
+
+		render() {
+			return (
+				<div style={{margin:'10px'}}>
+					<div>
+						<input 
+						value={this.state.inputVal}
+						 placeholder="todo info"
+						  style={{width:'300px', marginRight:'10px'}} 
+						  onChange={this.handleInputChange}
+						   />
+						<Button type="primarty" onClick={this.handleBtnClick}>提交</Button>
+					</div>
+					<List
+						style={{width:'300px', marginTop:'10px'}}
+						bordered
+						dataSource={this.state.list}
+						renderItem={(item, index) =>(<List.item onClick={this.handleItemDelete.bind(this, index)}>{item}</List.item>)}
+					/>
+				</div>
+			)
+		}
+
+		handleInputChange(e) {
+			/*
+			const action = {
+				type: CHANGE_INPUT_VALUE,
+				value: e.target.value
+			}
+			*/
+			const action = getInputChangeAction(e.target.value);
+			store.dispatch(action);
+		}
+
+		handleStoreChange() {
+			this.setState(store.getState());
+		}
+
+		handleBtnClick() {
+			/*
+			const action = {
+				type: ADD_TODO_ITEM
+			}
+			*/
+			const action = getAddItemAction()
+			store.dispatch(action);
+		}
+
+		handleItemDelete(index) {
+			/*
+			const action = {
+				type: DELETE_TODO_ITEM,
+				index
+			}
+			*/
+			const action = getDeleteItemAction(index);
+			store.dispatch(action);
+		}
+
+	}
+	export default Todolist;
+
+
+store/index.js:
+	import { createStore } from 'redux'
+	import reducer from './reducer'
+
+	const store = createStore(
+		reducer,
+		window.__REDUX_DEVETOOLS_EXTENSION__ && window.__REDUX_DEVETOOLS_EXTENSION__() //浏览器调试扩展
+	);
+	export default store;
+
+
+store/reducer.js
+	import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes'
+	const defaultState = {
+		inputVal: '',
+		list: []
+	}
+
+	//reducer 可以接收state, 不能修改state
+	export default (state = defaultState, action) => {
+		if(action.type === CHANGE_INPUT_VALUE) {
+			const newState = JSON.parse(JSON.stringify(state)); //深拷贝
+			newState.inputVal  = action.value;
+			return newState;
+		}
+		if(action.type === ADD_TODO_ITEM) {
+			const newState = JSON.parse(JSON.stringify(state));
+			newState.list.push(newState.inputVal);
+			newState.inputVal = '';
+			return newState;
+		}
+		if(action.type === DELETE_TODO_ITEM) {
+			const newState = JSON.parse(JSON.stringify(state));
+			newState.list.splice(action.index, 1);
+			return newState;
+		}
+		//console.log(state, action);
+		return state;
+	}
+
+store/actionTypes.js:
+	//type的拆分整合
+	export default const CHANGE_INPUT_VALUE = 'change_input_value';
+	export default const ADD_TODO_ITEM = 'add_todo_item';
+	export default const DELETE_TODO_ITEM = 'delete_todo_item';
+
+
+store/actionCreators.js:
+	//action的封装 统一管理
+	import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes'
+
+	export const getInputChangeAction =(value) => ({
+		type: CHANGE_INPUT_VALUE,
+		value
+	})
+
+	export const getAddItemAction =() => ({
+		type: ADD_TODO_ITEM
+	})
+
+	export const getDeleteItemAction =(index) => ({
+		type: DELETE_TODO_ITEM,
+		index
+	})
+
+/*	总结：
+	store是唯一的
+	只有store能改变自己的内容
+	reducer必须是纯函数
+	纯函数：给固定的输入, 就一定会有固定的输出, 不会有任何的副作用
+
+	redux : createStore  store.dispatch  store.getState  store.subscribe
+*/
+
