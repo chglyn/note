@@ -433,9 +433,11 @@ src/Todolist.js
 	import 'antd/dist/antd.css'
 	//import { Input, Button, List } from 'antd'
 	import store from './store/index.js'
-	import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators'
+	//import { getInputChangeAction, getAddItemAction, getDeleteItemAction, initListAction } from './store/actionCreators'
+	import { getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators'
 	//import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './store/actionTypes' // actionCreators包括了暂时无用
 	import TodolistUI from './TodolistUI'
+	import axios from 'axios'
 
 	class Todolist extends Component{
 		constructor(props) {
@@ -483,6 +485,22 @@ src/Todolist.js
 			)
 		}
 
+		componentDidmount() {
+			/*
+			axios.get('/list.json').then((res)=>{
+				const data = res.data;
+				const action = initListAction(data);
+				store.dispatch(action);
+				//console.log(res.data);
+			}).catch((err)=>{
+				console.log(err);
+			})
+			*/
+
+			const action = getTodoList();
+			store.dispatch(action);
+		}
+
 		handleInputChange(e) {
 			/*
 			const action = {
@@ -522,12 +540,39 @@ src/Todolist.js
 	}
 	export default Todolist;
 
+src/list.json:
+	['banner', 'apple']
+
 src/TodolistUI.js:
 	//拆分UI部分
-	import React, { Component } from 'react'
+	//import React, { Component } from 'react'
+	import React from 'react'
 	import { Input, Button, List } from 'antd'
 
+	//无状态组件, 性能较高 --> 就是一个函数, 普通函数只有render函数时候 可以写成如下：
+	const TodolistUI = (props) => {
+		return(
+			<div style={{margin:'10px'}}>
+				<div>
+					<input 
+					value={props.inputVal}
+					 placeholder="todo info"
+					  style={{width:'300px', marginRight:'10px'}} 
+					  onChange={props.handleInputChange}
+					   />
+					<Button type="primarty" onClick={props.handleBtnClick}>提交</Button>
+				</div>
+				<List
+					style={{width:'300px', marginTop:'10px'}}
+					bordered
+					dataSource={this.props.list}
+					renderItem={(item, index) =>(<List.item onClick={()=>{props.handleItemDelete(index)}}>{item}</List.item>)}
+				/>
+			</div>
+		)
+	}
 
+	/* 有类, 会执行生命周期函数 性能较差
 	class TodolistUI extends Component{
 		render() {
 			return (
@@ -551,22 +596,31 @@ src/TodolistUI.js:
 			)
 		}
 	}
+	*/
 	export default TodolistUI;
-
+	
 
 store/index.js:
-	import { createStore } from 'redux'
+	import { createStore, applyMiddleware, compose } from 'redux' //applyMiddleware compose thunk使用
 	import reducer from './reducer'
+	import thunk from 'redux-thunk'
+
+	//-->添加的redux
+	const composeEnhancers = window.__REDUX_DEVETOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVETOOLS_EXTENSION__COMPOSE__({}) : compose;
+	const enhancer = composeEnhancers(
+		applyMiddleware(thunk);
+	);
 
 	const store = createStore(
 		reducer,
-		window.__REDUX_DEVETOOLS_EXTENSION__ && window.__REDUX_DEVETOOLS_EXTENSION__() //浏览器调试扩展
+		enhancer 
+		//window.__REDUX_DEVETOOLS_EXTENSION__ && window.__REDUX_DEVETOOLS_EXTENSION__() //浏览器调试扩展
 	);
 	export default store;
 
 
 store/reducer.js
-	import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes'
+	import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION } from './actionTypes'
 	const defaultState = {
 		inputVal: '',
 		list: []
@@ -590,6 +644,11 @@ store/reducer.js
 			newState.list.splice(action.index, 1);
 			return newState;
 		}
+		if(action.type === INIT_LIST_ACTION) {
+			const newState = JSON.parse(JSON.stringify(data));
+			newState.list = action.data;
+			return newState;
+		}
 		//console.log(state, action);
 		return state;
 	}
@@ -599,11 +658,13 @@ store/actionTypes.js:
 	export default const CHANGE_INPUT_VALUE = 'change_input_value';
 	export default const ADD_TODO_ITEM = 'add_todo_item';
 	export default const DELETE_TODO_ITEM = 'delete_todo_item';
-
+	export default const INIT_LIST_ACTION = 'init_list_action'
 
 store/actionCreators.js:
 	//action的封装 统一管理
-	import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes'
+	import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION } from './actionTypes'
+
+	import axios from 'axios'
 
 	export const getInputChangeAction =(value) => ({
 		type: CHANGE_INPUT_VALUE,
@@ -619,6 +680,22 @@ store/actionCreators.js:
 		index
 	})
 
+	export const initListAction = (data) => ({
+		type: INIT_LIST_ACTION,
+		data
+	})
+
+	//redux-thunk
+	export const getTodoList = () => {
+		return (dispatch) => {
+			axios.get('/list.json').then((res)=>{
+				const data = res.data;
+				const action = initListAction(data);
+				dispatch(action);
+			})
+		}
+	}
+
 /*	总结：
 	store是唯一的
 	只有store能改变自己的内容
@@ -626,5 +703,9 @@ store/actionCreators.js:
 	纯函数：给固定的输入, 就一定会有固定的输出, 不会有任何的副作用
 
 	redux : createStore  store.dispatch  store.getState  store.subscribe
-*/
+	--------------------------------
+	redux-thunk中间件
 
+	redux-saga中间件
+	
+*/
