@@ -412,8 +412,8 @@ style.css:
  redux = Reducer + Flux
 
  Action Creaters(图书) -->   Store(管理员) --> <--- Reducers(记录本)
- 							|
- 				React Components
+ 			|
+ 			React Components
 
 Ant Design of React布局库
 Reduce devetools 调试工具
