@@ -709,3 +709,159 @@ store/actionCreators.js:
 	redux-saga中间件
 	
 */
+Redux的使用
+	src/index.js
+		import React from 'react'
+		import ReactDom from 'react-dom'
+		import TodoList from './TodoList'
+		//改造: 使用Provider
+		import { Provider } from 'react-redux'
+		import store from './store'
+
+		const App = {
+			<Provider store={store}>
+				<TodoList />
+				<A></A>
+				...
+			</Provider>
+		}
+
+		ReactDom.render(App, document.getElementById('app'))
+
+
+	src/TodoList.js:
+		import React, { Component } from 'react'
+		//import store from './store'
+		import { connect } from 'react-redux'
+
+		//无状态组件
+		const TodoList = (props) => {
+			render() {
+				return (
+					const { inputVal, changeInputVal, handleClick, list, handleDelete } = props;
+					
+					<div>
+						<div>
+							<input type="text"
+							 value={ inputVal}
+							 onChange={ changeInputVal}
+							/>
+							<button onClick={ handleClick}>添加</button>
+						</div>
+						<ul>
+							{
+								list.map((item, index) => {
+									<li onClick={handleDelete(index)} key={index}>{item}</li>
+								})
+							}
+						</ul>
+					</div>
+				)
+			}
+		}
+		
+		/*
+		class TodoList extends Component{
+			//使用Provider 暂时不需要
+			// constructor(props) {
+			// 	super(props);
+			// 	this.state = store.getState();
+			// }
+
+			render() {
+				return (
+					const { inputVal, changeInputVal, handleClick, list, handleDelete } = this.props;
+					
+					<div>
+						<div>
+							<input type="text"
+							 value={ inputVal}
+							 onChange={ changeInputVal}
+							/>
+							<button onClick={ handleClick}>添加</button>
+						</div>
+						<ul>
+							{
+								list.map((item, index) => {
+									<li onClick={handleDelete(index)} key={index}>{item}</li>
+								})
+							}
+						</ul>
+					</div>
+				)
+			}
+
+		} 
+		*/
+
+		const mapStateToProps = (state) => {
+			return {
+				inputVal: state.inputVal,
+				list: state.list
+			}
+		}
+		const mapDispatchToprops = (dispatch) => {
+			return {
+				changeInputVal(e) {
+					const action = {
+						type:'change_input_val',
+						value: e.target.value
+					}
+					dispatch(action);
+				}
+
+				handleClick() {
+					const action = {
+						type: 'add_item'
+					}
+					dispatch(action);
+				}
+
+				handleDelete(index) {
+					const action = {
+						type: 'delete_item',
+						index
+					}
+				}
+			}
+		}
+		//TodoList 与 store做链接
+		export default connect(mapStateToProps, mapDispatchToprops)(TodoList);
+
+
+	src/store/index.js:
+		import { createStore } from 'redux'
+		import reducer from './reducer'
+
+		const store = createStore(reducer);
+		export default store;
+
+
+	src/store/reducer.js:
+		const defaultState = {
+			inputVal: '',
+			list: []
+		}
+
+		export default (state = defaultState, action) => {
+			if(action.type === 'change_input_val') {
+				const newState = JSON.parse(JSON.stringify(state));
+				newState.value = action.value;
+				return newState;
+			}
+
+			if(action.type === 'add_item') {
+				const newState = JSON.parse(JSON.stringify(state));
+				newState.list.push(newState.inputVal);	
+				newState.inputVal = '';
+				return newState;
+			}
+
+			if(action.type === 'delete_item') {
+				const newState = JSON.parse(JSON.stringify(state));
+				newState.list.splice(action.index, 1)
+				return newState;
+			}
+
+			return state;
+		}
