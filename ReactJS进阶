@@ -565,7 +565,7 @@ src/TodolistUI.js:
 				<List
 					style={{width:'300px', marginTop:'10px'}}
 					bordered
-					dataSource={this.props.list}
+					dataSource={props.list}
 					renderItem={(item, index) =>(<List.item onClick={()=>{props.handleItemDelete(index)}}>{item}</List.item>)}
 				/>
 			</div>
@@ -759,40 +759,6 @@ Redux的使用
 				)
 			}
 		}
-		
-		/*
-		class TodoList extends Component{
-			//使用Provider 暂时不需要
-			// constructor(props) {
-			// 	super(props);
-			// 	this.state = store.getState();
-			// }
-
-			render() {
-				return (
-					const { inputVal, changeInputVal, handleClick, list, handleDelete } = this.props;
-					
-					<div>
-						<div>
-							<input type="text"
-							 value={ inputVal}
-							 onChange={ changeInputVal}
-							/>
-							<button onClick={ handleClick}>添加</button>
-						</div>
-						<ul>
-							{
-								list.map((item, index) => {
-									<li onClick={handleDelete(index)} key={index}>{item}</li>
-								})
-							}
-						</ul>
-					</div>
-				)
-			}
-
-		} 
-		*/
 
 		const mapStateToProps = (state) => {
 			return {
