@@ -85,6 +85,12 @@ v-for注意点：
 	//组件间传值 $.emit $.on结合
 	
 router
+	路由模式 hash模式、history模式
+	1、hash模式不需要后端配置, hash发生变化的url都会被浏览器记录下来，从而你会发现浏览器的前进后退都可以用, 
+	浏览器后退页面字体颜色发生变化,  没有请求服务器, 但是页面状态和url关联起来.
+	
+	2、history模式需要后端配置路径, 刷新没有响应, 有可能出现404界面
+	
 	Vue.component('login', {
 		template:'<div>login----{{$route.query.id}}',
 		//template:'<div>{{$route.params.id}}</div></div>',
