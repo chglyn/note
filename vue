@@ -14,7 +14,7 @@ MVVM模式的理解
 	model代表数据模型, 数据和业务逻辑都在model层
 	view代表ui视图, 负责数据的展示
 	viewModel负责监听model中数据的改变并且控制视图的更新, 处理用户交互操作
-	model和view无直接关联, 通过viewModel进行联系的, model和viewModel直接悠着双向数据绑定的关系.
+	model和view无直接关联, 通过viewModel进行联系的, model和viewModel直接有着双向数据绑定的关系.
 	当model中的数据改变时会触发view层的刷新, view由于用户交互操作而改变的数据也会在Model中同步.
 	
 vue的响应式原理
