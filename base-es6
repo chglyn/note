@@ -149,7 +149,7 @@ let, const定义变量
 	//参数1：长度lenght, 参数2：指定字符
 	//语法： padStart/padEnd(length, '指定字符')
 	let str = 'ab';
-	console.log(str.padStart(4, 'jj')); //jab
+	console.log(str.padStart(4, 'jj')); //jjab
 	console.log(str.padStart(5, 'cdef')); //cdeab
 
 模版字符串
