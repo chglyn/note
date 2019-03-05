@@ -26,9 +26,9 @@ vue的响应式原理
 	阻止事件冒泡  @click.stop="..."
 	阻止默认事件  @click.prevent="..."
 	...
-	v-module.trim = ""
-	v-module.number = ""
-	v-module.
+	v-module.trim=""
+	v-module.number=""
+	v-module.lazy=""
 	...
   
 事件绑定
