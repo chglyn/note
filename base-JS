@@ -498,6 +498,28 @@ function Person() {
 var person = new Person();
 console.log(person.height); //100
 
+**********************数组map方法实现原理****************************
+var list = [
+	{
+		id:1, name:"apple"
+	},
+	{
+		id: 2, name: "banner"
+	}
+]
+
+Array.prototype.myMap = function(func) {
+	for(var i = 0; i < this.length; i++) {
+		if(func(this[i], i)) {
+			return this[i]
+		}
+	}
+}
+
+list.myMap(function(item, i) {
+	console.log(item)
+})
+
 *******************Object.create**********************
 //var obj = Object.create(原型)；
 
