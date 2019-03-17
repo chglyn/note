@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="/public/main.css">
+</head>
+<body>
+	<h1>{{ title }}</h1>
+	<div>
+		<a href="/students/new">添加学生</a>
+	</div>
+	<ul>
+		{{each students}}
+		<li>
+			{{ $value.id }} ---->
+			{{ $value.name }} ---->
+			{{ $value.sex }} ---->
+			{{ $value.age }} ---->
+			<a href="/students/edit?id={{$value.id}}" title="">修改</a>---->
+			<a href="/students/delete?id={{$value.id}}" title="">删除</a>
+		</li>
+		{{/each}}
+	</ul>
+
+</body>
+</html>

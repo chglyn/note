@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>留言列表</title>
+	<link rel="stylesheet" href="/public/main.css">
+</head>
+<body>
+
+	<!-- 浏览器一直加载状态
+	解析过程中遇到iframe img link 
+	video 
+	audio
+	d带有src或者link href
+	属性标签(具有外链资源) 浏览器会自动对这些资源发起请求
+	-->
+	<img src="/public/1.jpg" width="200" height="150" alt="">
+
+	<h2>留言板</h2>
+	<a href="/post" title="">发布留言</a>
+	<ul>
+		{{each comment}}
+		<li>{{ $value.name }}--->{{ $value.msg }}---->{{ $value.data }}</li>
+		{{/each}}
+	</ul>
+	
+</body>
+</html>
+<script type="text/javascript" src="/public/main.js"></script>

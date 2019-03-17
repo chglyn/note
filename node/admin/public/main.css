@@ -1,0 +1,14 @@
+body, ul, li, a{
+	margin: 0;
+	padding:0;
+}
+
+body{ color: #333; padding: 20px;}
+
+ul,li{ list-style: none; }
+
+li{
+	border: 1px solid #ccc;
+	padding:10px;
+	margin-top: 10px;
+}

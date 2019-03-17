@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>new</title>
+	<link rel="stylesheet" href="/public/main.css">
+</head>
+<body>
+	<div>
+		<a href="/students/edit">修改学生</a>
+	</div>
+	<form action="/students/edit" method="post">
+		<input type="hidden" value="{{ student.id }}" name="id" />
+		<ul>
+			<li>
+				name 
+				<input type="text" name="name" value="{{ student.name }}" />
+			</li>
+			<li>
+				性别 
+				<input type="radio" name="sex" value="0" /> 男
+				<input type="radio" name="sex"  value="1" /> 女
+			</li>
+			<li>
+				年龄 
+				<input type="text" name="age" value="{{ student.age }}" />
+			</li>
+			<li>
+				<input type="submit" value="提交" />
+			</li>
+		</ul>
+	</form>
+
+</body>
+</html>
