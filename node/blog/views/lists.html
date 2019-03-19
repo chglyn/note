@@ -1,0 +1,26 @@
+{{ extend './public/layout.html' }}
+
+{{ block 'head'}} 
+	<link rel="stylesheet" href="/public/main.css">
+{{ /block }}
+
+{{ block 'content'}}
+	<h1>列表页</h1>
+	<ul>
+		<li>
+			<span>kangkang</span>
+			<span>2019-03-18 09:10:40</span>
+		</li>
+		<li>
+			<span>Jack</span>
+			<span>2019-03-18 13:21:09</span>
+		</li>
+	</ul>
+{{ /block }}
+
+{{ block 'foot' }}
+	<script>
+		console.log('index')
+
+	</script>
+{{ /block }}

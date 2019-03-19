@@ -1,0 +1,31 @@
+{{ extend './public/layout.html' }}
+
+{{ block 'head'}} 
+	<link rel="stylesheet" href="/public/main.css">
+{{ /block }}
+
+{{ block 'content'}}
+	<form id="formdata">
+		<input type="text" name="name" placeholder="用户名" />
+
+		<button class="submit" type="submit">注册</button>
+	</form>
+{{ /block }}
+
+{{ block 'foot' }}
+	<script>
+		
+		$('.submit').click(() => {
+			var data = $('#formdata').serialize();
+			$.ajax({
+				url: '/login',
+				type: 'post',
+				data: data,
+				dataType: 'json',
+				success: function(res) {
+					console.log(res)
+				}
+			})
+		})
+	</script>
+{{ /block }}
