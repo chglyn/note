@@ -1,1 +1,1 @@
-gulp配置
+[gulp配置](https://github.com/chglyn/skills_note/blob/master/gulp/gulpfile.js)
