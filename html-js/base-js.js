@@ -1241,7 +1241,7 @@ es5严格模式
 
 		var global = 100;
 		function foo() {
-			var global = 200'
+			var global = 200
 			eval('console.log(global)');
 		}
 		foo();
@@ -1588,7 +1588,7 @@ JSON.stringify(); json --> string
 jS异步加载的三种方案
 	1、defer异步加载，但要等到dom文档全部解析完才会被执行。只有ie能用，也可以将代码写到内部 (ie9以下能用)
 	2、async异步加载，加载完就执行，async只能加载外部脚本，不能把js写在script标签里 (w3c标准)
-	1、2时也不阻塞页面
+	1、2 时也不阻塞页面
 	3、创建script，插入到DOM中，加载完毕后callBack
 
 		function loadScript(url, callBack) {
