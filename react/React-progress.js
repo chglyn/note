@@ -12,7 +12,7 @@ index.js:
 
 
 todolist(父组件)：
-import React, { Component, Fragment } from './react'
+import React, { Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
 import Axios from 'axios'
 import './style.css'
