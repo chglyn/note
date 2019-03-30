@@ -168,7 +168,7 @@ TodoItem(子组件):
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-class Todolist extends Component{
+class TodoItem extends Component{
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
