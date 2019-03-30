@@ -227,7 +227,7 @@ TodoItem.defaultProps = { //默认值
 export default Todolist;
 
 todolis.json:
-	['apple', 'banner', 'orger']
+	['apple', 'banana', 'orger']
 
 style.css:
 	input{ border:1px solid red;}
@@ -541,7 +541,7 @@ src/Todolist.js
 	export default Todolist;
 
 src/list.json:
-	['banner', 'apple']
+	['banana', 'apple']
 
 src/TodolistUI.js:
 	//拆分UI部分

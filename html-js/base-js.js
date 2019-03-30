@@ -370,8 +370,8 @@ person1.say(); //1
 	function Person() {}
 	var person = new Person();
 	var person1 = new Person();
-	//person.constuctor --> function Person() {}
-	//person1.constuctor --> function Person() {}
+	//person.constructor --> function Person() {}
+	//person1.constructor --> function Person() {}
 	console.log(person.name, person1.name); //hehe hehe
 	
 	function Person() {}
@@ -641,7 +641,7 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 			//Target.prototype = new F(); ***
 			F.prototype = Origin.Prototype;
 			Target.prototype = new F();     ***
-			Target.prototype.constuctor = Target;
+			Target.prototype.constructor = Target;
 			Target.prototype.uber = Origin.prototype;
 		}
 	}
@@ -651,7 +651,7 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 			return function (Target, Origin) {
 				F.prototype = Origin.Prototype;
 				Target.prototype = new F();    
-				Target.prototype.constuctor = Target;
+				Target.prototype.constructor = Target;
 				Target.prototype.uber = Origin.prototype;
 			}
 		}())
