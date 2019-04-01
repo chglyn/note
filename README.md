@@ -6,4 +6,6 @@ skills note...
 
 [博客园](https://www.cnblogs.com/cate/108703)
 
-[中高级web](https://juejin.im/post/5c64d15d6fb9a049d37f9c20)
+[中高级web-上篇](https://juejin.im/post/5c64d15d6fb9a049d37f9c20)
+
+[中高级web-中篇](https://juejin.im/post/5c92f499f265da612647b754)
