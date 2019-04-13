@@ -224,7 +224,7 @@ TodoItem.propTypes = { //校验数据类型
 TodoItem.defaultProps = { //默认值
 	test: 'hello world'
 }
-export default Todolist;
+export default TodoItem;
 
 todolis.json:
 	['apple', 'banana', 'orger']

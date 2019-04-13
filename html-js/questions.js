@@ -196,3 +196,10 @@ js有哪些内置对象
 			return (x!=item);
 		})
 	}
+
+
+打印[1, 2, 3].map(parseInt)
+
+类数组转化为数组 Array.prototype.slice.call(Arr)
+
+hasOwnProperty返回一个布尔值，指出一个对象是否具有制定名称的属性
