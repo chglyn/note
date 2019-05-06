@@ -203,3 +203,23 @@ js有哪些内置对象
 类数组转化为数组 Array.prototype.slice.call(Arr)
 
 hasOwnProperty返回一个布尔值，指出一个对象是否具有制定名称的属性
+
+var x = 1;
+var y = 2;
+function show() {
+	var x = 3;
+	return {
+		x: x,
+		fun: function(a, b) {
+			x = a + b;
+		}
+	}
+}
+var obj = show();
+obj.fun(x, y);
+console.log(obj.x);
+console.log(x);
+    
+    
+    
+    
