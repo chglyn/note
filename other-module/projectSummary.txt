@@ -5,7 +5,18 @@ ElementUI Tree
     
   问题二：load函数中resolve参数，异步获取数据，不能缓存resolve，Tab切换数据不会改变
   
-  当前日期+1天
+当前日期 +n 天
   let timeDate = new Date(),
       day = 1;
   timeDate.setDate(timeDate.getDate() + day);
+  
+换算时、分、秒
+  parseInt(item.studyTime/3600) 时 parseInt(item.studyTime/60) 分 parseInt(item.studyTime%60) s
+
+路由替换
+  this.$router.replace({ name: 'nameTeacherPc', params: { taskId: this.taskId } })
+  
+路由跳转
+  this.$router.push({ name: 'nameAddTeacherPc', params: { Id }, query:{ isEdit: 1 }})
+
+
