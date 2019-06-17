@@ -2,6 +2,7 @@ ElementUI Tree
   问题一：icon添加css控制点击是上一次数据
     cursor: default;
     pointer-events: none;
+    添加flag标记区分默认加载第一层树形节点
     
   问题二：load函数中resolve参数，异步获取数据，不能缓存resolve，Tab切换数据不会改变
   
