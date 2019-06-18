@@ -220,6 +220,24 @@ obj.fun(x, y);
 console.log(obj.x);
 console.log(x);
     
-    
+//打印重复的个数
+function distinction(str) {
+	var obj = {}
+	return (function() {
+		for(var i = 0; i < str.length; i++) {
+			var v = str.charAt(i);
+			if(obj[v] && obj[v].value == v) {
+				obj[v].count = ++obj[v].count;
+			}else{
+				obj[v] = {}
+				obj[v].count = 1;
+				obj[v].value = v;
+			}
+		}
+		return obj;
+	}())
+}
+var str = 'aaabbbbbdddddefff';
+console.log(distinction(str));
     
     
