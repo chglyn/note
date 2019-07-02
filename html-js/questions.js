@@ -240,4 +240,31 @@ function distinction(str) {
 var str = 'aaabbbbbdddddefff';
 console.log(distinction(str));
     
-    
+function Point(x, y) {
+	this.x = x;
+	this.y = y;
+	this.moveTo = function(x, y) {
+		console.log(this.x, this.y);
+	}
+}
+var p1 = new Point(0, 0);
+var p2 = { x:0, y:0 };
+p1.moveTo(1, 1);
+p1.moveTo.apply(p2, [10, 10]);
+
+
+function a(xx) {
+	this.x = xx;
+	return this;
+}
+var x = a(5);
+var y = a(6);
+console.log(x.x);
+console.log(y.y);
+
+var a = 1;
+var b = 2[a, b] = [b, a];
+console.log(a, b)
+
+
+
