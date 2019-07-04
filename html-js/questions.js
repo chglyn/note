@@ -281,7 +281,7 @@ obj.inner.print();
 var fn = obj.inner.print;
 fn();
 (obj.inner.print)();
-(obj.inner,print = obj.inner.print)();
+(obj.inner.print = obj.inner.print)();
 
 
 
