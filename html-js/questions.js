@@ -266,5 +266,23 @@ var a = 1;
 var b = 2[a, b] = [b, a];
 console.log(a, b)
 
+var num = 10;
+var obj = {
+	num: 0,
+	inner: {
+		num: 6,
+		print: function() {
+			console.log(this.num)
+		}
+	}
+}
+num = 88;
+obj.inner.print();
+var fn = obj.inner.print;
+fn();
+(obj.inner.print)();
+(obj.inner,print = obj.inner.print)();
+
+
 
 
