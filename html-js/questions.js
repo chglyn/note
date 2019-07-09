@@ -284,5 +284,32 @@ fn();
 (obj.inner.print = obj.inner.print)();
 
 
+function a() {
+	y = function() {
+		x = 2;
+	}
+	return function() {
+		var x = 3;
+		y();
+	}.apply(this, arguments);
+}
+a();
+
+var a = 0,
+    b = 0;
+function A(a) {
+	A = function(b) {
+		console.log(a + b++)
+	}
+	console.log(a++)
+}
+A(1);
+A(2);
+
+
+
+
+
+
 
 
