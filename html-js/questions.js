@@ -294,7 +294,11 @@ function A(a) {
 A(1);
 A(2);
 
-
+(function(x){
+	return (function(y) {
+		console.log(x)
+	})(2)
+})(1)
 
 
 
