@@ -20,4 +20,4 @@ ElementUI Tree
 路由跳转
   this.$router.push({ name: 'nameAddTeacherPc', params: { Id }, query:{ isEdit: 1 }})
 
-
+父组件调用子组件方法，在子组件上使用ref绑定属性，在父组件方法中使用this.$refs.属性名.子组件方法名
