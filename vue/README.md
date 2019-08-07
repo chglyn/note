@@ -6,4 +6,4 @@
 
 [分析简单的发布订阅模式](https://github.com/chglyn/skills_note/blob/master/vue/fenxi-ma-2)
 
-[连接数据与试图](https://github.com/chglyn/skills_note/blob/master/vue/fenxi-ma-3)
+[连接数据与视图](https://github.com/chglyn/skills_note/blob/master/vue/fenxi-ma-3)
