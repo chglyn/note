@@ -1,20 +1,44 @@
-skills note...
-
 
 目录
 
-[html/js](https://github.com/chglyn/skills_note/tree/master/html-js)
+[相关html/js/ES6](https://github.com/chglyn/skills_note/tree/master/html-js)
 
-[jquery](https://github.com/chglyn/skills_note/tree/master/jquery)
+[相关jquery](https://github.com/chglyn/skills_note/tree/master/jquery)
 
-[node](https://github.com/chglyn/skills_note/tree/master/node)
+[相关node](https://github.com/chglyn/skills_note/tree/master/node)
 
-[react](https://github.com/chglyn/skills_note/tree/master/react)
+[相关react](https://github.com/chglyn/skills_note/tree/master/react)
 
-[vue](https://github.com/chglyn/skills_note/tree/master/vue)
+[相关vue](https://github.com/chglyn/skills_note/tree/master/vue)
 
-[webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
+[相关webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
 
-[php](https://github.com/chglyn/skills_note/tree/master/php)
+[相关php](https://github.com/chglyn/skills_note/tree/master/php)
 
-[项目坑笔记](https://github.com/chglyn/skills_note/tree/master/other-module)
+[相关项目坑](https://github.com/chglyn/skills_note/blob/master/other-module/projectSummary.txt)
+
+[相关其他模块](https://github.com/chglyn/skills_note/blob/master/other-module/submit-form.html)
+
+
+
+文章：
+
+[web资源](https://www.jianshu.com/p/6cb49271cd2a)
+
+[携程haorooms博客](https://www.haorooms.com)
+
+[博客园](https://www.cnblogs.com/cate/108703)
+
+[中高级web-上篇](https://juejin.im/post/5c64d15d6fb9a049d37f9c20)
+
+[中高级web-中篇](https://juejin.im/post/5c92f499f265da612647b754)
+
+[蚂蚁金服数据体验技术](https://juejin.im/user/59659aff5188250cf956e6dd)
+
+[前端react](http://caibaojian.com/react)
+
+[前端vue](http://caibaojian.com/vue)
+
+[前端100问](https://juejin.im/post/5d23e750f265da1b855c7bbe#heading-23)
+
+[Node/React/Vue面试题](https://www.bilibili.com/video/av53109655/?p=1)
