@@ -42,3 +42,6 @@
 [前端100问](https://juejin.im/post/5d23e750f265da1b855c7bbe#heading-23)
 
 [Node/React/Vue面试题](https://www.bilibili.com/video/av53109655/?p=1)
+
+[JS面试题](https://www.bilibili.com/video/av15489696?from=search&seid=17235287298620673964)
+
