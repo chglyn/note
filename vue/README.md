@@ -9,3 +9,6 @@
 [连接数据与视图](https://github.com/chglyn/skills_note/blob/master/vue/fenxi-ma-3.js)
 
 [替换模版数据](https://github.com/chglyn/skills_note/blob/master/vue/fenxi-ma-4.js)
+
+[模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.js)
+
