@@ -1277,11 +1277,44 @@ DOM  --> Document Object Model
 						div[j].style.display = 'none'; 
 					}
 					this.className = 'active';
-					div[i].style.display = 'block';
+					div[n].style.display = 'block';
 				}
 			}(i))
 		}
 
+	
+	轮播图, 4张图轮播
+	var index = 0;	
+	var rightBtn = document.getElementById('right');
+	var leftBtn = document.getElementById('left');
+	var item = document.getElementsByClassName('item');
+	var clearActive = fuction() {
+		for(var i = 0; i < item.length; i++) {
+			item[i].className = 'item';
+		}
+	}
+	var addActive = function() {
+		clearActive();
+		item[index].calssName = 'item active';
+	}
+	rightBtn.onclick = function() {
+		if(index < 4) {
+			index ++;
+		}else{
+			index = 0;
+		}
+		addActive();
+	}
+	leftBtn.onclick = function() {
+		if(index == 0) {
+			index = 4;
+		}else{
+			index --;
+		}
+		addActive();
+	}
+		
+	运动demo	
 	var div = document.creatElement('div');
 	document.body.appendChild(div);
 	//var speed = 0;
