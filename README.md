@@ -29,15 +29,15 @@
 
 [博客园](https://www.cnblogs.com/cate/108703)
 
+[前端react手册](http://caibaojian.com/react)
+
+[前端vue手册](http://caibaojian.com/vue)
+
 [中高级web-上篇](https://juejin.im/post/5c64d15d6fb9a049d37f9c20)
 
 [中高级web-中篇](https://juejin.im/post/5c92f499f265da612647b754)
 
-[蚂蚁金服数据体验技术](https://juejin.im/user/59659aff5188250cf956e6dd)
-
-[前端react](http://caibaojian.com/react)
-
-[前端vue](http://caibaojian.com/vue)
+[优选前端文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60#heading-6)
 
 [前端100问](https://juejin.im/post/5d23e750f265da1b855c7bbe#heading-23)
 
