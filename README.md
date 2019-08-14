@@ -1,6 +1,5 @@
 
 ## 目录:
-------
 [相关html/js/ES6](https://github.com/chglyn/skills_note/tree/master/html-js)
 
 [相关jquery](https://github.com/chglyn/skills_note/tree/master/jquery)
@@ -23,7 +22,6 @@
 
 
 ## 文章：
-------
 [web资源](https://www.jianshu.com/p/6cb49271cd2a)
 
 [携程haorooms博客](https://www.haorooms.com)
