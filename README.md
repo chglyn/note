@@ -42,6 +42,8 @@
 
 [前端vue手册](http://caibaojian.com/vue)
 
+[解析vue2.0的diff算法](https://segmentfault.com/a/1190000008782928#articleHeader7?tdsourcetag=s_pcqq_aiomsg)
+
 [中高级web-上篇](https://juejin.im/post/5c64d15d6fb9a049d37f9c20)
 
 [中高级web-中篇](https://juejin.im/post/5c92f499f265da612647b754)
