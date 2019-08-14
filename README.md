@@ -1,5 +1,5 @@
 
-***目录
+__目录:__
 
 [相关html/js/ES6](https://github.com/chglyn/skills_note/tree/master/html-js)
 
@@ -21,7 +21,7 @@
 
 
 
-***文章：
+__文章__：
 
 [web资源](https://www.jianshu.com/p/6cb49271cd2a)
 
