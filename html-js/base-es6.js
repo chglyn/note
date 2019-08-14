@@ -843,6 +843,38 @@ promise
 	}, catch(e)=>{
 		console.log(e);
 	})
+	
+	//实现promiseAll
+	function PromiseAll(promises) {
+		return new Promise((resolve, reject) => {
+			let index = 0;
+			let res = Array(promises.length);
+
+			for(let i = 0; i<promises.length;i++) {
+				promises[i].then(val => {
+					index ++;
+					res[i] = val;
+
+					if(index == promises.length) {
+						return resolve(res);
+					}
+				}, error => {
+					reject(error);
+				})
+			}
+		})
+	}
+
+	let p1 = new Promise(resolve => resolve('p1'));
+	let p2 = new Promise(resolve => resolve('p2'));
+	//let p3 = Promise.reject('p3');
+
+	PromiseAll([p1, p2]).then(res => {
+		console.log(res);
+	}, error => {
+		console.log(error)
+	})
+	
 
 async 
 	//async 默认返回一个Promise对象
