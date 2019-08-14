@@ -1,7 +1,5 @@
 
-__目录:__
-
-___
+### 目录:
 
 [相关html/js/ES6](https://github.com/chglyn/skills_note/tree/master/html-js)
 
@@ -21,11 +19,10 @@ ___
 
 [相关其他模块](https://github.com/chglyn/skills_note/blob/master/other-module/submit-form.html)
 
+  
 
 
-__文章__：
-
-___
+### 文章：
 
 [web资源](https://www.jianshu.com/p/6cb49271cd2a)
 
