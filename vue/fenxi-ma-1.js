@@ -9,7 +9,7 @@ var vm  = new Vm({
 
 function Vm(options={}) {
 	this.$options = options;
-	let data = this._data = Vm.$options.data;
+	let data = this._data = this.$options.data;
 	observer(data);
 
 	/*数据代理部分*/
