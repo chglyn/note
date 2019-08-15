@@ -854,12 +854,12 @@ promise
 				promises[i].then(val => {
 					index ++;
 					res[i] = val;
-
 					if(index == promises.length) {
-						return resolve(res);
+						resolve(res);
 					}
 				}, error => {
 					reject(error);
+					return;
 				})
 			}
 		})
