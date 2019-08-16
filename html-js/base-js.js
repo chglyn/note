@@ -448,13 +448,13 @@ person1.say(); //1
 Grand.prototype.__proto__ = Object.prototype; //Object.prototype 是所有对象的最终原型
 Grand.prototype.lastName = 'Deng';
 function Grand() {}
-var grand = new Grand;
+var grand = new Grand();
 Father.prototype = grand;
 function Father() {
 	this.name = 'sunny';
 	this.num = 100;
 }
-var father = new Father;
+var father = new Father();
 Son.prototype = father;
 function Son() {
 	this.hobbit = 'smoke';
