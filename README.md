@@ -58,4 +58,5 @@
 
 [灵活运用css技巧](https://juejin.im/post/5d4d0ec651882549594e7293)
 
+[合格前端应看的技术文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60)
 
