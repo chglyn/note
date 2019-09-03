@@ -60,3 +60,4 @@
 
 [合格前端应看的技术文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60)
 
+[深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
