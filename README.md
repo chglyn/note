@@ -65,6 +65,7 @@
 
 [事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
 
+[JavaScript半知半解](https://www.kancloud.cn/dennis/tgjavascript/241811)
 
 
 
