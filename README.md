@@ -69,4 +69,5 @@
 
 [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds)
 
+[infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
 
