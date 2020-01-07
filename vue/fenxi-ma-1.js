@@ -34,7 +34,7 @@ function Vm(options={}) {
 
 function observer(data) {
 	if(typeof data !== 'object') return;
-	return new Observer()
+	return new Observer(data)
 }
 
 function Observer(data) {
