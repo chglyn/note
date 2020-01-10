@@ -22,14 +22,14 @@ ElementUI Tree
 
 父组件调用子组件方法，在子组件上使用ref绑定属性，在父组件方法中使用this.$refs.属性名.子组件方法名
 
-input只能输入数字或两位小数
-function num(obj){
-    obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
-    obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字
-    obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个, 清除多余的
-    obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
-    obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
-}
+input验证是否为数字
+		isNumber: function(value) {
+		    var patrn = /^(-)?\d+(\.\d+)?$/;
+		    if (patrn.exec(value) == null || value == "") {
+		        return false
+		    } else {
+		        return true
+		    }
 
 限制只能输入数字
 <input type="text" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>
