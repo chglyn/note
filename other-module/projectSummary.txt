@@ -30,6 +30,11 @@ input验证是否为数字
 		    } else {
 		        return true
 		    }
+		    
+		    if(!this.isNumber(origPriceVal)) {
+		    	console.log('不是合法有效数字')
+		    }
+		    
 
 限制只能输入数字
 <input type="text" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>
