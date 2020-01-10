@@ -70,3 +70,5 @@
 [infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
 
 [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
+
+[判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
