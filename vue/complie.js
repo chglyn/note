@@ -165,4 +165,17 @@ class MVue{
         this.proxyData(this.$data);
     }
   }
+    
+    proxyData(data){
+        for(const key in data) {
+            Object.definePrototype(this, key, {
+                get() {
+                    return data[key];
+                },
+                set(newVal) {
+                    data[key] = newVal;
+                }
+            })
+        }
+    }
 }
