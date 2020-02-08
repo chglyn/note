@@ -18,6 +18,9 @@ const compileUtil = {
     },
     html(node, expr, vm) {
         const value = this.getVal(expr, vm);
+        new Watch(vm, expr, (newVal) => {
+            this.updtaerHtml(node, newVal);
+        })
         this.updater.htmlUpdater(node, value);
     },
     model(node, expr, vm) {
