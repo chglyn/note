@@ -6,15 +6,28 @@ const compileUtil = {
     },
     text(node, expr, vm) { //expr: msg
         //cons value= vm.$data[expr];
-        const value = this.getVal(expr, vm);
+       let value;
+        if(expr.indexOf('{{') !== -1) {
+            value = expr.replace(/\{\{\(.+?)\}\}/g, (...args) => {
+                return this.getVal(args[1], vm);   
+            });
+        }else{
+           value = this.getVal(expr, vm);
+        }
         this.updater.textUpdater(node, value);
     },
     html(node, expr, vm) {
         const value = this.getVal(expr, vm);
         this.updater.htmlUpdater(node, value);
     },
-    model(node, expr, vm) {},
-    on(node, expr, vm, eventName){},
+    model(node, expr, vm) {
+        const value = this.getVal(expr, vm);
+        this.updater.modelUpdater(node, value);
+    },
+    on(node, expr, vm, eventName){
+        let fn = vm.$options.methods && vm.$options.methods[expr];
+        node.addEventListener(eventName, fn.bind(vm), false);
+    },
     
     //更新函数
     updater: {
@@ -22,7 +35,10 @@ const compileUtil = {
             node.textContent = value;
         },
         htmlUpdater(node, value) {
-        
+            node.innerHtml = value;
+        },
+        modelUpdater(node, value) {
+            node.value = value;
         }
     }
 }
@@ -68,13 +84,28 @@ class Compolie{
                 //是一个指令  v-model v-html v-text v-on:click
                 const [, directive] = name.split('-'); //model ...
                 const [dirName, eventName] = directive.split(':');
-                [dirName](node, value, this.vm, eventName);
+                //更新视图 数据驱动视图
+                compileUtil[dirName](node, value, this.vm, eventName);
+                
+                //删除有指令的标签上的属性
+                node.removeAttribute('v-'+directive);
+            }else if(this.isEventName(name)) {
+                let [, eventName] = name.split('@');
+                compileUtil['on'](node, value, this.vm, eventName);
             }
         })
     }
   
     compileText(node) {
+        //{{}} v-text
+        const content = node.textContent;
+        if(/\{\{\(.+?)\}\}/.test(content)) {
+            compileUtil['text'](node, content, this.vm);
+        }
+    }
     
+    idEventName(attrName) {
+        return attrName.startsWith('a');
     }
     
     isDirective(attrName) {
