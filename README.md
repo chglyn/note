@@ -35,6 +35,8 @@
 ## 文章：
 [有效的技术简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
 
+[技术框架](http://www.iocoder.cn/?bilibili&av80611222)
+
 [web资源](https://www.jianshu.com/p/6cb49271cd2a)
 
 [携程haorooms博客](https://www.haorooms.com)
