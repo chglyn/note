@@ -4,6 +4,11 @@ const compileUtil = {
             return data[currentVal];
         }, vm.$data)
     },
+    setVal(expr, vm, inpuVal){
+        return expr.split('.').reduce((data, currentVal) => {
+            data[currentVal] = inpuVal;
+        }, vm.$data)
+    },
     getContentVal(expr, vm) {
         return expr.replace(/\{\{\(.+?)\}\}/g, (...args) => {
             return this.getVal(args[1], vm);
@@ -36,7 +41,11 @@ const compileUtil = {
         const value = this.getVal(expr, vm);
         new Watch(vm, expr (newVal => {
             this.updater.modelUpdater(node, newVal);
-        }))
+        })
+        
+        node.addEventListener('input', e=>{
+            this.setVal(expr, vm, e.target.value);          
+        })
         this.updater.modelUpdater(node, value);
     },
     on(node, expr, vm, eventName){
