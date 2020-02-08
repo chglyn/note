@@ -122,7 +122,7 @@ class Compolie{
       return f;
     }
   
-    isELementNode(node) {
+    isElementNode(node) {
       return node.nodetype === 1;
     }
 }
@@ -130,12 +130,13 @@ class Compolie{
 class MVue{
   constructor(options) {
     this.$el = options.el;
-    this.data = options.data;
+    this.$data = options.data;
     this.$options = options;
     
     if(this.el) {
         //实现一个数据观察者
         //实现一个指令解析器
+        new Oberver(this.$data);
         new Compolie(this.el, this);
     }
   }
