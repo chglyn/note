@@ -28,7 +28,7 @@ const compileUtil = {
         let fn = vm.$options.methods && vm.$options.methods[expr];
         node.addEventListener(eventName, fn.bind(vm), false);
     },
-    
+    bind(node, expr, vm, eventName) {},
     //更新函数
     updater: {
         textUpdater(node, value) {
