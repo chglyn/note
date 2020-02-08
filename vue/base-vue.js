@@ -16,6 +16,10 @@ MVVM模式的理解
 	viewModel负责监听model中数据的改变并且控制视图的更新, 处理用户交互操作
 	model和view无直接关联, 通过viewModel进行联系的, model和viewModel直接有着双向数据绑定的关系.
 	当model中的数据改变时会触发view层的刷新, view由于用户交互操作而改变的数据也会在Model中同步.
+
+vue的数据劫持
+	通过数据劫持结合订阅与发布者模式的方式，通过Object.defineProperty劫持各个属性的setter、getter，
+	在数据变动时发布消息给订阅者，触发相应的回调函数。
 	
 vue的响应式原理
 	创建vue实例会遍历data选项的属性, 用Object.defineProperty将他们转化为getter/setter并在内部追踪相关依赖, 在属性被访问和修改时通知变化.
