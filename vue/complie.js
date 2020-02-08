@@ -162,6 +162,7 @@ class MVue{
         //实现一个指令解析器
         new Oberver(this.$data);
         new Compolie(this.el, this);
+        this.proxyData(this.$data);
     }
   }
 }
