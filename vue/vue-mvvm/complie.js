@@ -69,16 +69,16 @@ const compileUtil = {
 
 class Compolie{
     constructor(el, vm) {
-      this.el = (this.isElementNode(el) ? el : document.querySelector(el));
-      this.vm = vm;
-      //获取文档碎片对象，放入内存中会减少界面的回流和重绘
-      const fragment = this.node2Fragment(this.el);
-      
-      //编译模版
-      this.compile(fragment);
-      
-      //追加子元素到根元素
-      this.el.appendChild(fragment);
+        this.el = (this.isElementNode(el) ? el : document.querySelector(el));
+        this.vm = vm;
+        //获取文档碎片对象，放入内存中会减少界面的回流和重绘
+        const fragment = this.node2Fragment(this.el);
+
+        //编译模版
+        this.compile(fragment);
+
+        //追加子元素到根元素
+        this.el.appendChild(fragment);
     }
     
     compile(fragment) {
