@@ -129,7 +129,7 @@ class Compolie{
     }
     
     idEventName(attrName) {
-        return attrName.startsWith('a');
+        return attrName.startsWith('');
     }
     
     isDirective(attrName) {
