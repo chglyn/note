@@ -18,7 +18,7 @@ const compileUtil = {
         //cons value= vm.$data[expr];
        let value;
         if(expr.indexOf('{{') !== -1) {
-            value = expr.replace(/\{\{\(.+?)\}\}/g, (...args) => {
+            value = expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
                 new Watcher(vm, args[1], (newVal) => {
                     this.updater.textUpdater(node, this.getContentVal(expr, vm));
                 })
@@ -123,7 +123,7 @@ class Compolie{
     compileText(node) {
         //{{}} v-text
         const content = node.textContent;
-        if(/\{\{\(.+?)\}\}/.test(content)) {
+        if(/\{\{(.+?)\}\}/.test(content)) {
             compileUtil['text'](node, content, this.vm);
         }
     }
