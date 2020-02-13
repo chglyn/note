@@ -13,5 +13,4 @@
 [模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.js)
 
 ### vue-mvvm
-[compile](https://github.com/chglyn/skills_note/blob/master/vue/vue-mvvm/complie.js)
-[oberver](https://github.com/chglyn/skills_note/blob/master/vue/vue-mvvm/oberver.js)
+[mvvm](https://github.com/chglyn/skills_note/blob/master/vue/vue-mvvm/mvvm.html)
