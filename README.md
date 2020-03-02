@@ -79,3 +79,6 @@
 
 [webpack相关优化](https://segmentfault.com/a/1190000015883378)
 
+[深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
+
+
