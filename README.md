@@ -5,13 +5,13 @@
 
 
 
-## 关于HTML:
+### 关于HTML:
 * [HTML笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
 
-## 关于JavaScript:
+### 关于JavaScript:
 * [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
 
 * [不知道的JS/与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
@@ -20,19 +20,19 @@
 
 * [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/%E5%AE%9E%E7%8E%B0call%26apply%26bind.md)
 
-## 关于jQuery:
+### 关于jQuery:
 * [jQuery笔记](https://github.com/chglyn/skills_note/tree/master/jquery)
 
 
-## ES6:
+### ES6:
 * [ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
 
 
-## node笔记:
+### node笔记:
 * [相关node](https://github.com/chglyn/skills_note/tree/master/node)
 
 
-## VueJS:
+### VueJS:
 * [关于Vue](https://github.com/chglyn/skills_note/tree/master/vue)
 
 * [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js)
@@ -41,16 +41,16 @@
 
 * [模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.md)
 
-## ReactJS:
+### ReactJS:
 * [相关react](https://github.com/chglyn/skills_note/tree/master/react)
 
 
-## webpack:
+### webpack:
 * [相关webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
 * [webpack相关优化](https://segmentfault.com/a/1190000015883378)
 
 
-## other model:
+### other model:
 * [相关php](https://github.com/chglyn/skills_note/tree/master/php)
 
 * [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/project-question.md)
@@ -65,13 +65,14 @@
 
 * [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
 
+* [比较vue&react](https://github.com/chglyn/skills_note/blob/master/other-module/vue&react.md)
 
 
 
 
 
 
-## 手册与收藏：
+### 手册与收藏：
 ...
 
 * [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)

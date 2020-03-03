@@ -1,31 +1,29 @@
-双向绑定原理
-	vue数据双向绑定是通过数据劫持结合发布者-订阅者模式实现的。
-	首先对数据进行劫持监听, 所以需要设置一个监听器Observer, 用来监听所有属性。
-	如果属性发生变化, 需要告诉订阅者Watcher看是否需要更新, 因为订阅者有很多个, 所以需要一个消息订阅器Dep专门收集这些订阅者,
-	然后再监听器Observer和订阅者Watcher之间进行统一管理。
-	还需要一个指令解析器Compile, 对每个节点进行扫描和解析, 将相关指令(如v-model v-on)对应初始化一个订阅者Watcher, 
-	并替换模版数据或者绑定相应的函数, 当订阅者Watcher接收到相应属性的变化, 就会执行对应的更新函数, 从而更新视图。
-	
 实现数据的双向绑定
 	1、实现一个监听器Observer, 用来劫持并监听所有属性, 如果有变动, 就通知订阅者.
 	2、实现一个订阅者Watcher, 每一个Watcher都绑定一个更新函数, Watcher可以接收到属性的变化通知并执行相应的函数, 从而更新视图.
 	3、实现一个解析器Compile, 可以扫描和解析每个节点的相关指令, 如果节点存在v-model、v-on等指令, 解析器Compile初始化这类节点的模版数据,
 	可以显示在视图上, 然后初始化相应的订阅者Watcher.
 
-MVVM模式的理解
+
+理解MVVM模式
 	model代表数据模型, 数据和业务逻辑都在model层
 	view代表ui视图, 负责数据的展示
 	viewModel负责监听model中数据的改变并且控制视图的更新, 处理用户交互操作
 	model和view无直接关联, 通过viewModel进行联系的, model和viewModel直接有着双向数据绑定的关系.
 	当model中的数据改变时会触发view层的刷新, view由于用户交互操作而改变的数据也会在Model中同步.
 
-vue的响应式原理
+
+vue响应式原理
 	通过数据劫持结合订阅与发布者模式的方式，通过Object.defineProperty劫持各个属性的setter、getter，
 	在数据变动时发布消息给订阅者，触发相应的回调函数。
-	
-	创建vue实例会遍历data选项的属性, 用Object.defineProperty将他们转化为getter/setter并在内部追踪相关依赖, 在属性被访问和修改时通知变化.
+	(创建vue实例会遍历data选项的属性, 用Object.defineProperty将他们转化为getter/setter并在内部追踪相关依赖, 在属性被访问和修改时通知变化.
 	每个组件实例都有相应的watcher程序实例, 它会在组件渲染的过程中把属性记录为依赖, 之后当依赖项的setter被调用时, 
-	会通知watcher重新计算, 从而致使它关联的组件更新.
+	会通知watcher重新计算, 从而致使它关联的组件更新.)
+	
+
+vue双向数据绑定
+	通过不同的元素添加不同的元素监听事件。如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
+
 
 事件修饰符 
 	阻止事件冒泡  @click.stop="..."
