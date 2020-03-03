@@ -6,15 +6,15 @@
 		this.obj = {};
 	}
 
-	Event.prototype = {
+	eventBus.prototype = {
 		emit: function(eventName, ...arg) {
 			var cbs = this.obj[eventName];
 			if(cbs.length > 0) {
-				cbs.forEach(cb => cd(...arg));
+				cbs.forEach(cb => cb(...arg));
 			}
 		},
 		on: function(eventName, fn) {
-			var cbs = this.obj[eventName];
+			var cbs = this.obj[eventName] || [];
 			cbs.push(fn);
 			this.obj[eventName] = cbs;
 		},
@@ -25,5 +25,11 @@
 		}
 	}
 
+
+	var ent = new eventBus();
+
+	ent.on('evt', msg => console.log(msg));
+
+	ent.emit('evt', '测试');
 
 ```

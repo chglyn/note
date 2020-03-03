@@ -32,8 +32,13 @@
 
 
 ## VueJS:
-* [相关Vue](https://github.com/chglyn/skills_note/tree/master/vue)
+* [关于Vue](https://github.com/chglyn/skills_note/tree/master/vue)
 
+* [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js)
+
+* [vue生命周期](https://github.com/chglyn/skills_note/blob/master/vue/vue_lifecycle.png)
+
+* [模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.md)
 
 ## ReactJS:
 * [相关react](https://github.com/chglyn/skills_note/tree/master/react)
@@ -41,6 +46,8 @@
 
 ## webpack:
 * [相关webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
+* [webpack相关优化](https://segmentfault.com/a/1190000015883378)
+* [webpack相关优化-补充]()
 
 
 ## other model:
@@ -59,8 +66,6 @@
 ...
 
 * [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
-
-* [webpack相关优化](https://segmentfault.com/a/1190000015883378)
 
 * [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
 
