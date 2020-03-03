@@ -1,13 +1,8 @@
-# blogs  
-记点有意义的笔记。。。。。。  
-    
-    
-------    
-    
-    
- 
-                                
-       
+# personalBlog  
+随笔、总结、个人、学习。  
+
+------      
+
 
 ## 目录:
 [相关html/js/ES6](https://github.com/chglyn/skills_note/tree/master/html-js)
@@ -74,8 +69,6 @@
 [JavaScript半知半解](https://www.kancloud.cn/dennis/tgjavascript/241811)
 
 [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds)
-
-[有效的技术简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
 
 [携程haorooms博客](https://www.haorooms.com)
 
