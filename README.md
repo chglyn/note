@@ -18,6 +18,7 @@
 
 * [了解数据结构与基本算法](https://github.com/chglyn/skills_note/blob/master/html-js/%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.md)
 
+* [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/%E5%AE%9E%E7%8E%B0call%26apply%26bind.md)
 
 ## 关于jQuery:
 * [jQuery笔记](https://github.com/chglyn/skills_note/tree/master/jquery)

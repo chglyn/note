@@ -5,8 +5,6 @@
 
 [flex布局](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
-[es6基础](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
-
 [js扫雷](https://github.com/chglyn/skills_note/blob/master/html-js/saolei.html)
 
 [不知道的js](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
