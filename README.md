@@ -53,27 +53,32 @@
 ## other model:
 * [相关php](https://github.com/chglyn/skills_note/tree/master/php)
 
-* [相关项目坑](https://github.com/chglyn/skills_note/blob/master/other-module/projectSummary.txt)
+* [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/projectSummary.txt)
 
 * [相关其他模块](https://github.com/chglyn/skills_note/blob/master/other-module/submit-form.html)
 
 * [web](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)
-  
 
-
-
-## 文章：
-...
-
-* [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
-
-* [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
-
-* [infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
+* [跨域与安全]()
 
 * [事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
 
 * [深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
+
+* [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
+
+
+
+
+
+
+
+## 手册与收藏：
+...
+
+* [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
+
+* [infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
 
 * [技术框架](http://www.iocoder.cn/?bilibili&av80611222)
 
