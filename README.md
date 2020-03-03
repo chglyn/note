@@ -1,22 +1,39 @@
 # personalBlog  
 随笔、总结、个人、学习。  
 
+
 ------      
 
 
-## 目录:
-[相关html/js/ES6](https://github.com/chglyn/skills_note/tree/master/html-js)
+## 关于HTML:
+[HTML笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
+[flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
-[相关jquery](https://github.com/chglyn/skills_note/tree/master/jquery)
+## 关于JavaScript:
+[JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
+[不知道的JS/节流与防抖](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
 
+## 关于jQuery:
+[jQuery笔记](https://github.com/chglyn/skills_note/tree/master/jquery)
+
+## ES6:
+[ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
+
+## node笔记:
 [相关node](https://github.com/chglyn/skills_note/tree/master/node)
 
+## VueJS:
+[相关Vue](https://github.com/chglyn/skills_note/tree/master/vue)
+
+## ReactJS:
 [相关react](https://github.com/chglyn/skills_note/tree/master/react)
 
-[相关vue](https://github.com/chglyn/skills_note/tree/master/vue)
 
+## webpack:
 [相关webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
 
+
+## other model:
 [相关php](https://github.com/chglyn/skills_note/tree/master/php)
 
 [相关项目坑](https://github.com/chglyn/skills_note/blob/master/other-module/projectSummary.txt)
@@ -33,8 +50,6 @@
 [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
 
 [webpack相关优化](https://segmentfault.com/a/1190000015883378)
-
-[判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
 
 [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
 
@@ -73,6 +88,8 @@
 [携程haorooms博客](https://www.haorooms.com)
 
 [web资源](https://www.jianshu.com/p/6cb49271cd2a)
+
+[判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
 
 [博客园](https://www.cnblogs.com/cate/108703)
 
