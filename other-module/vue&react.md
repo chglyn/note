@@ -4,7 +4,7 @@ Vue与React问世很久，一直在使用Vue，偶尔略看一下React及相关�
 
 ##### 设计模式
 * vue是一个渐进式JavaScript框架，自底向上增量开发设计。
-* react用于构建用户界面的JavaScript库
+* react用于构建用户界面的JavaScript库，推荐函数编程，使用函数组件。
 
 ##### 编写语法
 * vue推荐使用.vue后缀单文件模版，保留了html、css、javascript分离写法
@@ -16,7 +16,7 @@ Vue与React问世很久，一直在使用Vue，偶尔略看一下React及相关�
 
 ##### 数据绑定
 * vue借鉴了mvvm思想，使用双向数据绑定[查看双向数据绑定原理](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js)，当视图改变更新模型，当模型改变更新视图。(vue的更新是微任务)
-* react是单向数据流，react中属性不允许更改，状态试允许更改。不允许直接使用this.state更改组件状态。自身设置状态通过this.setState进行更改。(this.setState是异步的，导致获取内容还是之前的内容，隐藏在setState第二个参数添加回调函数获取更新后的内容)
+* react是单向数据流，如果需要双向数据可以手动实现。react中属性不允许更改，状态试允许更改。不允许直接使用this.state更改组件状态。自身设置状态通过this.setState进行更改。(this.setState是异步的，导致获取内容还是之前的内容，隐藏在setState第二个参数添加回调函数获取更新后的内容)。
 
 
 ##### diff算法
