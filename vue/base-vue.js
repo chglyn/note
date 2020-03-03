@@ -22,7 +22,7 @@ vue响应式原理
 	会通知watcher重新计算, 从而致使它关联的组件更新.)
 	
 
-v-model使用双向数据绑定
+如何实现双向数据绑定
 	根据不同的元素与元素类型添加不同的元素监听事件。如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
 
 
