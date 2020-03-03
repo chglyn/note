@@ -2,13 +2,13 @@
 > 随笔、总结、个人、学习。  
 
 <br /><br />
-### 关于HTML:
+### HTML:
 * [HTML笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
 
-### 关于JavaScript:
+### JavaScript:
 * [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
 
 * [不知道的JS/与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
@@ -17,7 +17,7 @@
 
 * [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/%E5%AE%9E%E7%8E%B0call%26apply%26bind.md)
 
-### 关于jQuery:
+### jQuery:
 * [jQuery笔记](https://github.com/chglyn/skills_note/tree/master/jquery)
 
 
@@ -47,6 +47,7 @@
 * [ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
 
 <br />
+
 ### other model:
 
 * [相关php](https://github.com/chglyn/skills_note/tree/master/php)
