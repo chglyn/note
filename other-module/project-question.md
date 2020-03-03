@@ -26,6 +26,29 @@
 ``` parseInt(item.studyTime/3600) 时 parseInt(item.studyTime/60) 分 parseInt(item.studyTime%60) s ```
 
 
+### 时间格式减法
+
+```
+
+	var start = 2018-07-10 10:30:33;
+	var end = 2018-07-10 18:50:45;
+
+	function testTime(start, end) {
+		var now = new Date();
+		start = new Date(start.replace(/-/g, '-'));
+		end = new Date(end.replace(/-/g, '-'));
+
+		if(start - now > 0 && now - end < 0) {
+			return 'before';
+		}else if(start - now <= 0 && now - end <= 0) {
+			return 'waiting';
+		}else if(start - now < 0 && now - end > 0) {
+			return 'after';
+		}
+	}
+
+```
+
 
 ## 模拟form提交参数
 

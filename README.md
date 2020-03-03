@@ -3,7 +3,9 @@
 
 <br /><br />
 ### HTML:
-* [HTML笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
+* [html笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
+
+* [html&JS案例]()
 
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
@@ -12,7 +14,7 @@
 ### JavaScript:
 * [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
 
-* [jquery解析](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
+* [jQuery笔记](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
 
 * [不知道的JS/与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
 
@@ -50,11 +52,9 @@
 
 
 ### ES6:
-* [ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
+* [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
 
 
-
-<br />
 
 ### other model:
 
@@ -62,7 +62,7 @@
 
 * [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/project-question.md)
 
-* [web](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)
+* [web-tool](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)
 
 * [跨域与安全](https://github.com/chglyn/skills_note/blob/master/other-module/%E8%B7%A8%E5%9F%9F%E4%B8%8E%E5%AE%89%E5%85%A8.md)
 
