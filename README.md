@@ -33,15 +33,23 @@
 
 
 ## 文章：
-[有效的技术简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
+...
+
+[深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
+
+[webpack相关优化](https://segmentfault.com/a/1190000015883378)
+
+[判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
+
+[小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
+
+[infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
+
+[事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
+
+[深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
 
 [技术框架](http://www.iocoder.cn/?bilibili&av80611222)
-
-[web资源](https://www.jianshu.com/p/6cb49271cd2a)
-
-[携程haorooms博客](https://www.haorooms.com)
-
-[博客园](https://www.cnblogs.com/cate/108703)
 
 [前端react手册](http://caibaojian.com/react)
 
@@ -63,22 +71,18 @@
 
 [合格前端应看的技术文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60)
 
-[深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
-
-[事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
-
 [JavaScript半知半解](https://www.kancloud.cn/dennis/tgjavascript/241811)
 
 [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds)
 
-[infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
+[有效的技术简历](http://www.ruanyifeng.com/blog/2020/01/technical-resume.html)
 
-[小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
+[携程haorooms博客](https://www.haorooms.com)
 
-[判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
+[web资源](https://www.jianshu.com/p/6cb49271cd2a)
 
-[webpack相关优化](https://segmentfault.com/a/1190000015883378)
+[博客园](https://www.cnblogs.com/cate/108703)
 
-[深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
+
 
 
