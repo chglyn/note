@@ -16,13 +16,14 @@
 vue响应式原理
 	通过数据劫持结合订阅与发布者模式的方式，通过Object.defineProperty劫持各个属性的setter、getter，
 	在数据变动时发布消息给订阅者，触发相应的回调函数。
+
 	(创建vue实例会遍历data选项的属性, 用Object.defineProperty将他们转化为getter/setter并在内部追踪相关依赖, 在属性被访问和修改时通知变化.
 	每个组件实例都有相应的watcher程序实例, 它会在组件渲染的过程中把属性记录为依赖, 之后当依赖项的setter被调用时, 
 	会通知watcher重新计算, 从而致使它关联的组件更新.)
 	
 
-vue双向数据绑定
-	通过不同的元素添加不同的元素监听事件。如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
+v-model使用双向数据绑定
+	根据不同的元素与元素类型添加不同的元素监听事件。如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
 
 
 事件修饰符 

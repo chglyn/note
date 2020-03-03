@@ -1,11 +1,7 @@
 ## personalBlog  
 > 随笔、总结、个人、学习。  
 
-*****  
-
-
-
-
+<br /><br />
 ### 关于HTML:
 * [HTML笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
@@ -23,14 +19,6 @@
 
 ### 关于jQuery:
 * [jQuery笔记](https://github.com/chglyn/skills_note/tree/master/jquery)
-
-
-### ES6:
-* [ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
-
-
-### node笔记:
-* [相关node](https://github.com/chglyn/skills_note/tree/master/node)
 
 
 ### VueJS:
@@ -51,7 +39,16 @@
 * [webpack相关优化](https://segmentfault.com/a/1190000015883378)
 
 
+### node笔记:
+* [相关node](https://github.com/chglyn/skills_note/tree/master/node)
+
+
+### ES6:
+* [ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
+
+<br />
 ### other model:
+
 * [相关php](https://github.com/chglyn/skills_note/tree/master/php)
 
 * [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/project-question.md)
@@ -110,7 +107,3 @@
 * [判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
 
 * [博客园](https://www.cnblogs.com/cate/108703)
-
-
-
-

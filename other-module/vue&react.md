@@ -15,8 +15,8 @@ Vue与React问世很久，一直在使用Vue，偶尔略看一下React及相关�
 * react使用create-react-app脚手架，存在一些局限性，扩展性差不能配置等。
 
 ##### 数据绑定
-* vue借鉴了mvvm思想，使用双向数据绑定( [查看双向数据绑定原理](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js) )，当视图改变更新模型，当模型改变更新视图。(vue的更新是微任务)
-* react是单向数据流，如果需要双向数据可以手动实现。react中属性不允许更改，状态试允许更改。不允许直接使用this.state更改组件状态。自身设置状态通过this.setState进行更改。(this.setState是异步的，导致获取内容还是之前的内容，因此在setState第二个参数添加回调函数获取更新后的内容)[为何this.setState异步](#setState)。
+* vue借鉴了mvvm思想，使用双向数据绑定( [查看双向数据绑定](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js) )，当视图改变更新模型，当模型改变更新视图。(vue的更新是微任务)
+* react是单向数据流，如果需要双向数据可以手动实现。react中属性不允许更改，状态试允许更改。不允许直接使用this.state更改组件状态。自身设置状态通过this.setState进行更改。(this.setState是异步的，导致获取内容还是之前的内容，因此在setState第二个参数添加回调函数获取更新后的内容)[为何this.setState是异步](#setState)。
 
 
 ##### diff算法
@@ -24,8 +24,10 @@ Vue与React问世很久，一直在使用Vue，偶尔略看一下React及相关�
 * react首先对比dom结构，dom结构改变直接卸载重建；dom结构一样，更新变化的内容，所有的同一层节点会通过key进行对比；如果不加key会以暴力的操作卸载与重建。
 
 
-### <a id="setState">为何this.setState异步</a>
+#### <a id="setState">为何this.setState是异步</a>
 * 保持内部一致性
+
 state可以是同步，props不是。 因为这个状态需要被提升到父级，可以在多个组件之间共享时，this.state能同步更新，但tis.props不能在不重新渲染父级情况下立即刷新，此时性能非常低。
+
 * 启动与更新
 比如：一个导航其换到另一个导航时，导航足够快能看到闪烁导致用户体验差；如果有多个级别的组件有不同的异步依赖关系，会看到一个闪烁的级联。
