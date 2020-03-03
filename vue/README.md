@@ -10,7 +10,7 @@
 
 [替换模版数据](https://github.com/chglyn/skills_note/blob/master/vue/fenxi-ma/fenxi-ma-4.js)
 
-[模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.js)
+[模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.md)
 
 ### vue-mvvm
 [mvvm](https://github.com/chglyn/skills_note/blob/master/vue/vue-mvvm/mvvm.html)
