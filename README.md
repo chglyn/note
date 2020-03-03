@@ -5,8 +5,6 @@
 ### HTML:
 * [html笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
-* [html&JS案例]()
-
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
 
@@ -16,11 +14,13 @@
 
 * [jQuery笔记](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
 
-* [不知道的JS/与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
+* [不知道的JS与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
 
-* [了解数据结构与基本算法](https://github.com/chglyn/skills_note/blob/master/html-js/%E4%BA%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.md)
+* [闭包案例二](https://github.com/chglyn/skills_note/blob/master/html-js/闭包案例二.md)
 
-* [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/%E5%AE%9E%E7%8E%B0call%26apply%26bind.md)
+* [了解数据结构与基本算法](https://github.com/chglyn/skills_note/blob/master/html-js/了解数据结构与算法.md)
+
+* [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/实现call&apply&bind.md)
 
 
 
@@ -71,6 +71,8 @@
 * [深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
 
 * [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
+
+* [必知html&JS案例](https://github.com/chglyn/skills_note/blob/master/html-js/html&JS案例.md)
 
 * [比较vue&react](https://github.com/chglyn/skills_note/blob/master/other-module/vue&react.md)
 
