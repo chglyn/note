@@ -8,8 +8,11 @@
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
 
+
 ### JavaScript:
 * [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
+
+* [jquery解析](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
 
 * [不知道的JS/与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
 
@@ -17,8 +20,6 @@
 
 * [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/%E5%AE%9E%E7%8E%B0call%26apply%26bind.md)
 
-### jQuery:
-* [jQuery笔记](https://github.com/chglyn/skills_note/tree/master/jquery)
 
 
 ### VueJS:
@@ -30,8 +31,11 @@
 
 * [模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.md)
 
+
+
 ### ReactJS:
 * [相关react](https://github.com/chglyn/skills_note/tree/master/react)
+
 
 
 ### webpack:
@@ -39,12 +43,16 @@
 * [webpack相关优化](https://segmentfault.com/a/1190000015883378)
 
 
+
 ### node笔记:
 * [相关node](https://github.com/chglyn/skills_note/tree/master/node)
 
 
+
 ### ES6:
 * [ES6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
+
+
 
 <br />
 
