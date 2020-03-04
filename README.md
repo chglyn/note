@@ -1,5 +1,5 @@
 ## personalBlog  
-> 随笔、总结、个人、学习。  
+> 随笔、总结、学习。  
 
 <br /><br />
 ### HTML:
@@ -25,7 +25,7 @@
 
 
 ### VueJS:
-* [关于Vue](https://github.com/chglyn/skills_note/tree/master/vue)
+* [Vue目录](https://github.com/chglyn/skills_note/tree/master/vue)
 
 * [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js)
 
@@ -36,12 +36,12 @@
 
 
 ### ReactJS:
-* [相关react](https://github.com/chglyn/skills_note/tree/master/react)
+* [react目录](https://github.com/chglyn/skills_note/tree/master/react)
 
 
 
 ### webpack:
-* [相关webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
+* [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
 * [webpack相关优化](https://segmentfault.com/a/1190000015883378)
 
 
@@ -68,7 +68,7 @@
 
 * [事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
 
-* [深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
+* [深入理解浏览器缓存机制](https://www.jianshu.com/p/54cc04190252)
 
 * [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
 
