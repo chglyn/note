@@ -30,7 +30,8 @@ border-box|宽度-内边距-边框|向内收缩
 
 ```
 
-* [左适应右定宽](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
+* 左适应右定宽
+请搜索关键词[两栏](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
 ### 三栏布局
 
@@ -45,8 +46,22 @@ border-box|宽度-内边距-边框|向内收缩
 </div>
 
 .middle{ float:left; width:100%; height:100px; background:red; }
-.left{ float:left; width: 200px; position:relative; left:-200px; margin-left:-100%; height:100px; background:#ccc; }
-.right{ float:left;width:200px; position:relative; right:-200px;margin-left:-200px; height:100px; background:#000; }
+.left{ float:left; 
+	width: 200px; 
+	position:relative; 
+	left:-200px; 
+	margin-left:-100%; 
+	height:100px; 
+	background:#ccc; 
+}
+.right{ float:left;
+	width:200px; 
+	position:relative; 
+	right:-200px;
+	margin-left:-200px; 
+	height:100px; 
+	background:#000; 
+}
 .box{ padding:0 200px; }
 
 ```
@@ -62,9 +77,23 @@ border-box|宽度-内边距-边框|向内收缩
 <div class="right"></div>
 
 
-.middle{ float:left; width:100%; height:100px; background:red; }
-.left{ float:left; width:200px; height:100px; background:#ccc; margin-left:-100%; }
-.right{ float:left; width:200px; height:100px; background:#000; margin-left:-200px;}
+.middle{ float:left; 
+	width:100%; 
+	height:100px; 
+	background:red; 
+}
+.left{ float:left; 
+	width:200px; 
+	height:100px; 
+	background:#ccc; 
+	margin-left:-100%; 
+}
+.right{ float:left; 
+	width:200px; 
+	height:100px; 
+	background:#000; 
+	margin-left:-200px;
+}
 .cont{ margin:0 200px; }
 
 ```
@@ -191,6 +220,7 @@ border-box|宽度-内边距-边框|向内收缩
 ```
 
 * splice
+
 ```
 
 function unique(arr) {

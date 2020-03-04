@@ -1,7 +1,7 @@
 ## personalBlog  
 > 随笔、总结、学习。  
 
-<br /><br />
+<br />
 ### HTML:
 * [html笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
@@ -20,7 +20,7 @@
 
 * [了解数据结构与基本算法](https://github.com/chglyn/skills_note/blob/master/html-js/了解数据结构与算法.md)
 
-* [call/apply/bind](https://github.com/chglyn/skills_note/blob/master/html-js/实现call&apply&bind.md)
+* [了解call&apply&bind](https://github.com/chglyn/skills_note/blob/master/html-js/实现call&apply&bind.md)
 
 
 
@@ -42,12 +42,12 @@
 
 ### webpack:
 * [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
-* [webpack相关优化](https://segmentfault.com/a/1190000015883378)
+* [调优webpack](https://github.com/chglyn/skills_note/blob/master/webpack.4.2.x/调优webpack.md)
 
 
 
 ### node笔记:
-* [相关node](https://github.com/chglyn/skills_note/tree/master/node)
+* [node目录](https://github.com/chglyn/skills_note/tree/master/node)
 
 
 
@@ -78,7 +78,7 @@
 
 
 <br /><br /><br /><br /><br />
-### 手册与收藏：
+### 手册与巩固：
 ...
 
 * [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
