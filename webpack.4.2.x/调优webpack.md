@@ -39,14 +39,18 @@ resolve.modules用于webpack去哪些地方查找第三方模块，默认值`['n
 合理配置resolve.extensions可以减少文件的查找，默认值`['.js', '.json']`，当文件名没有后缀时，webpack会根据extensions的定义后缀列表进行文件查找。
 
 因此注意一下几点
+
 1.列表的值尽量少
+
 2.频率高的文件类型后缀写在前面
+
 3.源码中导入的文件尽可能的写上后缀名，避免查找。如`require(./data)`写成`require(./data.json)`。
 
 * 优化resolve.mainFields 
 
-有些第三方文件会根据不同的环境提供不同的代码。如：分别提供ES5和ES6代码
-这两份代码写在package.json文件，如下：
+有些第三方文件会根据不同的环境提供不同的代码。如：分别提供ES5和ES6代码，这两份代码写在package.json文件，
+
+如下：
 
 ```
 	{
@@ -161,8 +165,11 @@ thread-loader放在style-loader之后，原因是thread-loader没办法存取文
 ```
 
 * 开启多进程
+
 使用terser开启多进程运行提高构建速度。并发运行的默认数量` os.cpus().length - 1`
+
 代码：
+
 ```
 	module.exports = {
 		optimization: {
