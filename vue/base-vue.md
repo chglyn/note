@@ -23,7 +23,7 @@
 	
 	当`model`中的数据改变时会触发view层的刷新, `view`由于用户交互操作而改变的数据也会在Model中同步.
 
-* vue双向数据绑定
+* vue双向数据绑定<a id="#data"></a>
 
 	通过数据劫持结合订阅与发布者模式的方式，通过`Object.defineProperty`劫持各个属性的`setter`、`getter`，
 	
