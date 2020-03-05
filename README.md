@@ -28,7 +28,7 @@
 ### VueJS:
 * [Vue目录](https://github.com/chglyn/skills_note/tree/master/vue)
 
-* [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.js)
+* [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.md)
 
 * [vue生命周期](https://github.com/chglyn/skills_note/blob/master/vue/vue_lifecycle.png)
 
