@@ -1,4 +1,5 @@
 实现数据的双向绑定
+
 	1、实现一个监听器Observer, 用来劫持并监听所有属性, 如果有变动, 就通知订阅者.
 
 	2、实现一个订阅者Watcher, 每一个Watcher都绑定一个更新函数, 
@@ -11,6 +12,7 @@
 
 
 理解MVVM模式
+
 	model代表数据模型, 数据和业务逻辑都在model层
 	
 	view代表ui视图, 负责数据的展示
@@ -23,6 +25,7 @@
 
 
 vue响应式原理
+
 	通过数据劫持结合订阅与发布者模式的方式，通过Object.defineProperty劫持各个属性的setter、getter，
 	
 	在数据变动时发布消息给订阅者，触发相应的回调函数。
@@ -38,11 +41,13 @@ vue响应式原理
 	
 
 如何实现双向数据绑定
+
 	根据不同的元素与元素类型添加不同的元素监听事件。
 	如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
 
 
 事件修饰符 
+
 	阻止事件冒泡  `@click.stop="..."`
 	阻止默认事件  `@click.prevent="..."`
 	```
@@ -52,7 +57,9 @@ vue响应式原理
 	v-module.lazy=""
 	...
   ```
+
 事件绑定
+
 	```
 	{{value}}
 	<input v-bind:value="value" v-on:input="input" />
@@ -68,6 +75,7 @@ vue响应式原理
 输出代码为字符串 --> 防止xss攻击; 防止修改DOM
 
 v-for注意点：
+
 	Vue.set(要修改的数组, 要修改的下表, 改变后的结果); --> `Vue.set(this.[], 1, 10)`;
 	观察者模式 修改了数组push方法
 	//数组倒序
@@ -83,6 +91,7 @@ v-for注意点：
 	}
 	```
 //计算属性及监听 computed, watch
+
 	`computed` 必须有`return`; 必须是同步操作
 	```
 	computed: {
@@ -96,6 +105,7 @@ v-for注意点：
 	`watch` 没有`return`; 可以是同步操作, 也可以是异步操作
 
 filters过滤器
+
 	```
 	{{ msg | upperCase(true) }}
 	filters: {
@@ -109,11 +119,14 @@ filters过滤器
 		}
 	}
 	```
+
 //vue-cli
+
 	//查看github --> https://github.com/vuejs/vue-cli
 	基于render 
 	
 //组件
+
 	```
 	data: function() {
 		return { ... } //返回一个新的对象, 不这样写影响相同的组件数据
@@ -126,6 +139,7 @@ filters过滤器
 	//组件间传值 $emit $on结合
 	
 router
+
 	路由模式 hash模式、history模式
 
 	1、hash模式不需要后端配置, hash发生变化的url都会被浏览器记录下来，从而你会发现浏览器的前进后退都可以用, 
@@ -143,6 +157,7 @@ router
 			//console.log(this.$route.params.id);
 		}
 	})
+
 	//在new路由对象的时候, 可以为构造函数 传递一个配置对象
 	var routerObj = new VueRouter({
 		//route表示路由匹配规则
@@ -177,6 +192,7 @@ router
 	```
 
 vuex 组件之间共享数据
+
 	//组件中访问store中的数据 使用 this.$store.state.xxx = ***访问;
 
 	//挂载了vue上就能全局访问使用, 任何组件都能使用store存储数据
