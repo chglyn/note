@@ -69,7 +69,7 @@
 
 * [事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
 
-* [深入理解浏览器缓存机制](https://www.jianshu.com/p/54cc04190252)
+* [深入理解浏览器缓存机制](https://github.com/ljianshu/Blog/issues/23)
 
 * [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
 

@@ -23,7 +23,8 @@ vue响应式原理
 	
 
 如何实现双向数据绑定
-	根据不同的元素与元素类型添加不同的元素监听事件。如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
+	根据不同的元素与元素类型添加不同的元素监听事件。
+	如：input框使用addEventListener添加input事件，radio元素添加changge事件，select元素添加change事件。
 
 
 事件修饰符 
@@ -189,3 +190,10 @@ vuex 组件之间共享数据
 			}
 		}
 	})
+
+
+参考文章：
+
+[vuex框架原理与源码分析](https://tech.meituan.com/2017/04/27/vuex-code-analysis.html)
+
+[从头开始学习vue-router](https://github.com/ljianshu/Blog/issues/39)

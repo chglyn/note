@@ -50,6 +50,15 @@
 ```
 
 
+## 字符转义
+
+使用`window.location.search`获取中文参数会出现乱码情况，使用`decodeURI(乱码中文)`转义
+
+其他有关转义的`escape、encodeURI、encodeURIComponent`
+
+encodeURI()相比，encodeURIComponent方法将对更多的字符进行编码。如：`/`
+
+
 ## 模拟form提交参数
 
 为简化旧项目流程，缩短开发时间，在不重构界面情况下；上个界面保存的数据直接到当前界面；由于数据形式是数组不能使用url传参方式，因此编写form形式插件。
