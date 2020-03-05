@@ -15,7 +15,7 @@ Vue与React问世很久，一直在使用Vue，偶尔略看一下React及相关�
 * react使用create-react-app脚手架，存在一些局限性，扩展性差不能配置等。
 
 ##### 数据绑定
-* vue借鉴了mvvm思想，使用双向数据绑定( [查看双向数据绑定](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.md#data) )，当视图改变更新模型，当模型改变更新视图。(vue的更新是微任务)
+* vue借鉴了mvvm思想，使用双向数据绑定( [查看双向数据绑定](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.md) )，当视图改变更新模型，当模型改变更新视图。(vue的更新是微任务)
 * react是单向数据流，如果需要双向数据可以手动实现。react中属性不允许更改，状态试允许更改。不允许直接使用this.state更改组件状态。自身设置状态通过this.setState进行更改。(this.setState是异步的，导致获取内容还是之前的内容，因此在setState第二个参数添加回调函数获取更新后的内容)[为何this.setState是异步](#setState)。
 
 
