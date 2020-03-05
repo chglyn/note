@@ -1,10 +1,13 @@
 实现数据的双向绑定
 	1、实现一个监听器Observer, 用来劫持并监听所有属性, 如果有变动, 就通知订阅者.
 
-	2、实现一个订阅者Watcher, 每一个Watcher都绑定一个更新函数, Watcher可以接收到属性的变化通知并执行相应的函数, 从而更新视图.
+	2、实现一个订阅者Watcher, 每一个Watcher都绑定一个更新函数, 
 	
-	3、实现一个解析器Compile, 可以扫描和解析每个节点的相关指令, 如果节点存在v-model、v-on等指令, 解析器Compile初始化这类节点的模版数据,
-	可以显示在视图上, 然后初始化相应的订阅者Watcher.
+	Watcher可以接收到属性的变化通知并执行相应的函数, 从而更新视图.
+	
+	3、实现一个解析器Compile, 可以扫描和解析每个节点的相关指令, 如果节点存在v-model、v-on等指令, 
+	
+	解析器Compile初始化这类节点的模版数据,可以显示在视图上, 然后初始化相应的订阅者Watcher.
 
 
 理解MVVM模式
@@ -21,9 +24,15 @@
 
 vue响应式原理
 	通过数据劫持结合订阅与发布者模式的方式，通过Object.defineProperty劫持各个属性的setter、getter，
+	
 	在数据变动时发布消息给订阅者，触发相应的回调函数。
 
-	(创建vue实例会遍历data选项的属性, 用Object.defineProperty将他们转化为getter/setter并在内部追踪相关依赖, 在属性被访问和修改时通知变化.
+
+
+	(创建vue实例会遍历data选项的属性, 用Object.defineProperty将他们转化为getter/setter并在内部追踪相关依赖, 
+
+	在属性被访问和修改时通知变化.
+	
 	每个组件实例都有相应的watcher程序实例, 它会在组件渲染的过程中把属性记录为依赖, 之后当依赖项的setter被调用时, 
 	会通知watcher重新计算, 从而致使它关联的组件更新.)
 	
@@ -111,7 +120,8 @@ filters过滤器
 	}
 	```
 	//父向子传值 props
-	//子向父传值 $emit('自定义事件名', { 其他参数... })触发;  自定义事件名接受: @自定义事件名="fn($event, '18')"
+	//子向父传值 $emit('自定义事件名', { 其他参数... })触发;  
+	//自定义事件名接受: @自定义事件名="fn($event, '18')"
 	//父向子传DOM节点  slot 插槽
 	//组件间传值 $emit $on结合
 	
@@ -197,7 +207,8 @@ vuex 组件之间共享数据
 		},
 		getters:{
 			//和fillter类似 都没有修改元数据, 都是把原数据做包装对外提供使用
-			//和computed类似, 只有state中的数据发生变化, 如果gettes正好也使用了该数据, 那么就会立即触发getters重新求值
+			//和computed类似, 只有state中的数据发生变化, 如果gettes正好也使用了该数据, 
+			//那么就会立即触发getters重新求值
 			//getters：只对外提供数据, 不负责修改数据
 			optCount：function(state) { 
 				return '当前最新的count值是' + state.count;
