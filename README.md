@@ -77,45 +77,46 @@
 
 * [比较vue&react](https://github.com/chglyn/skills_note/blob/master/other-module/vue&react.md)
 
-
+<!--
 <br /><br /><br /><br /><br />
 ### 手册与巩固：
 ...
+-->
+ <!-- *[vue总结](https://mp.weixin.qq.com/s?__biz=MzI2NTk2NzUxNg==&mid=2247484613&idx=1&sn=693ac96f6de7557ab37669a057ae3265&chksm=ea940636dde38f20d55ee2a8c61d3afebfb68f97d4f98781be7383a265f8ea4f2ae1d5d41c19&scene=126&sessionid=1583978821&key=d6b38e7eaeb9ec131c9ec5464f952011167d734ebe341930d4c9df6d1cb31810d968481e98fe16f1409df60ace256c4e44d5349ec715be64c7d5f0bc62e90ad556b1a6336d0d05abdf958b11af35b42c&ascene=1&uin=MTY5MDMxMzYwNQ%3D%3D&devicetype=Windows+10&version=62080079&lang=zh_CN&exportkey=AyaK5wS6dgkkE0lKHBVSQOo%3D&pass_ticket=5ld%2Fg6fdWlkTXzUqKBZ%2FbzW3wVay8ikVYy8S1WovZmqFKMtN0CFmkEZETSe0%2FiCk)-->
+<!--* [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese) -->
 
-* [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese)
+<!--* [infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3) -->
 
-* [infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3)
+<!--* [技术框架](http://www.iocoder.cn/?bilibili&av80611222) -->
 
-* [技术框架](http://www.iocoder.cn/?bilibili&av80611222)
+<!--* [前端react手册](http://caibaojian.com/react) -->
 
-* [前端react手册](http://caibaojian.com/react)
+<!--* [前端vue手册](http://caibaojian.com/vue) -->
 
-* [前端vue手册](http://caibaojian.com/vue)
+<!--* [解析vue2.0的diff算法](https://segmentfault.com/a/1190000008782928#articleHeader7?tdsourcetag=s_pcqq_aiomsg) -->
 
-* [解析vue2.0的diff算法](https://segmentfault.com/a/1190000008782928#articleHeader7?tdsourcetag=s_pcqq_aiomsg)
+<!--* [中高级web-上篇](https://juejin.im/post/5c64d15d6fb9a049d37f9c20) -->
 
-* [中高级web-上篇](https://juejin.im/post/5c64d15d6fb9a049d37f9c20)
+<!--* [中高级web-中篇](https://juejin.im/post/5c92f499f265da612647b754) -->
 
-* [中高级web-中篇](https://juejin.im/post/5c92f499f265da612647b754)
+<!--* [优选前端文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60#heading-6) -->
 
-* [优选前端文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60#heading-6)
+<!--* [前端100问](https://juejin.im/post/5d23e750f265da1b855c7bbe#heading-23) -->
 
-* [前端100问](https://juejin.im/post/5d23e750f265da1b855c7bbe#heading-23)
+<!--* [JS面试题](https://www.bilibili.com/video/av15489696?from=search&seid=17235287298620673964) -->
 
-* [JS面试题](https://www.bilibili.com/video/av15489696?from=search&seid=17235287298620673964)
+<!--* [灵活运用css技巧](https://juejin.im/post/5d4d0ec651882549594e7293) -->
 
-* [灵活运用css技巧](https://juejin.im/post/5d4d0ec651882549594e7293)
+<!--* [合格前端应看的技术文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60) -->
 
-* [合格前端应看的技术文章](https://juejin.im/post/5d387f696fb9a07eeb13ea60)
+<!--* [JavaScript半知半解](https://www.kancloud.cn/dennis/tgjavascript/241811) -->
 
-* [JavaScript半知半解](https://www.kancloud.cn/dennis/tgjavascript/241811)
+<!--<!--* [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds) -->
 
-* [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds)
+<!--* [携程haorooms博客](https://www.haorooms.com) -->
 
-* [携程haorooms博客](https://www.haorooms.com)
+<!--* [web资源](https://www.jianshu.com/p/6cb49271cd2a) -->
 
-* [web资源](https://www.jianshu.com/p/6cb49271cd2a)
+<!--* [判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html) -->
 
-* [判断是否为数字](https://www.cnblogs.com/jiangyuzhen/p/11052126.html)
-
-* [博客园](https://www.cnblogs.com/cate/108703)
+<!--* [博客园](https://www.cnblogs.com/cate/108703) -->
