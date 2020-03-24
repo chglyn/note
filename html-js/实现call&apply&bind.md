@@ -1,18 +1,66 @@
-## 模拟call
+
+### 模拟bind
+
+```
+Function.prototype.myBind = function(cts) {
+	if(typeof this !== 'function') return;
+
+	var self = this;
+	var arg = Array.prototype.slice.call(arguments, 1);
+	var fn = function() {}; //用于保存原函数的原型
+	var bound = function() {
+		//判断是否使用 new调用bound
+		var _self = this instanceof fn ? this : cts;
+		var _arg = Array.prototype.slice.call(arguments);
+		return self.apply(_self, arg.concat(_arg));
+	}
+
+	//箭头函数没有prototype，箭头函数永远指向它所在的作用域
+	if(this.prototype) {
+		fn.prototype = this.prototype;
+	}
+
+	bound.prototype = new fn();
+	return bound;
+}
+
+```
+
+### 检测
+
+```
+var bar = function() {
+	console.log(arguments);
+}
+
+var obj = {
+	name: 'ming'
+}
+
+var bound = bar.myBind(obj);
+
+new bound();
+
+bound();
+
+
+```
+
+### 模拟call
 
 ```
 
 //在函数的原型扩展
 Function.prototype.myCall = function(cts) {
-	cts = cts ? Object(cts) ? window;
+	if(typeof this !== 'function') return;
 
-	var fn = Symbol();
-	cts[fn] = this;
+	cts = cts ? Object(cts) ? window;
+	cts.fn = this;
 
 	var arg = [].slice.call(arguments).slice(1);
-	var res = cts[fn](...arg);
+	var res = cts.fn(...arg);
 
-	delete cts[fn];
+	delete cts.fn;
 	return res;
 
 }
@@ -20,63 +68,39 @@ Function.prototype.myCall = function(cts) {
 
 ```
 
-## 模拟apply
+### 模拟apply
 
 ```
- Function.prototype.myApply = function(cts, arg) {
+ Function.prototype.myApply = function(cts) {
+ 	if(typeof this !== 'function') return;
+
  	cts = cts ? Object(cts) ? window;
+ 	cts.fn = this;
 
- 	var fn = Symbol();
- 	cts[fn] = this;
+ 	var arg = arguments[1];
+ 	var res = cts.fn(...arg);
 
- 	let _arg = [].slice.call(arguments).slice(1);
- 	var res = arg ? cts[fn](..._arg) : cts[fn](_arg);
- 	
- 	delete cts[fn];
+ 	delete cts.fn;
  	return res;
  }
 
 ```
 
-## 模拟bind
+### 检测
 
 ```
-Function.prototype.myBind = function(cts) {
-	if(typeof this !== 'function') return;
-
-	var self = this;
-	var arg = [].slice.call(arguments, 1);
-	var fn = function() {
-		var _self = self instanceof fn ? self : cts;
-		var _arg = [].slice.call(arguments);
-		return self.apply(_self, arg.concat(_arg));
-	}
-
-	fn.prototype = Object.create(self.prototype);
-	return new fn();
-
-}
+const bar = function() {
+  console.log(this.name, arguments);
+};
 
 
-```
 
-## 检测
+const foo = {
+  name: 'foo'
+};
 
-```
+bar.myCall(foo, 1, 2, 3);
 
-var obj = {
-	name: 'ming'
-}
-
-function fn() {
-	console.log(this.name)
-}
-
-fn.myCall(obj);
-
-fn.myApply(obj);
-
-fn.myBind(obj);
-
+bar.myAplly(foo, [1, 2, 3]);
 
 ```
