@@ -661,7 +661,7 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 	var father = new Father();
 	console.log(son.lastName); 
 	console.log(father.lastName); //sunny
-	son.prototype.sex = 'male';
+	Son.prototype.sex = 'male';
 	console.log(son.sex); //male
 	console.log(father.sex);//underfined
 	son.__proto__ -->new F() --> Father.prototype
