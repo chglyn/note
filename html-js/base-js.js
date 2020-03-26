@@ -322,7 +322,7 @@ var str = new String('abcd');
 var num = 4;
 num.len = 3;
 //new Number(4).len = 3; 新建一个数字对象，新建的数字对象；len赋值3 然后销毁delete
-//new Number(4).len; 再一次重新创建数字对象，添加一个属性len；和上面new Number不用
+//new Number(4).len; 再一次重新创建数字对象，添加一个属性len；和上面new Number不同
 console.log(num.len); //undefined
 
 var str = 'abcd';
@@ -381,7 +381,7 @@ person1.say(); //1
 	}
 	function Car();
 	var car = new Car();
-	//Car.prototype -- > function Person() {}
+	//Car.constructor -- > function Person() {}
 	
 	Perototype.name = 'sunny';
 	function Person(){}
