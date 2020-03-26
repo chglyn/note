@@ -633,14 +633,14 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 	//inherit(Son, Person);
 	console.log(son.lastName); //sunny
 圣杯模式
-	Fater.prototype.lastName = 'sunny';
+	Father.prototype.lastName = 'sunny';
 	function Father(){}
 	function Son(){}
 	function inherit(Target, Origin){
 		function F() {
-			//Target.prototype = new F(); ***
+			//Target.prototype = new F(); //***
 			F.prototype = Origin.Prototype;
-			Target.prototype = new F();     ***
+			Target.prototype = new F();     //***
 			Target.prototype.constructor = Target;
 			Target.prototype.uber = Origin.prototype;
 		}
@@ -659,7 +659,7 @@ javascript设计模式 0-35页上半部分或者50页，35页上半部分-38页�
 	inherit(Son, Father);
 	var son = new Son();
 	var father = new Father();
-	console.log(son.lastName); //sunny
+	console.log(son.lastName); 
 	console.log(father.lastName); //sunny
 	son.prototype.sex = 'male';
 	console.log(son.sex); //male
