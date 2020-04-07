@@ -1,5 +1,5 @@
 
-## Vue-eventBus的模拟
+## Eventer实现
 
 ```
 	function eventBus() {
