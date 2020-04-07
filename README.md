@@ -32,7 +32,7 @@
 
 * [vue生命周期](https://github.com/chglyn/skills_note/blob/master/vue/vue_lifecycle.png)
 
-* [模仿vue中eventBus](https://github.com/chglyn/skills_note/blob/master/vue/vue-eventBus.md)
+* [Eventer实现](https://github.com/chglyn/skills_note/blob/master/vue/Eventer.md)
 
 
 
