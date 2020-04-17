@@ -171,6 +171,38 @@ CSS属性可以缩写，比如: border: 1px solid red; 与其相对应的是： 
 盒子可视区域  border + padding + width/height
 
 
+CSS3盒子模型提出box-sizing属性，它的值有：content-box/border-box
+
+首先看下content-box下盒子模型：
+
+```
+.parent{
+	width:200px;
+	height:200px;
+	margin: 20px;
+	border:2px solid red;
+	background-color:#ccc;
+	box-sizing: content-box; /*这个盒子模型*/
+}
+
+```
+
+从图中可以看出，该盒子模型宽度为204px，也就是说在该属性下盒子**向外扩展**，盒子会变大。
+
+```
+.parent{
+	width:200px;
+	height:200px;
+	border:2px solid red;
+	background-color:#ccc;
+	box-sizing: border-box; // 这个盒子模型
+}
+
+```
+
+从图中可以看出，该盒子模型宽度为200px，也就是说在该属性下盒子**向内扩展**，盒子会不变大。
+
+
 ### 定位技术
 
 * position常用的值: relative | absolute | fixed | static
