@@ -6,13 +6,13 @@
 
 ### Flex使用
 
-设置Flex布局，在父级添加 display:flex即可。
+设置Flex布局，在父框添加 display:flex即可。
 
 Flex布局有浏览器兼容性，需要根据不同浏览器内核添加不同浏览器前缀，比如Chrome浏览器使用 -webkit- 前缀。
 
 **注意：** 如果用了弹性布局，子元素不需要浮动 float。
 
-### 设置Flex父级携带属性
+### 父框设置Flex携带属性
 
 justify-content: 子元素水平排列方式，值有以下几种：
 
@@ -47,7 +47,7 @@ flex-wrap: 子元素是否在一行显示，该属性值有以下几种：
 
 flex-flow 全拼是 <flex-direction> 与 <flex-wrap>的缩写。	
 
-### 子级身上属性:
+### 子框身上属性:
 
 父框设置Flex布局，子框携带的属性：
 
