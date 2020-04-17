@@ -6,7 +6,7 @@
 #### HTML系列:
 * [html汇总](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.md)
 
-* [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
+* [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.md)
 
 
 
