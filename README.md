@@ -54,7 +54,7 @@
 
 #### 其他系列:
 
-！<!--* [相关php](https://github.com/chglyn/skills_note/tree/master/php)-->
+<!--* [相关php](https://github.com/chglyn/skills_note/tree/master/php)-->
 
 * [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/project-question.md)
 
