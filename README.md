@@ -3,14 +3,14 @@
 
 <br />
 
-#### HTML:
+#### HTML系列:
 * [html笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
 
 
-#### JavaScript:
+#### JavaScript系列:
 * [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
 
 * [jQuery笔记](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
@@ -23,9 +23,10 @@
 
 * [了解call&apply&bind](https://github.com/chglyn/skills_note/blob/master/html-js/实现call&apply&bind.md)
 
+* [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
 
 
-#### VueJS:
+#### VueJS系列:
 * [Vue目录](https://github.com/chglyn/skills_note/tree/master/vue)
 
 * [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.md)
@@ -36,30 +37,24 @@
 
 
 
-#### ReactJS:
-* [react目录](https://github.com/chglyn/skills_note/tree/master/react)
+<!-- [react目录](https://github.com/chglyn/skills_note/tree/master/react)-->
 
 
 
-#### webpack:
-* [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
+#### webpack系列:
+<!--* [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)-->
 * [调优webpack](https://github.com/chglyn/skills_note/blob/master/webpack.4.2.x/调优webpack.md)
 
 
 
-#### node笔记:
+#### node系列:
 * [node目录](https://github.com/chglyn/skills_note/tree/master/node)
 
 
 
-#### ES6:
-* [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
+#### 其他系列:
 
-
-
-#### other model:
-
-* [相关php](https://github.com/chglyn/skills_note/tree/master/php)
+！<!--* [相关php](https://github.com/chglyn/skills_note/tree/master/php)-->
 
 * [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/project-question.md)
 
@@ -82,7 +77,7 @@
 ### 手册与巩固：
 ...
 -->
- <!-- *[vue总结](https://mp.weixin.qq.com/s?__biz=MzI2NTk2NzUxNg==&mid=2247484613&idx=1&sn=693ac96f6de7557ab37669a057ae3265&chksm=ea940636dde38f20d55ee2a8c61d3afebfb68f97d4f98781be7383a265f8ea4f2ae1d5d41c19&scene=126&sessionid=1583978821&key=d6b38e7eaeb9ec131c9ec5464f952011167d734ebe341930d4c9df6d1cb31810d968481e98fe16f1409df60ace256c4e44d5349ec715be64c7d5f0bc62e90ad556b1a6336d0d05abdf958b11af35b42c&ascene=1&uin=MTY5MDMxMzYwNQ%3D%3D&devicetype=Windows+10&version=62080079&lang=zh_CN&exportkey=AyaK5wS6dgkkE0lKHBVSQOo%3D&pass_ticket=5ld%2Fg6fdWlkTXzUqKBZ%2FbzW3wVay8ikVYy8S1WovZmqFKMtN0CFmkEZETSe0%2FiCk)-->
+
 <!--* [深入理解ES6](https://github.com/OshotOkill/understandinges6-simplified-chinese) -->
 
 <!--* [infoq](https://www.infoq.cn/article/2017/01/V8-measure-performance-data/?spm=a2c4e.10696291.0.0.37a619a4mvmyu3) -->
