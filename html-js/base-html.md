@@ -2,8 +2,9 @@
 
 对HTML页面标签内容进行简单总结，在这里做个简单笔记汇总。
 
-页面头部的desc字段: **告诉搜索爬虫引擎，网站是关于什么内容的，对本站点的描述。**
+页面头部的desc字段: **网站是关于什么内容的，对本站点的描述。**
 
+页面头部的keywords字段: **告诉搜索爬虫引擎，网站是关于什么内容的。**
 
 #### 有序列表与无序列表
 
@@ -22,28 +23,66 @@
 	<li>demo</li>
 </ol>
 ```
+无序列表：
 
-<!--ol type="1" start="2">
-	<li></li>
-</ol-->
+```
+<ul>
+	<li>demo</li>
+</ul>
+```
 
-<!--ul type="disc/square/circle">
-	<li></li>
-</ul-->
+在无序列表中使用 type 属性：
 
-a 标签
-	1、超链接
-	2、anchor --> 锚点 (<a href="#Id"></a>)
-	3、打电话 (<a href="tel:130XXXXXXXX"></a>)
-	4、邮件 （<a href="mailto:liu@xxx.com"></a>）
-	5、协议限定符 （<a href="javascript:while(1){alert(1)}"></a>）
+```
+<ul>
+	<li type="fruits">app</li>
+</ul>
+```
 
-主流浏览器   内核
-	firefox  Gecko
-	chrome   webkit /blink
-	ie       trident
-	safari   webkit
-	opera    presto
+在 HTML 4.01 中，不赞成 type 属性；在 XHTML 1.0 Strict DTD 中，不支持 type 属性。请使用 CSS 代替。
+
+#### a标签
+
+* 在页面中当作超链接使用：
+
+```
+<a href="/404.html">...</a>
+```
+
+* 在页面中当作锚点使用：
+
+```
+<a href="#Id">...</a>
+```
+
+* 在页面中调起电话使用：
+
+```
+<a href="tel:130XXXXXXXX">...</a>
+```
+
+* 在页面中调起邮件使用：
+
+```
+<a href="mailto:liu@xxx.com">...</a>
+```
+
+* 在页面中协议限定符：
+
+```
+<a href="javascript:while(1){alert(1)}">...</a>
+```
+
+#### 主流浏览器内核
+
+|  主流浏览器   | 内核  |
+|  ----  | ----  |
+| Firefox  | Gecko |
+| Chrome  | Webkit /Blink |
+| IE  | Trident |
+| Safari  | Webkit |
+| Opera  | Presto |
+
 
 cascading style sheet
 /* (darryring roseonly) */
