@@ -3,11 +3,12 @@
 
 <br />
 
-#### HTML系列:
+#### CSS/HTML系列:
 * [html汇总](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.md)
 
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.md)
 
+* [查看CSS属性兼容性](https://caniuse.com)
 
 
 #### JavaScript系列:
