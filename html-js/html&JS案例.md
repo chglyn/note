@@ -176,7 +176,6 @@ border-box|宽度-内边距-边框|向内收缩
 * indexOf
 
 ```
-	//第一种
 	function unique(arr) {
 		var arr2 = [];
 		for(var i=0; i<arr,length; i++) {
@@ -188,7 +187,6 @@ border-box|宽度-内边距-边框|向内收缩
 		return arr2;
 	}
 
-	//第二种
 	function unique(arr) {
 		var arr2 = [];
 		for(var i=0; i<arr.length; i++) {
