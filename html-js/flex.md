@@ -60,10 +60,10 @@ flex-flow 全拼是 <flex-direction> 与 <flex-wrap>的缩写。
 
 ### flex：1的含义
 
-flex是flex-grow，flex-shrink，flex-basis的缩写。
-flex-grow：父控件空间有剩余是否放大；0表示不放大。
-flex-shrink：父控件空间不足是否缩小。
-flex-basis：子控件占主轴的大小，主轴就是flex的主方向，row是横向，column是竖向。
-flex默认属性是0 1 auto，(父控件有剩余控件不放大，父控件空间不足按1缩小，保持本身的空间大小)。
-flex:1;的值是1 1 0%，(父控件有剩余空间按1放大，父控件空间不足按1缩小，自身的空间大小是0%)。
+* flex是flex-grow，flex-shrink，flex-basis的缩写。
+* flex-grow：父控件空间有剩余是否放大；0表示不放大。
+* flex-shrink：父控件空间不足是否缩小。
+* flex-basis：子控件占主轴的大小，主轴就是flex的主方向，row是横向，column是竖向。
+* flex默认属性是0 1 auto，(父控件有剩余控件不放大，父控件空间不足按1缩小，保持本身的空间大小)。
+* flex:1;的值是1 1 0%，(父控件有剩余空间按1放大，父控件空间不足按1缩小，自身的空间大小是0%)。
 
