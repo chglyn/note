@@ -1,16 +1,16 @@
-## personalBlog  
+### personalBlog  
 > 随笔、总结、学习。  
 
 <br />
 
-### HTML:
+#### HTML:
 * [html笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.html)
 
 * [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.txt)
 
 
 
-### JavaScript:
+#### JavaScript:
 * [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
 
 * [jQuery笔记](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
@@ -25,7 +25,7 @@
 
 
 
-### VueJS:
+#### VueJS:
 * [Vue目录](https://github.com/chglyn/skills_note/tree/master/vue)
 
 * [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.md)
@@ -36,28 +36,28 @@
 
 
 
-### ReactJS:
+#### ReactJS:
 * [react目录](https://github.com/chglyn/skills_note/tree/master/react)
 
 
 
-### webpack:
+#### webpack:
 * [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)
 * [调优webpack](https://github.com/chglyn/skills_note/blob/master/webpack.4.2.x/调优webpack.md)
 
 
 
-### node笔记:
+#### node笔记:
 * [node目录](https://github.com/chglyn/skills_note/tree/master/node)
 
 
 
-### ES6:
+#### ES6:
 * [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
 
 
 
-### other model:
+#### other model:
 
 * [相关php](https://github.com/chglyn/skills_note/tree/master/php)
 
