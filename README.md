@@ -4,25 +4,25 @@
 <br />
 
 #### CSS/HTML系列:
-* [html汇总](https://github.com/chglyn/skills_note/blob/master/html-js/base-html.md)
+* [html汇总](https://github.com/chglyn/blog/blob/master/files/html-js/base-html.md)
 
-* [flex笔记](https://github.com/chglyn/skills_note/blob/master/html-js/flex.md)
+* [flex笔记](https://github.com/chglyn/blog/blob/master/files/html-js/flex.md)
 
 * [查看CSS属性兼容性](https://caniuse.com)
 
 
 #### JavaScript系列:
-* [JavaScript笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-js.js)
+* [JavaScript笔记](https://github.com/chglyn/blog/blob/master/files/html-js/base-js.js)
 
-* [jQuery笔记](https://github.com/chglyn/skills_note/blob/master/html-js/jquery.js)
+* [jQuery笔记](https://github.com/chglyn/blog/blob/master/files/html-js/jquery.js)
 
-* [不知道的JS与闭包案例](https://github.com/chglyn/skills_note/blob/master/html-js/unknow.js)
+* [不知道的JS与闭包案例](https://github.com/chglyn/blog/blob/master/files/html-js/unknow.js)
 
-* [闭包案例二](https://github.com/chglyn/skills_note/blob/master/html-js/闭包案例二.md)
+* [闭包案例二](https://github.com/chglyn/blog/blob/master/files/html-js/闭包案例二.md)
 
-* [了解数据结构与基本算法](https://github.com/chglyn/skills_note/blob/master/html-js/了解数据结构与算法.md)
+* [了解数据结构与基本算法](https://github.com/chglyn/blog/blob/master/files/html-js/了解数据结构与算法.md)
 
-* [了解call&apply&bind](https://github.com/chglyn/skills_note/blob/master/html-js/实现call&apply&bind.md)
+* [了解call&apply&bind](https://github.com/chglyn/blog/blob/master/files/html-js/实现call&apply&bind.md)
 
 * [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
 
@@ -44,12 +44,11 @@
 
 #### webpack系列:
 <!--* [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)-->
-* [调优webpack](https://github.com/chglyn/skills_note/blob/master/webpack.4.2.x/调优webpack.md)
-
+* [调优webpack](https://github.com/chglyn/skills_note/blob/blob/master/webpack.4.2.x/调优webpack.md)
 
 
 #### node系列:
-* [node目录](https://github.com/chglyn/skills_note/tree/master/node)
+* [node目录](https://github.com/chglyn/blog/tree/master/files/node)
 
 
 
@@ -57,7 +56,7 @@
 
 <!--* [相关php](https://github.com/chglyn/skills_note/tree/master/php)-->
 
-* [项目笔记](https://github.com/chglyn/skills_note/blob/master/other-module/project-question.md)
+* [项目笔记](https://github.com/chglyn/blog/blob/master/files/other-module/project-question.md)
 
 * [web-tool](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)
 
@@ -69,9 +68,9 @@
 
 * [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
 
-* [必知html&JS案例](https://github.com/chglyn/skills_note/blob/master/html-js/html&JS案例.md)
+* [必知html&JS案例](https://github.com/chglyn/blog/blob/master/files/html-js/html&JS案例.md)
 
-* [比较vue&react](https://github.com/chglyn/skills_note/blob/master/other-module/vue&react.md)
+* [比较vue&react](https://github.com/chglyn/blog/blob/master/files/other-module/vue&react.md)
 
 <!--
 <br /><br /><br /><br /><br />
@@ -107,7 +106,7 @@
 
 <!--* [JavaScript半知半解](https://www.kancloud.cn/dennis/tgjavascript/241811) -->
 
-<!--<!--* [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds) -->
+<!--* [百篇前端文章干货合集](https://yq.aliyun.com/articles/686756?spm=a2c4e.11153959.0.0.65fe3e99qIvHds) -->
 
 <!--* [携程haorooms博客](https://www.haorooms.com) -->
 
