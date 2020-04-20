@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-//const cleanWebpackPlugin=require('clean-webpack-plugin');//自动清除dist目录
+const { CleanWebpackPlugin } =require('clean-webpack-plugin');//自动清除dist目录
 const webpack = require('webpack');
 
 module.exports = {
@@ -47,11 +47,8 @@ module.exports = {
 		    {
 		        test: /\.s[ac]ss$/i,
 		        use: [
-		          // Creates `style` nodes from JS strings
 		          'style-loader',
-		          // Translates CSS into CommonJS
 		          'css-loader',
-		          // Compiles Sass to CSS
 		          'sass-loader',
 		        ],
 		    }
@@ -66,7 +63,8 @@ module.exports = {
     	}),
     	new webpack.NamedModulesPlugin(),
     	new webpack.HotModuleReplacementPlugin(),
-    	// new CleanWebpackPlugin(['dist'])
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin(),
 	],
 	devServer: {
 		contentBase:path.resolve(__dirname, 'dist'),
