@@ -1,40 +1,38 @@
-### personalBlog  
-> 随笔、总结、学习。  
+
+<!-- 随笔、总结、学习。  -->
 
 <br />
 
-#### CSS/HTML系列:
-* [html汇总](https://github.com/chglyn/blog/blob/master/files/html-js/base-html.md)
 
-* [flex笔记](https://github.com/chglyn/blog/blob/master/files/html-js/flex.md)
+<!-- * [html汇总](https://github.com/chglyn/blog/blob/master/files/html-js/base-html.md)-->
 
-* [查看CSS属性兼容性](https://caniuse.com)
+<!-- * [flex笔记](https://github.com/chglyn/blog/blob/master/files/html-js/flex.md)-->
 
-
-#### JavaScript系列:
-* [JavaScript笔记](https://github.com/chglyn/blog/blob/master/files/html-js/base-js.js)
-
-* [jQuery笔记](https://github.com/chglyn/blog/blob/master/files/html-js/jquery.js)
-
-* [不知道的JS与闭包案例](https://github.com/chglyn/blog/blob/master/files/html-js/unknow.js)
-
-* [闭包案例二](https://github.com/chglyn/blog/blob/master/files/html-js/闭包案例二.md)
-
-* [了解数据结构与基本算法](https://github.com/chglyn/blog/blob/master/files/html-js/了解数据结构与算法.md)
-
-* [了解call&apply&bind](https://github.com/chglyn/blog/blob/master/files/html-js/实现call&apply&bind.md)
-
-* [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)
+<!-- * [查看CSS属性兼容性](https://caniuse.com)-->
 
 
-#### VueJS系列:
-* [Vue目录](https://github.com/chglyn/skills_note/tree/master/vue)
+<!-- * [JavaScript笔记](https://github.com/chglyn/blog/blob/master/files/html-js/base-js.js)-->
 
-* [vue基础](https://github.com/chglyn/skills_note/blob/master/vue/base-vue.md)
+<!-- * [jQuery笔记](https://github.com/chglyn/blog/blob/master/files/html-js/jquery.js)-->
 
-* [vue生命周期](https://github.com/chglyn/skills_note/blob/master/vue/vue_lifecycle.png)
+<!-- * [不知道的JS与闭包案例](https://github.com/chglyn/blog/blob/master/files/html-js/unknow.js)-->
 
-* [Eventer实现](https://github.com/chglyn/skills_note/blob/master/vue/Eventer.md)
+<!-- * [闭包案例二](https://github.com/chglyn/blog/blob/master/files/html-js/闭包案例二.md)-->
+
+<!-- * [了解数据结构与基本算法](https://github.com/chglyn/blog/blob/master/files/html-js/了解数据结构与算法.md)-->
+
+<!-- * [了解call&apply&bind](https://github.com/chglyn/blog/blob/master/files/html-js/实现call&apply&bind.md)-->
+
+<!-- * [es6笔记](https://github.com/chglyn/skills_note/blob/master/html-js/base-es6.js)-->
+
+
+<!-- * [Vue目录](https://github.com/chglyn/skills_note/tree/master/vue)-->
+
+<!-- * [vue基础](https://github.com/chglyn/blog/blob/master/files/vue/base-vue.md)-->
+
+<!-- * [vue生命周期](https://github.com/chglyn/skills_note/blob/master/vue/vue_lifecycle.png)-->
+
+<!-- * [Eventer实现](https://github.com/chglyn/skills_note/blob/master/vue/Eventer.md)-->
 
 
 
@@ -44,11 +42,11 @@
 
 #### webpack系列:
 <!--* [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)-->
-* [调优webpack](https://github.com/chglyn/skills_note/blob/blob/master/webpack.4.2.x/调优webpack.md)
+<!--* [调优webpack](https://github.com/chglyn/skills_note/blob/blob/master/webpack.4.2.x/调优webpack.md)-->
 
 
 #### node系列:
-* [node目录](https://github.com/chglyn/blog/tree/master/files/node)
+<!--* [node目录](https://github.com/chglyn/blog/tree/master/files/node)-->
 
 
 
@@ -56,21 +54,21 @@
 
 <!--* [相关php](https://github.com/chglyn/skills_note/tree/master/php)-->
 
-* [项目笔记](https://github.com/chglyn/blog/blob/master/files/other-module/project-question.md)
+<!--* [项目笔记](https://github.com/chglyn/blog/blob/master/files/other-module/project-question.md)-->
 
-* [web-tool](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)
+<!--* [web-tool](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)-->
 
-* [跨域与安全](https://github.com/chglyn/skills_note/blob/master/other-module/%E8%B7%A8%E5%9F%9F%E4%B8%8E%E5%AE%89%E5%85%A8.md)
+<!--* [跨域与安全](https://github.com/chglyn/skills_note/blob/master/other-module/%E8%B7%A8%E5%9F%9F%E4%B8%8E%E5%AE%89%E5%85%A8.md)-->
 
-* [事件机制Event Loop](https://segmentfault.com/a/1190000013861128)
+<!--* [事件机制Event Loop](https://segmentfault.com/a/1190000013861128)-->
 
-* [深入理解浏览器缓存机制](https://github.com/ljianshu/Blog/issues/23)
+<!--* [深入理解浏览器缓存机制](https://github.com/ljianshu/Blog/issues/23)-->
 
-* [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)
+<!--* [小程序必知](https://segmentfault.com/a/1190000018689948?utm_source=tag-newest)-->
 
-* [必知html&JS案例](https://github.com/chglyn/blog/blob/master/files/html-js/html&JS案例.md)
+<!--* [必知html&JS案例](https://github.com/chglyn/blog/blob/master/files/html-js/html&JS案例.md)-->
 
-* [比较vue&react](https://github.com/chglyn/blog/blob/master/files/other-module/vue&react.md)
+<!--* [比较vue&react](https://github.com/chglyn/blog/blob/master/files/other-module/vue&react.md)-->
 
 <!--
 <br /><br /><br /><br /><br />
