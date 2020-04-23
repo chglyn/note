@@ -1,4 +1,7 @@
 
+
+前端笔记，写一写总结。
+
 <!-- 随笔、总结、学习。  -->
 
 <br />
@@ -40,17 +43,14 @@
 
 
 
-#### webpack系列:
 <!--* [webpack.4.2.x](https://github.com/chglyn/skills_note/tree/master/webpack.4.2.x)-->
 <!--* [调优webpack](https://github.com/chglyn/skills_note/blob/blob/master/webpack.4.2.x/调优webpack.md)-->
 
 
-#### node系列:
 <!--* [node目录](https://github.com/chglyn/blog/tree/master/files/node)-->
 
 
 
-#### 其他系列:
 
 <!--* [相关php](https://github.com/chglyn/skills_note/tree/master/php)-->
 
