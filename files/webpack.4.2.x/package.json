@@ -675,6 +675,6 @@
     "webpack-cli": "^3.1.2",
     "xtend": "^4.0.1",
     "_yargs-parser@10.1.0@yargs-parser": "^10.1.0",
-    "yargs-parser": "^10.1.0"
+    "yargs-parser": "^20.0.0"
   }
 }
