@@ -119,6 +119,49 @@ function sum(a:number, b:number, ...result:number):number {
 sum(1, 2, 3, 4, 5);
 
 ```
+
 * ts 函数重载
+
+```
+
+function show(name:string):string;
+
+function show(age:number):number;
+
+function show(str:any):any {
+ if(typeof str == 'string') {
+  return name;
+ }else{
+  return age;
+ }
+}
+
+show('sunny');
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
