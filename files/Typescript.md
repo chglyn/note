@@ -140,9 +140,50 @@ show('sunny');
 
 ```
 
+* ts 类
 
+```
 
+class Person {
+ name: string; //属性
+ age: number;
+ constructor(n: string) { // 构造函数 实例化类时触发的方法
+  this.name=n;
+ }
+ say():void {
+  console.log(this.name)
+ }
+}
 
+var p = new Person('sunny');
+p.say();
+
+```
+
+* ts 继承
+
+```
+class Person {
+ name: string;
+ constructor(name: string) {
+  this.name = name;
+ }
+ say():string {
+  return `${this.name}`;
+ }
+}
+
+class Son extends Person{
+  constructor(name:string) {
+   super(name);
+  }
+}
+
+var s = new Son('sunny');
+
+s.say();
+
+```
 
 
 
