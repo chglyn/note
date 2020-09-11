@@ -185,8 +185,38 @@ s.say();
 
 ```
 
+* 类中的修饰符
 
+public 公有，在类里面、子类、类外部都能访问。
 
+protected 保护类型，在类里面、子类都能访问，类外部不能访问。
+
+private 私有 在类里面可以访问，子类和外部都不能访问。
+
+属性不加修饰符，默认为公有。
+
+```
+class Person {
+ public name: string; //公有属性
+ constructor(name: string) {
+  this.name = name;
+ }
+ say():string {
+  return `${this.name}`;
+ }
+}
+
+class Son extends Person{
+  constructor(name:string) {
+   super(name);
+  }
+}
+
+var s = new Son('sunny');
+
+s.say();
+
+```
 
 
 
