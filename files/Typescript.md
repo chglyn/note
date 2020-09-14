@@ -382,7 +382,7 @@ interface fullName{
 }
 
 function printName(name: fullName) {
- console.log(`${firstName} --- ${secondName}`);
+ console.log(`${firstName}`);
 }
 
 let obj = { firstName: 'sunny' };
