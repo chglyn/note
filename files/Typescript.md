@@ -12,7 +12,7 @@ let n:Num = Num.c
 
 ### 数组
 
-* ts 声明数组
+* `ts` 声明数组
 
 ```
 
@@ -26,7 +26,7 @@ let arr3:any[] = [1, 'a', 4, true];
 
 ####  函数
 
-  * ES5 定义函数
+  * `ES5` 定义函数
   
   ```
   function show() {
@@ -39,7 +39,7 @@ let arr3:any[] = [1, 'a', 4, true];
   
   ```
   
-  * Typescript 定义函数
+  * `Typescript` 定义函数
   
   ```
   // 指定函数类型
@@ -53,10 +53,11 @@ let arr3:any[] = [1, 'a', 4, true];
   
   ```
   
- * ts 定义函数传参
+ * `ts` 定义函数传参
+  指定参数类型，函数传参如果不是定义时的参数类型会抛出异常，编译不通过。
  
  ```
- // 指定参数类型，函数传参如果不是定义时的参数类型会抛出异常，编译不通过。
+ 
  function show(name:string, age:number):string {
    return `${name}` ---`${age}`;
  }
@@ -65,7 +66,7 @@ let arr3:any[] = [1, 'a', 4, true];
  
  ```
 
-* ts 函数没有返回值
+* `ts` 函数没有返回值
 
 ```
 
@@ -75,12 +76,12 @@ function show():void {
 
 ```
 
-* ts 函数设置可选参数 
+* `ts` 函数设置可选参数 
+ `?` 符号标识可选参数
+ 可选参数必须放到参数的最后一位
 
 ```
 
-// ? 符号标识可选参数
-// 可选参数必须放到参数的最后一位
 function show(name:string, age?:number):string {
  if(age) {
   return `${name}` --- `${age}`;
@@ -92,7 +93,7 @@ function show(name:string, age?:number):string {
 show('sunny');
 ```
 
-* ts 函数设置默认参数
+* `ts` 函数设置默认参数
 
 ```
 function show(name:string, age:number=20):string {
@@ -103,10 +104,10 @@ show('sunny')
 
 ```
 
-* ts 剩余参数
+* `ts` 剩余参数
+ 三点运算符，接收形参值
 
 ```
-// 三点运算符，接收形参值
 function sum(...result:number):number {
  lst s = 0;
  for(let i=0; i<result.length; i++) {
@@ -118,9 +119,9 @@ sum(1, 2, 3, 4, 5);
 
 ```
 
+另一种写法
 ```
 
-//另一种写法
 function sum(a:number, b:number, ...result:number):number {
  lst s = a +b;
  for(let i=0; i<result.length; i++) {
@@ -132,7 +133,7 @@ sum(1, 2, 3, 4, 5);
 
 ```
 
-* ts 函数重载
+* `ts` 函数重载
 
 ```
 
@@ -152,7 +153,7 @@ show('sunny');
 
 ```
 
-* ts 类
+* `ts` 类
 
 ```
 
@@ -172,7 +173,7 @@ p.say();
 
 ```
 
-* ts 继承
+* `ts` 继承
 
 ```
 class Person {
@@ -199,11 +200,11 @@ s.say();
 
 * 类中的修饰符
 
-public 公有，在类里面、子类、类外部都能访问。
+`public` 公有，在类里面、子类、类外部都能访问。
 
-protected 保护类型，在类里面、子类都能访问，类外部不能访问。
+`protected` 保护类型，在类里面、子类都能访问，类外部不能访问。
 
-private 私有 在类里面可以访问，子类和外部都不能访问。
+`private` 私有 在类里面可以访问，子类和外部都不能访问。
 
 属性不加修饰符，默认为公有。
 
@@ -230,7 +231,7 @@ s.say();
 
 ```
 
-* ts 静态属性与静态方法
+* `ts` 静态属性与静态方法
 
 ```
 
@@ -257,7 +258,7 @@ Person.run();
 
 ```
 
-* ts 多态
+* `ts` 多态
 
 ```
 
@@ -291,7 +292,7 @@ class Cat extends Animal{
 
 ```
 
-* ts 抽象
+* `ts` 抽象
 
 用 `abstract` 关键字定义抽象类和抽象方法，抽象类中的抽象方法不包含具体实现并且必须在派生类中实现。
 
