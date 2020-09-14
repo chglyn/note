@@ -230,10 +230,96 @@ s.say();
 
 ```
 
+* ts 静态属性与静态方法
 
+```
 
+class Person{
+ public name: string;
+ static sex:string = '男';
+ constructor(name:string) {
+  this.name = name;
+ }
+ show() {
+  console.log(`${this.name}`)
+ },
+ work() {
+  console.log(`${this.name}在工作`)
+ }
+ static run() { // 静态方法 不能直接调用类中的属性
+  console.log(`静态方法，只能获取静态属性：${this.sex}`)
+ }
+}
 
+let p = new Person('sunny');
+p.work();
+Person.run();
 
+```
+
+* ts 多态
+
+```
+
+class Animal{
+ name: string;
+ constructor(name:string) {
+  this.name = name;
+ }
+ eat() { // 继承它的子类去实现，每一个子类表现不一样
+  console.log(`吃的方法`)
+ }
+}
+
+class Dog extends Animal{
+ constructor(name:string) {
+  super(name)
+ }
+ eat() {
+  return `${this.name}吃肉`;
+ }
+}
+
+class Cat extends Animal{
+ constructor(name:string) {
+  super(name)
+ }
+ eat() {
+  return `${this.name}吃老鼠`;
+ }
+}
+
+```
+
+* ts 抽象
+
+用 `abstract` 关键字定义抽象类和抽象方法，抽象类中的抽象方法不包含具体实现并且必须在派生类中实现。
+
+`abstract` 抽象方法只能在抽象类里面。
+
+```
+
+abstract class Animal{
+ name: string;
+ constructor(name:string) {
+  this.name = name;
+ }
+ abstract eat():void;
+}
+
+class Dog extends Animal{
+ constructor(name:string) {
+  spuer(name);
+ }
+ // 抽象类的子类 必须实现抽象类的方法
+ eat() {
+  console.log(`${this.name}`)
+ }
+}
+
+let d = new Dog('小黑');
+
+```
 
 
 
