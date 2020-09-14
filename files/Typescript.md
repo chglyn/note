@@ -352,6 +352,8 @@ printLabel(labelJSON);
 
 `interface` 关键字
 
+传入的参数字段名字必须是接口中已有的名字。
+
 ```
 
 interface fullName{
