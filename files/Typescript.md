@@ -322,6 +322,83 @@ let d = new Dog('小黑');
 
 ```
 
+* `ts` 接口
+
+定义行为、动作的规范相当于约束。
+
+属性接口约束。
+
+```
+
+function printLabel(label: string):void {
+ console.log(label)
+}
+
+printLabel('Hi');
+
+```
+
+`ts` 中自定义方法传入参数对 `JSON` 约束。
+
+```
+function printLabel(labelInfo:(label: string)):void {
+ console.log(label)
+}
+
+let labelJSON = { name:'sunny', label:'lv1' };
+printLabel(labelJSON);
+
+```
+
+`interface` 关键字
+
+```
+
+interface fullName{
+ firstName: string; // 以分号结束
+ secondName: string;
+}
+
+function printName(name: fullName) {
+ console.log(`${firstName} --- ${secondName}`);
+}
+
+let obj = {firstName: 'sunny', secondName: 'cherry'};
+
+printName(obj);
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
