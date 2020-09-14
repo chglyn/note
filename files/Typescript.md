@@ -352,7 +352,7 @@ printLabel(labelJSON);
 
 `interface` 关键字
 
-传入的参数字段名字必须是接口中已有的名字。
+传入的参数字段名字必须是接口中已有的名字，参数顺序无要求。
 
 ```
 
@@ -370,10 +370,27 @@ let obj = {firstName: 'sunny', secondName: 'cherry'};
 printName(obj);
 
 
+```
+
+* 接口可选属性，使用 `?` 表示。 
 
 ```
 
+interface fullName{
+ firstName: string;
+ secondName?: string;
+}
 
+function printName(name: fullName) {
+ console.log(`${firstName} --- ${secondName}`);
+}
+
+let obj = { firstName: 'sunny' };
+
+printName(obj);
+
+
+```
 
 
 
