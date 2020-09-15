@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>点击导航滑动到指定内容区域，滚动内容 导航自动跳转到指定位置 高亮</title>
+  <script src="http://liuchangyuan.gn100.com/assets_talkweb2/js/vue/vue.min.js?ver=271"></script>
+  <style>
+    *{margin:0;padding: 0;}
+  #appp { 
+     /* 关键代码，需要给容器添加高度 */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding-right: 200px;
+  }
+  header{
+    width: 150px;
+    height: auto;
+    position: fixed;
+    top: 100px;
+    right: 130px;
+    z-index: 1;
+    background: #f6f6f6;
+    /* display: flex;
+    display: -webkit-flex;
+    justify-content: center;   */
+    
+    
+  }
+  header a{
+    display: block;
+    width: 100%;
+    height: 60px; 
+    text-align: center;
+    line-height: 60px;
+    color: #333333;
+    text-decoration: none;      
+  }
+  header a:hover,header a:active{
+    color:blue;
+  }
+  header a.active{
+    color: red;
+  }
+  #home,#team,#contact,#join{
+    width: 100%;
+    height: 500px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    line-height: 500px;
+  }
+  #home{
+    background: #ccc;
+  }
+  #team{
+    background: #888;
+  }
+  #contact{
+    background: #999;
+  }
+  #join {
+    height: 1000px;
+    background: #f2f2f2;
+  }
+  </style>
+</head>
+<body>
+<div id="app" class="app" >    
+        <header>
+          <a href="javascript:void(0);" :class="active == '#home' ? 'active' : ''" @click="toTarget('#home')">首页</a>
+          <a href="javascript:void(0);" :class="active == '#team' ? 'active' : ''"  @click="toTarget('#team')">团队</a>
+          <a href="javascript:void(0);" :class="active == '#contact' ? 'active' : ''"  @click="toTarget('#contact')">联系</a>
+          <a href="javascript:void(0);" :class="active == '#join' ? 'active' : ''"  @click="toTarget('#join')">加入我们</a>
+        </header>  
+        <div id="apply1">
+          <div id="home">
+            首页
+          </div>
+          <div id="team">
+            团队
+          </div>
+          <div id="contact">
+            联系
+          </div>
+          <div id="join">
+            加入我们
+          </div>     
+        </div>      
+  </div>
+</body>
+</html>
+<script>
+new Vue({
+
+    el: '#app',
+    data: {
+        active: '#home',
+        scrollIntoViewOptions: {
+            block: 'start',
+            behavior: 'smooth'
+        },
+        distance_team:0,
+        distance_contact:0,
+        distance_join:0
+    },
+    mounted() {
+        // 一次性计算赋值，减少滚动计算节点位置次数
+        this.distance_team = document.querySelector('#team').offsetTop - 60
+        this.distance_contact = document.querySelector('#contact').offsetTop - 60
+        this.distance_join = document.querySelector('#join').offsetTop - 60
+        this.$nextTick(function() { 
+            document.querySelector('#app').addEventListener('scroll', this.onScroll);
+        });
+        window.addEventListener('scroll', this.onScroll,true);          
+    }, 
+    methods: {     
+        toTarget(target) {      
+            this.active = target;
+            const toElement = document.querySelector(target);
+            toElement.scrollIntoView(this.scrollIntoViewOptions);                
+        },
+        onScroll() {
+            let scrolled =Math.abs(document.getElementById("app").getBoundingClientRect().top);
+            if (scrolled < this.distance_team) {      
+                    this.active = '#home'
+            } else if (scrolled >= this.distance_team && scrolled < this.distance_contact) {        
+                    this.active = '#team'
+            } else if (scrolled >= this.distance_contact && scrolled < this.distance_join) {      
+                    this.active = '#contact'
+            } else {         
+                    this.active = '#join'
+            }
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.onScroll, false)
+        }
+    }
+})
+</script>
