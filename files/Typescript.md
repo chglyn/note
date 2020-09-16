@@ -392,6 +392,28 @@ printName(obj);
 
 ```
 
+* `ts` 类类型接口
+
+```
+interface Animal{
+ name: string;
+ eat(str: string): void;
+}
+
+class Dog implements Animal{
+ name: string;
+ constructor(name: string) {
+  this.name = name;
+ }
+ eat() {
+  console.log(`${this.name}吃粮食`);
+ }
+}
+
+let d = new Dog('小狗');
+d.eat();
+
+```
 
 
 
