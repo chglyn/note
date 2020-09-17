@@ -415,6 +415,21 @@ d.eat();
 
 ```
 
+* `ts` 泛型
+
+泛型可以使用任意大些字母表示，注意类型、变量和返回值三者字母必须统一。
+
+```
+
+function show<T>(value:T): T{
+ return value;
+}
+
+show<number>(1);
+
+show<string>('hello');
+
+```
 
 
 
