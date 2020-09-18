@@ -107,5 +107,10 @@ s = $('<div>'+s+'</div>').find('img').each(function(index, el) {
 		obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
 	}
 
+### `iframe` 父界面获取字界面
 
+```
+document.getElementById(Id).contentWindow.方法
+
+```
 
