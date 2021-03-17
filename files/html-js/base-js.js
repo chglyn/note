@@ -1762,7 +1762,7 @@ js时间线
 	//the-first-name --> theFirstName
 	var reg = /-(\w)/g;
 	var str = 'the-first-name';
-	str.replcae(reg, function($, $1, $2) {
+	str.replace(reg, function($, $1, $2) {
 		return $1.toUpperCase(); 
 	})
 
