@@ -54,7 +54,7 @@ bound();
 Function.prototype.myCall = function(cts) {
 	if(typeof this !== 'function') return;
 
-	cts = cts ? Object(cts) ? window;
+	cts = cts ? Object(cts) : window;
 	cts.fn = this;
 
 	var arg = [].slice.call(arguments).slice(1);
@@ -74,7 +74,7 @@ Function.prototype.myCall = function(cts) {
  Function.prototype.myApply = function(cts) {
  	if(typeof this !== 'function') return;
 
- 	cts = cts ? Object(cts) ? window;
+ 	cts = cts ? Object(cts) : window;
  	cts.fn = this;
 
  	var arg = arguments[1];
