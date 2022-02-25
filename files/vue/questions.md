@@ -1,4 +1,5 @@
     // elementUI dialog or drawer
+```
     const isOpenDrawer = computed({
       get: () => {
         return props.isOpen
@@ -7,3 +8,5 @@
         context.emit('update:isOpen', value)
       }
     })
+
+```
