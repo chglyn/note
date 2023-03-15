@@ -23,3 +23,6 @@
 
 #### tinymce 手册
 ##### http://tinymce.ax-z.cn
+
+### google 统计
+##### https://matteo-gabriele.gitbook.io/vue-gtag
