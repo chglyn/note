@@ -26,3 +26,6 @@
 
 ### google 统计
 ##### https://matteo-gabriele.gitbook.io/vue-gtag
+
+### Sentry 
+##### https://docs.sentry.io/platforms/javascript/guides/vue/performance
