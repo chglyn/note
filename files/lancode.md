@@ -29,3 +29,6 @@
 
 ### Sentry 
 ##### https://docs.sentry.io/platforms/javascript/guides/vue/performance
+
+### requestPermission_static
+##### https://developer.mozilla.org/zh-CN/docs/Web/API/Notifications_API/Using_the_Notifications_API#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7
